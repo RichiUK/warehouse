@@ -1,0 +1,90 @@
+[
+  {
+    "id": "dune-parte-dos",
+    "titulo": "Dune: Parte Dos",
+    "poster_url": "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+    "genero": ["Ciencia Ficción", "Aventura"],
+    "duracion_min": 166,
+    "clasificacion": "TE+14",
+    "fecha_estreno": "2024-03-01",
+    "sinopsis": "Paul Atreides se une a Chani y a los Fremen en una guerra de venganza contra los conspiradores que destruyeron a su familia.",
+    "cadenas_ids": ["cinemark", "cinepolis", "cineplanet", "muvix"]
+  },
+  {
+    "id": "kung-fu-panda-4",
+    "titulo": "Kung Fu Panda 4",
+    "poster_url": "https://image.tmdb.org/t/p/w500/kDp1vUBnMpe8ak4rjgl3cLELqjU.jpg",
+    "genero": ["Animación", "Comedia", "Familia"],
+    "duracion_min": 94,
+    "clasificacion": "TE",
+    "fecha_estreno": "2024-03-08",
+    "sinopsis": "Po debe encontrar un nuevo Guerrero Dragón mientras su maestro Shifu le encarga que encuentre a su sucesor.",
+    "cadenas_ids": ["cinemark", "cinepolis", "cineplanet"]
+  },
+  {
+    "id": "godzilla-kong",
+    "titulo": "Godzilla y Kong: El Nuevo Imperio",
+    "poster_url": "https://image.tmdb.org/t/p/w500/z1p34vh7dEOnLDmyCrlUVLuoDzd.jpg",
+    "genero": ["Acción", "Ciencia Ficción"],
+    "duracion_min": 115,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2024-03-29",
+    "sinopsis": "Los titanes se unen para enfrentar una amenaza monstruosa que surge de lo profundo de la Tierra.",
+    "cadenas_ids": ["cinemark", "cinepolis", "muvix"]
+  },
+  {
+    "id": "ghostbusters-frozen-empire",
+    "titulo": "Ghostbusters: Imperio Helado",
+    "poster_url": "https://image.tmdb.org/t/p/w500/sg4xJaufDiQl7caFEskBtQXfD4x.jpg",
+    "genero": ["Comedia", "Fantasia", "Acción"],
+    "duracion_min": 115,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2024-03-22",
+    "sinopsis": "Los Cazafantasmas regresan a Nueva York para enfrentarse a una fuerza que amenaza con crear una segunda Edad de Hielo.",
+    "cadenas_ids": ["cinemark", "cineplanet"]
+  },
+  {
+    "id": "anyone-but-you",
+    "titulo": "Menos Tú",
+    "poster_url": "https://image.tmdb.org/t/p/w500/5qHoazZiaLe7oFBok7xHlgXX0QD.jpg",
+    "genero": ["Comedia Romántica"],
+    "duracion_min": 103,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2023-12-22",
+    "sinopsis": "Después de una primera cita mágica, Bea y Ben se encuentran en una boda en Australia fingiendo ser una pareja feliz.",
+    "cadenas_ids": ["cinepolis", "muvix"]
+  },
+  {
+    "id": "cabrini",
+    "titulo": "Cabrini",
+    "poster_url": "https://image.tmdb.org/t/p/w500/cJa1g3ePQxICXqhTVtKXmGO5g8F.jpg",
+    "genero": ["Drama", "Biográfico"],
+    "duracion_min": 143,
+    "clasificacion": "TE",
+    "fecha_estreno": "2024-03-22",
+    "sinopsis": "La historia de Francesca Cabrini, una monja italiana que llegó a Nueva York y se convirtió en la primera ciudadana americana en ser canonizada.",
+    "cadenas_ids": ["cinemark", "cinepolis"]
+  },
+  {
+    "id": "imaginary",
+    "titulo": "Imaginary",
+    "poster_url": "https://image.tmdb.org/t/p/w500/9FBX4Tpjq7Mv5gvS1SBFiSJB27j.jpg",
+    "genero": ["Terror", "Suspenso"],
+    "duracion_min": 104,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2024-03-08",
+    "sinopsis": "Una mujer regresa a su hogar de infancia para descubrir que el oso de peluche imaginario de su hijastra tiene intenciones oscuras.",
+    "cadenas_ids": ["cinemark", "cineplanet", "muvix"]
+  },
+  {
+    "id": "madame-web",
+    "titulo": "Madame Web",
+    "poster_url": "https://image.tmdb.org/t/p/w500/sjMN7DRi4sGiledsmllEw5HJjPy.jpg",
+    "genero": ["Acción", "Superhéroes"],
+    "duracion_min": 116,
+    "clasificacion": "TE+14",
+    "fecha_estreno": "2024-02-14",
+    "sinopsis": "Una paramédica de Nueva York que comienza a mostrar señales de clarividencia se ve envuelta en el peligroso mundo de los Spider-People.",
+    "cadenas_ids": ["cineplanet", "muvix"]
+  }
+]

@@ -1,0 +1,70 @@
+name: Scrape cinema data
+
+on:
+  schedule:
+    # 9:00 AM UTC = 6:00 AM CLT (Chile Standard Time, UTC-3)
+    - cron: "0 9 * * *"
+  workflow_dispatch: # Allow manual runs from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    permissions:
+      contents: write # needed to commit updated data files
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Run scrapers
+        run: npm run scrape
+        env:
+          NODE_ENV: production
+
+      - name: Check for data changes
+        id: changes
+        run: |
+          git diff --quiet data/ && echo "changed=false" >> $GITHUB_OUTPUT || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit updated data
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/peliculas.json data/funciones.json data/actualizaciones.json
+          git commit -m "chore: update cinema data $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push
+
+      - name: Upload debug artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-debug-${{ github.run_number }}
+          path: data/debug/
+          retention-days: 7
+
+      - name: Trigger Vercel deploy
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -n "$DEPLOY_HOOK_URL" ]; then
+            curl -X POST "$DEPLOY_HOOK_URL"
+            echo "Vercel deploy triggered"
+          else
+            echo "VERCEL_DEPLOY_HOOK_URL not set — skipping deploy trigger"
+          fi
