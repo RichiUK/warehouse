@@ -31,7 +31,9 @@ jobs:
         run: npx playwright install chromium --with-deps
 
       - name: Run scrapers
-        run: npm run scrape
+        run: |
+          mkdir -p data
+          npm run scrape 2>&1 | tee data/scraper.log; exit ${PIPESTATUS[0]}
         env:
           NODE_ENV: production
 
@@ -45,16 +47,16 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/peliculas.json data/funciones.json data/actualizaciones.json
+          git add data/peliculas.json data/funciones.json data/actualizaciones.json data/scraper.log
           git commit -m "chore: update cinema data $(date -u '+%Y-%m-%d %H:%M UTC')"
           git push
 
-      - name: Upload debug artifacts
+      - name: Upload scraper logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: scraper-debug-${{ github.run_number }}
-          path: data/debug/
+          name: scraper-logs-${{ github.run_number }}
+          path: data/scraper.log
           retention-days: 7
 
       - name: Trigger Vercel deploy

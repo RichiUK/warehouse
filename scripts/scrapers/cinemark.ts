@@ -118,12 +118,23 @@ export class CinemarkScraper {
 
     try {
       // Step 1: get all theatres
-      const theatresData = await fetchJSON<{ cinemas: Theatre[] }>(`${BASE}/theatres`);
-      if (!theatresData?.cinemas?.length) {
+      // API returns Array<{ city: string; cinemas: Theatre[] }> grouped by city
+      const theatresData = await fetchJSON<Array<{ city: string; cinemas: Theatre[] }> | { cinemas: Theatre[] }>(`${BASE}/theatres`);
+      if (!theatresData) {
         throw new Error("Could not fetch theatres list");
       }
 
-      const allCinemas = theatresData.cinemas;
+      // Handle both response shapes
+      let allCinemas: Theatre[];
+      if (Array.isArray(theatresData)) {
+        allCinemas = theatresData.flatMap((group) => group.cinemas ?? []);
+      } else {
+        allCinemas = (theatresData as { cinemas: Theatre[] }).cinemas ?? [];
+      }
+
+      if (!allCinemas.length) {
+        throw new Error("Theatres list is empty");
+      }
       console.log(`[cinemark] Found ${allCinemas.length} cinemas`);
 
       // Step 2: fetch billboard for every cinema (deduplicate movies by corporate_film_id)
