@@ -1,24 +1,8 @@
 [
   {
-    "id": "hoppers",
-    "titulo": "Hoppers",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108245/poster.jpg",
-    "genero": [
-      "Animación",
-      "Familiar"
-    ],
-    "duracion_min": 105,
-    "clasificacion": "TE",
-    "fecha_estreno": "2026-03-05",
-    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
-    "cadenas_ids": [
-      "cinemark"
-    ]
-  },
-  {
     "id": "proyecto-fin-del-mundo",
     "titulo": "Proyecto Fin Del Mundo",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108249/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014560?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Ciencia Ficción",
       "Aventuras"
@@ -34,8 +18,8 @@
   },
   {
     "id": "super-mario-galaxy",
-    "titulo": "Super Mario Galaxy",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108256/poster.jpg",
+    "titulo": "SUPER MARIO GALAXY: LA PELÍCULA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014521?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Animación",
       "Aventuras"
@@ -45,13 +29,14 @@
     "fecha_estreno": "2026-04-02",
     "sinopsis": "Super Mario Galaxy: La película es una película animada basada en el mundo de Super Mario Bros. y es una continuación de Super Mario Bros. ",
     "cadenas_ids": [
-      "cinemark"
+      "cinemark",
+      "cineplanet"
     ]
   },
   {
     "id": "la-misteriosa-mirada-del-flamenco",
     "titulo": "La Misteriosa Mirada Del Flamenco",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108822/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Drama"
     ],
@@ -65,9 +50,26 @@
     ]
   },
   {
+    "id": "hoppers",
+    "titulo": "HOPPERS: OPERACION CASTOR",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00013331?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Animación",
+      "Familiar"
+    ],
+    "duracion_min": 105,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-03-05",
+    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "bts-world-tour-arirang-in-goyang",
-    "titulo": "Bts World Tour Arirang In Goyang",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108971/poster.jpg",
+    "titulo": "BTS WORLD TOUR 'ARIRANG' IN GOYANG: LIVE VIEWING",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00010460?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Concierto",
       "Live Viewing"
@@ -77,13 +79,14 @@
     "fecha_estreno": "2026-04-11",
     "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
     "cadenas_ids": [
-      "cinemark"
+      "cinemark",
+      "cineplanet"
     ]
   },
   {
     "id": "bts-world-tour-arirang-in-japan",
-    "titulo": "Bts World Tour Arirang In Japan",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108972/poster.jpg",
+    "titulo": "BTS WORLD TOUR 'ARIRANG' IN JAPAN: LIVE VIEWING",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014517?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Concierto",
       "Live Viewing"
@@ -93,13 +96,14 @@
     "fecha_estreno": "2026-04-18",
     "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
     "cadenas_ids": [
-      "cinemark"
+      "cinemark",
+      "cineplanet"
     ]
   },
   {
     "id": "power-to-the-people-john-y-yoko",
     "titulo": "Power To The People: John Y Yoko",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/109630/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014652?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Concierto"
     ],
@@ -115,7 +119,7 @@
   {
     "id": "iron-maiden-burning-ambition",
     "titulo": "Iron Maiden: Burning Ambition",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/109492/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014656?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Documental"
     ],
@@ -131,7 +135,7 @@
   {
     "id": "scream-7",
     "titulo": "Scream 7",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/107367/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014397?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Terror",
       "Horror"
@@ -148,7 +152,7 @@
   {
     "id": "cumbres-borrascosas",
     "titulo": "Cumbres Borrascosas",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108116/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014329?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Romance",
       "Drama"
@@ -165,7 +169,7 @@
   {
     "id": "jugada-maestra",
     "titulo": "Jugada Maestra",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108828/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00010421?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Comedia",
       "Acción"
@@ -182,7 +186,7 @@
   {
     "id": "te-van-a-matar",
     "titulo": "Te Van A Matar",
-    "poster_url": "https://www.cinemark.cl/media/images/movies/108253/poster.jpg",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014658?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Horror",
       "Acción"
@@ -193,6 +197,21 @@
     "sinopsis": "La película desata una mezcla de horror, acción y comedia extrema y bañada en sangre, en la que una joven debe sobrevivir la noche en el Virgil, la retorcida y misteriosa guarida-trampa de muerte de un culto demoníaco, antes de convertirse en su próxima ofrenda en una épica batalla cinematográfica llena de muertes impactantes y un humor oscuro y perverso. TE VAN A MATAR está protagonizada por Zazie Beetz, Myha’La, Paterson Joseph, Tom Felton, Heather Graham y Patricia Arquette.",
     "cadenas_ids": [
       "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001787",
+    "titulo": "BLUEY EN CINES: MOMENTOS DE DIVERSION CON AMIGOS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001787?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Bluey en Cines: Momentos de Diversión con Amigos es una hora de diversión que incluye ocho episodios de las tres temporadas de la serie, ¡todos celebrando momentos de juego con amigos y familiares! La compilación muestra algunos de los juegos favoritos de Bluey y resalta momentos especiales de amistad, todos repletos de alegría y risas.",
+    "cadenas_ids": [
       "cineplanet"
     ]
   },
@@ -212,36 +231,6 @@
     ]
   },
   {
-    "id": "ho00001744",
-    "titulo": "BTS WORLD TOUR 'ARIRANG' IN GOYANG: LIVE VIEWING",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001744?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CONCIERTO"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001745",
-    "titulo": "BTS WORLD TOUR 'ARIRANG' IN JAPAN: LIVE VIEWING",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001745?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CONCIERTO"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001740",
     "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001740?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -252,6 +241,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001785",
+    "titulo": "DAVID",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001785?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Más allá de la sombra del gigante, el pastorcillo emprende un viaje para demostrar a su pueblo que el verdadero poder no reside en la realeza, sino en la fe y la libertad.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -302,6 +306,21 @@
     ]
   },
   {
+    "id": "ho00001789",
+    "titulo": "EL DIABLO VISTE A LA MODA 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001789?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Sigue la lucha de Miranda Priestly contra Emily Charlton, su ex asistente convertida en ejecutiva rival, mientras compiten por los ingresos por publicidad en medio de la decadencia de los medios impresos y Miranda se acerca a la jubilación.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
     "id": "ho00001761",
     "titulo": "EXIT 8",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001761?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -317,16 +336,31 @@
     ]
   },
   {
-    "id": "ho00001748",
-    "titulo": "HOPPERS: OPERACION CASTOR",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001748?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "ho00001784",
+    "titulo": "INSTINTO IMPLACABLE",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001784?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "ANIMACION"
+      "ACCION"
     ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
-    "sinopsis": "La historia sigue a una joven, Mabel, que puede transferir su mente a un castor robot con el objetivo de infiltrarse en el reino animal. Acaba haciéndose amiga de un castor regio, el Rey Jorge, y uniendo a los animales para luchar contra los planes de un promotor inmobiliario.",
+    "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001790",
+    "titulo": "LA CATADORAS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001790?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Otoño de 1943. Rosa huye del Berlín bombardeado, llega a un pequeño pueblo aislado cerca de la frontera oriental. Allí viven sus suegros y donde su marido, que lucha en el frente, le dijo que se refugiara mientras esperaba el fin de la guerra y su regreso a casa. Rosa pronto descubrirá que dentro del bosque que limita el pueblo se esconde un secreto: el cuartel general de Hitler, la Guarida del Lobo. El Führer ve enemigos por todas partes, ser envenenado es su obsesión. Una mañana, al amanecer, Rose es recogida junto a otras jóvenes del pueblo para probar la comida que le han preparado. Divididas entre el miedo a morir y el hambre que las devora, las “catadoras” formarán alianzas, amistades y acuerdos secretos. Rosa lucha por ser aceptada, pero cuando finalmente supera la desconfianza de las “catadoras”, un acontecimiento la hará sentir traidora: la llegada de un oficial de las SS, que, contra toda razón, despierta en ella el sentimiento de amor. O simplemente la necesidad de sentirse viva, a pesar de todo lo que la rodea..",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -341,6 +375,7 @@
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "El hogar de Echa y Ariel era inicialmente armonioso. Sin embargo, su vida cambió y se volvió aterradora después de que Echa fuera perturbada por un genio llamado Jin Dasim, quien se enamoró de ella.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -371,6 +406,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Ricardo es un punk que pasa sus días tomando y yendo a tocatas con sus dos mejores amigos. A pesar de su apariencia ruda, tiene un lado tierno: cuida a su abuela. Tras probar un extraño copete llamado Matapanki, adquiere superpoderes que se activan cada vez que bebe alcohol. Decidido a cambiar la sociedad, se lanza a la acción, pero todo se descontrola cuando, tras un error brutal, desata un conflicto mundial en su contra.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001788",
+    "titulo": "MICHAEL",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001788?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Michael es la representación cinematográfica de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido jamás. La película narra la vida de Michael Jackson más allá de la música, recorriendo su trayectoria desde el descubrimiento de su extraordinario talento como líder de los Jackson Five hasta convertirse en un artista visionario cuya ambición creativa le impulsó a convertirse en el artista más grande del mundo. Destacando tanto su vida fuera del escenario como algunas de las actuaciones más emblemáticas de sus inicios en solitario, la película ofrece al público un asiento en primera fila para ver a Michael Jackson como nunca antes. Aquí es donde comienza su historia.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -421,16 +471,16 @@
     ]
   },
   {
-    "id": "ho00001772",
-    "titulo": "SUPER MARIO GALAXY: LA PELÍCULA",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001772?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "ho00001786",
+    "titulo": "THAT TIME I GOT REINCARNATED AS A SLIM LA PELICULA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001786?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "ANIMACION"
     ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
-    "sinopsis": "Super Mario Galaxy: La película es una película animada basada en el mundo de Super Mario Bros. y es una continuación de Super Mario Bros. La película, que estrenó en 2023, recaudó más de 1,3 mil millones de dólares a nivel mundial. Ambas películas son producidas por Chris Meledandri de Illumination y Shigeru Miyamoto de Nintendo.\r\n\r\nLa película será cofinanciada por Universal Pictures y Nintendo y será estrenada a nivel mundial por Universal Pictures.\r\n\r\nSuper Mario Galaxy: La película es dirigida una vez más por los realizadores Aaron Horvath y Michael Jelenic, con un guión nuevamente a cargo de Matthew Fogel, y con el regreso de Brian Tyler para componer la banda Sonora.",
+    "sinopsis": "Tras concluir la ceremonia de apertura de la Tempestad de la Federación del Reino Demonio, Rimuru y sus compañeros son invitados por la Emperadora Celestial Hermesia, de la gran nación élfica —la Dinastía Magi Salion—, a visitar su isla turística privada. Mientras el grupo disfruta de sus breves vacaciones, aparece una misteriosa mujer llamada Yura. Un nuevo incidente se desarrolla con el infinito mar azul como telón de fondo.",
     "cadenas_ids": [
       "cineplanet"
     ]
