@@ -1,9 +1,206 @@
 [
   {
-    "id": "cp-alameda",
-    "titulo": "CP Alameda",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/a8cb9bda-3e6a-485a-b68e-887ef0f5793c",
-    "genero": [],
+    "id": "ho00001771",
+    "titulo": "BODA SANGRIENTA 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001771?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La novia regresa para participar en un macabro juego de escondite con su nueva familia política. La tradición demoníaca continúa en esta sangrienta secuela.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001744",
+    "titulo": "BTS WORLD TOUR 'ARIRANG' IN GOYANG: LIVE VIEWING",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001744?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CONCIERTO"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001745",
+    "titulo": "BTS WORLD TOUR 'ARIRANG' IN JAPAN: LIVE VIEWING",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001745?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CONCIERTO"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001740",
+    "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001740?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CIENCIA FICCION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001710",
+    "titulo": "CUMBRES BORRASCOSAS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001710?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Adaptación del clásico de Emily Brontë \"Cumbres borrascosas\".",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001779",
+    "titulo": "DRAMA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001779?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Profundamente enamorados y en plena cuenta regresiva para el día de su boda, la pareja ve su \r\nfelicidad puesta a prueba cuando salen a la luz secretos que jamás habrían imaginado.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001753",
+    "titulo": "EL BUFON 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001753?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "En la noche de Halloween, una joven ilusionista se enfrenta a su prueba más letal cuando cruza su camino con El Bufón, una entidad asesina que convierte trucos y juegos en trampas mortales. Cada ilusión es un engaño, cada escape una mentira. Para sobrevivir, deberá usar su ingenio y habilidades antes de que el espectáculo termine… y el telón caiga para siempre.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001741",
+    "titulo": "EL CASTILLO AMBULANTE (2004)",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001741?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIME"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Una joven llamada Sophie es transformada en una anciana por una maldición y encuentra refugio en el mágico castillo ambulante del misterioso mago Howl.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001761",
+    "titulo": "EXIT 8",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001761?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Un hombre (interpretado por Kazunari Ninomiya) queda atrapado en un pasillo subterráneo de metro que se repite infinitamente, con la misión de encontrar la “Salida 8”. Las reglas son claras: cada vez que detecte algo extraño (una anomalía), debe regresar al inicio; si no lo hace, se permite avanzar. Pero basta un solo error para comenzar otra vez. El suspenso crece con cada loop: ¿logrará alguna vez escapar de este corredor infinito y perturbador?",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001748",
+    "titulo": "HOPPERS: OPERACION CASTOR",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001748?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La historia sigue a una joven, Mabel, que puede transferir su mente a un castor robot con el objetivo de infiltrarse en el reino animal. Acaba haciéndose amiga de un castor regio, el Rey Jorge, y uniendo a los animales para luchar contra los planes de un promotor inmobiliario.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001781",
+    "titulo": "IRON MAIDEN: BURNING AMBITION",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001781?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DOCUMENTAL"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La historia de 50 años de Iron Maiden mediante entrevistas al grupo, última charla de Di'Anno, testimonios de famosos, metraje inédito y animaciones de Eddie. Con Bardem, Ulrich y Simmons.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001751",
+    "titulo": "JUGADA MAESTRA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001751?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "COMEDIA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Protagonizada por Glen Powell y Margaret Qualley, esta es la historia de Becket Redfellow, expulsado de su escandalosamente rica familia y dispuesto a todo para recuperar su herencia, incluso eliminar a quienes se interpongan en su camino.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001754",
+    "titulo": "LA MISTERIOSA MIRADA DEL FLAMENCO",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001754?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001715",
+    "titulo": "LA NOVIA DEL DIABLO",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001715?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
@@ -12,122 +209,151 @@
     ]
   },
   {
-    "id": "cp-concepcion",
-    "titulo": "CP Concepción",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/af051ae7-c281-4e59-944c-5d618cfad02a",
-    "genero": [],
+    "id": "ho00001777",
+    "titulo": "LA POSESION DE LA MOMIA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001777?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "Tras la resurrección récord de EVIL DEAD: EL DESPERTAR, el guionista y director Lee Cronin vuelve a una de las historias de terror más icónicas de todos los tiempos con una reinterpretación audaz y retorcida: LA POSESIÓN DE LA MOMIA. La joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años después, la familia devastada queda en shock cuando la niña regresa, y lo que debería ser un reencuentro feliz se convierte en una pesadilla viviente. La película está protagonizada por Jack Reynor, Laia Costa, May Calamawy y Natalie Grace, con Veronica Falcón. Escrita y dirigida por Lee Cronin, y producida por James Wan, Jason Blum y John Keville. Los productores ejecutivos son Michael Clear, Judson Scott, Macdara Kelleher y Lee Cronin.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-copiapo",
-    "titulo": "CP Copiapó",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/97350107-4b89-4b49-ab0c-8947afa3a0a7",
-    "genero": [],
+    "id": "ho00001783",
+    "titulo": "MATAPANKI",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001783?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "COMEDIA"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "Ricardo es un punk que pasa sus días tomando y yendo a tocatas con sus dos mejores amigos. A pesar de su apariencia ruda, tiene un lado tierno: cuida a su abuela. Tras probar un extraño copete llamado Matapanki, adquiere superpoderes que se activan cada vez que bebe alcohol. Decidido a cambiar la sociedad, se lanza a la acción, pero todo se descontrola cuando, tras un error brutal, desata un conflicto mundial en su contra.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-costanera",
-    "titulo": "CP Costanera",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/b5006d9b-2349-4b43-a1dc-73cbb79377a8",
-    "genero": [],
+    "id": "ho00001778",
+    "titulo": "MORTAL KOMBAT 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001778?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ACCION"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "De la mano de New Line Cinema llega la más reciente y explosiva entrega de la exitosa franquicia de videojuegos, en todo su brutal esplendor: Mortal Kombat II. Esta vez, los campeones favoritos de los fans —ahora acompañados por el mismísimo Johnny Cage— se enfrentan entre sí en la batalla definitiva, sangrienta y sin reglas, para derrotar el oscuro dominio de Shao Kahn, que amenaza con destruir el Reino de la Tierra y a sus defensores.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-curico",
-    "titulo": "CP Curicó",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/85a5698e-723e-4705-91c3-05075a75e079",
-    "genero": [],
+    "id": "ho00001760",
+    "titulo": "PONYO Y EL SECRETO DE LA SIRENITA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001760?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIME"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "En lo alto de un acantilado frente al mar, Sosuke, un niño de cinco años, rescata a una pequeña criatura marina atrapada en un frasco. Lo que no imagina es que esa criatura es Ponyo, una niña-pez hija de un hechicero submarino y una diosa del océano. Fascinada por el mundo humano, Ponyo decide convertirse en niña y vivir junto a Sosuke, desatando una ola de magia, amistad y caos en su camino. Una aventura mágica del legendario Studio Ghibli, dirigida por Hayao Miyazaki.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-florida",
-    "titulo": "CP Florida",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/5250b29a-556b-421f-b1aa-aba9d30c8ed2",
-    "genero": [],
+    "id": "ho00001780",
+    "titulo": "POWER TO THE PEOPLE: JOHN Y YOKO",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001780?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CONCIERTO"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "Power To The People: John & Yoko Live in NYC es la película-concierto multipantalla de 2026 de dos grandes conciertos en directo de John Lennon y Yoko Ono en Madison Square Garden, Nueva York el 30 de agosto de 1972, restaurado, reeditado y remasterizado recientemente por el equipo de los Lennon, ganador de siete premios GRAMMY®. John & Yoko/Plastic Ono Band junto con Elephant's Memory e invitados especiales se presentaron en estos conciertos One To One, ahora legendarios y con entradas agotadas, ante un público total de 40,000 personas, recaudando más de 1.5 millones de dólares (equivalentes a 11.5 millones de dólares en 2026) para niños con discapacidades intelectuales y del desarrollo. Fueron los únicos conciertos completos que John Lennon (junto a Yoko Ono) dió tras dejar a los Beatles. Filmada originalmente en 1972 por el director multicámara, Steve Gebhardt, esta versión del 2026 de la película-concierto está dirigida por Simon Hilton, editada por Ben Wainwright-Pearce y producida por Peter Worsley y Sean Ono Lennon. La producción musical es de Sean Ono Lennon; mezcla y ingeniería de Paul Hicks y Sam Gannon. Entre los éxitos interpretados se incluyen «New York City», «Instant Karma!», «Imagine» y «Mother» de John, además de «Don't Worry Kyoko» y «Open Your Box» de Yoko, así como emocionantes versiones de «Come Together» y «Hound Dog» y, como bis, «Give Peace a Chance» con invitados especiales como Stevie Wonder, Melanie y muchos otros.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-independencia",
-    "titulo": "CP Independencia",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/f6d66fa0-9ff2-4a4a-815a-a972ac9385a4",
-    "genero": [],
+    "id": "ho00001770",
+    "titulo": "PROYECTO FIN DEL MUNDO",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001770?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CIENCIA FICCION"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "Un astronauta intenta salvar la Tierra estando solo en el espacio exterior.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-quilin",
-    "titulo": "CP Quilin",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/ea222717-7ab6-4783-b32c-8d61c8a518be",
-    "genero": [],
+    "id": "ho00001738",
+    "titulo": "SCREAM 7",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001738?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "Cuando un nuevo asesino Ghostface emerge en el tranquilo pueblo donde Sidney Prescott (Neve Campbell) ha construido una nueva vida, sus peores temores se hacen realidad cuando su hija (Isabel May) se convierte en el siguiente objetivo. Decidida a proteger a su familia, Sidney deberá enfrentar los horrores de su pasado para poner fin al derramamiento de sangre de una vez por todas.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-temuco",
-    "titulo": "CP Temuco",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/716f471c-cc3e-4059-98f0-0c081f116e5d",
-    "genero": [],
+    "id": "ho00001774",
+    "titulo": "SI VAS PARA CHILE",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001774?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "En el año 2021, el norte de Chile marcó un hito con la violenta marcha anti-inmigrantes, quema de carpas y pertenencias de familias en Iquique. Este relato coral es el testimonio vivo de quienes siguen ingresando a pesar de las adversidades, y habitantes del territorio que viven en medio de un creciente conflicto social, la crudeza del desierto de Atacama y del Altiplano andino.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-valdivia",
-    "titulo": "CP Valdivia",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/ff3354e1-9d97-4406-a2c4-7c8b16bccfca",
-    "genero": [],
+    "id": "ho00001772",
+    "titulo": "SUPER MARIO GALAXY: LA PELÍCULA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001772?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
-    "sinopsis": "Sala tipo estadio\r\nSonido digital\r\nButacas ergonométricas\r\nDulcería y cafetería\r\nPrioridad atención\r\nAscensor",
+    "sinopsis": "Super Mario Galaxy: La película es una película animada basada en el mundo de Super Mario Bros. y es una continuación de Super Mario Bros. La película, que estrenó en 2023, recaudó más de 1,3 mil millones de dólares a nivel mundial. Ambas películas son producidas por Chris Meledandri de Illumination y Shigeru Miyamoto de Nintendo.\r\n\r\nLa película será cofinanciada por Universal Pictures y Nintendo y será estrenada a nivel mundial por Universal Pictures.\r\n\r\nSuper Mario Galaxy: La película es dirigida una vez más por los realizadores Aaron Horvath y Michael Jelenic, con un guión nuevamente a cargo de Matthew Fogel, y con el regreso de Brian Tyler para componer la banda Sonora.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "cp-valparaiso",
-    "titulo": "CP Valparaiso",
-    "poster_url": "https://cdnch.cineplanet.cl/assets/08569197-73a6-416b-8acc-f837aed9142b",
-    "genero": [],
+    "id": "ho00001776",
+    "titulo": "TE VAN A MATAR",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001776?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
+    "sinopsis": "La película desata una mezcla de horror, acción y comedia extrema y bañada en sangre, en la que una joven debe sobrevivir la noche en el Virgil, la retorcida y misteriosa guarida-trampa de muerte de un culto demoníaco, antes de convertirse en su próxima ofrenda en una épica batalla cinematográfica llena de muertes impactantes y un humor oscuro y perverso. TE VAN A MATAR está protagonizada por Zazie Beetz, Myha’La, Paterson Joseph, Tom Felton, Heather Graham y Patricia Arquette",
     "cadenas_ids": [
       "cineplanet"
     ]
