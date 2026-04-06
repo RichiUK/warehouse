@@ -24,7 +24,7 @@ async function main() {
   console.log("=== CineCompara Scraper ===");
   console.log(`Started at: ${new Date().toISOString()}\n`);
 
-  const scrapers = [
+  const scrapers: Array<{ displayName: string; scrape: () => Promise<ScrapeResult> }> = [
     new CinemarkScraper(),
     new CinepolisScraper(),
     new CineplanetScraper(),
