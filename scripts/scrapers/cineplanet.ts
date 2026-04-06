@@ -94,7 +94,7 @@ export class CineplanetScraper {
 
       console.log(`[cineplanet] ${moviesArr.length} movies in moviescache`);
 
-      const movies: ScrapedMovie[] = moviesArr
+      const movies: ScrapedMovie[] = (moviesArr
         .map((raw) => {
           const m = raw as Record<string, unknown>;
           const titulo =
@@ -129,7 +129,7 @@ export class CineplanetScraper {
             cadenas_ids: ["cineplanet"],
           };
         })
-        .filter((m): m is ScrapedMovie => m !== null);
+        .filter((m): m is NonNullable<typeof m> => m !== null)) as ScrapedMovie[];
 
       // Parse sessions
       const sessionsArr = extractArray(sessionsRaw) ?? [];
