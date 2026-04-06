@@ -29,6 +29,8 @@ interface Session {
 interface MovieVersion {
   title: string;
   id: string;
+  film_HOPK?: string;
+  film_HO_code?: string;
   sessions: Session[];
 }
 
@@ -165,9 +167,13 @@ export class CinemarkScraper {
       // Step 3: build ScrapedMovie list
       const movies: ScrapedMovie[] = Array.from(movieMap.values()).map((m) => {
         const generos = [m.genre, m.genre2, m.genre3].filter(Boolean) as string[];
-        // Try Cinemark's CDN pattern for posters
+        // Both Cinemark and Cineplanet use the Vista/Hoyts ticketing system with shared HO codes.
+        // film_HOPK (e.g. "HO00014454") is in movie_versions[0] and works with the Cineplanet CDN.
+        const filmHopk = m.movie_versions?.[0]?.film_HOPK;
         const poster_url = m.graphic_url ||
-          `https://www.cinemark.cl/media/images/movies/${m.corporate_film_id}/poster.jpg`;
+          (filmHopk
+            ? `https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/${filmHopk}?referenceScheme=HeadOffice&allowPlaceHolder=true`
+            : "");
 
         return {
           id: slugify(m.title),

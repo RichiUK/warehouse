@@ -45,25 +45,44 @@ async function main() {
   }
 
   // ─── Merge movies across chains ─────────────────────────────────────────────
-  // Movies with the same title get merged into a single entry with all cadenas_ids
-  const movieMap = new Map<string, ScrapedMovie>();
+  // Movies with the same title get merged into a single entry with all cadenas_ids.
+  // Chains sometimes use different title lengths for the same film (e.g. Cinemark:
+  // "Hoppers" vs Cineplanet: "Hoppers: Operacion Castor"). We handle this with a
+  // two-pass merge: first by exact normalized key, then by prefix matching.
+  const movieMap = new Map<string, ScrapedMovie>(); // key → movie
+
+  function mergeInto(existing: ScrapedMovie, incoming: ScrapedMovie, cadenaId: string) {
+    if (!existing.cadenas_ids.includes(cadenaId)) existing.cadenas_ids.push(cadenaId);
+    if (!existing.poster_url && incoming.poster_url) existing.poster_url = incoming.poster_url;
+    if (!existing.sinopsis && incoming.sinopsis) existing.sinopsis = incoming.sinopsis;
+    if (!existing.duracion_min && incoming.duracion_min) existing.duracion_min = incoming.duracion_min;
+    if (!existing.genero.length && incoming.genero.length) existing.genero = incoming.genero;
+    // Prefer the longer (more complete) title
+    if (incoming.titulo.length > existing.titulo.length) existing.titulo = incoming.titulo;
+  }
 
   for (const result of results) {
     for (const movie of result.movies) {
       const key = normalizeTitle(movie.titulo);
       if (movieMap.has(key)) {
-        const existing = movieMap.get(key)!;
-        // Add this chain to the existing movie entry
-        if (!existing.cadenas_ids.includes(result.cadena_id)) {
-          existing.cadenas_ids.push(result.cadena_id);
-        }
-        // Fill in missing fields
-        if (!existing.poster_url && movie.poster_url) existing.poster_url = movie.poster_url;
-        if (!existing.sinopsis && movie.sinopsis) existing.sinopsis = movie.sinopsis;
-        if (!existing.duracion_min && movie.duracion_min) existing.duracion_min = movie.duracion_min;
-        if (!existing.genero.length && movie.genero.length) existing.genero = movie.genero;
+        mergeInto(movieMap.get(key)!, movie, result.cadena_id);
       } else {
-        movieMap.set(key, { ...movie });
+        // Prefix match: e.g. "hoppers" is a prefix of "hoppersoperacioncastor".
+        // Require the shorter key to be ≥ 6 chars to avoid false merges.
+        let prefixMatch: ScrapedMovie | undefined;
+        for (const [existingKey, existingMovie] of movieMap.entries()) {
+          const shorter = key.length < existingKey.length ? key : existingKey;
+          const longer  = key.length < existingKey.length ? existingKey : key;
+          if (shorter.length >= 6 && longer.startsWith(shorter)) {
+            prefixMatch = existingMovie;
+            break;
+          }
+        }
+        if (prefixMatch) {
+          mergeInto(prefixMatch, movie, result.cadena_id);
+        } else {
+          movieMap.set(key, { ...movie });
+        }
       }
     }
   }
