@@ -1,0 +1,55 @@
+
+> dazzling-kapitsa@0.1.0 scrape
+> tsx scripts/scrape-all.ts
+
+=== CineCompara Scraper ===
+Started at: 2026-04-06T15:04:40.413Z
+
+
+--- Cinemark Chile ---
+[cinemark] Starting (direct API, no browser)
+[cinemark] Found 21 cinemas
+[cinemark] 12 unique movies, 1782 sessions
+  ✓ 12 movies, 1782 showtimes
+
+--- Cinépolis Chile ---
+[cinepolis] Starting (Playwright)
+[cinepolis] ERROR: No movie data intercepted. Check network calls manually.
+  ⚠ Error: No movie data intercepted. Check network calls manually.
+
+--- Cineplanet Chile ---
+[cineplanet] Starting (Playwright + network interception)
+[cineplanet] ✓ moviescache intercepted
+[cineplanet] ✓ sessioncache intercepted
+[cineplanet] 24 movies in moviescache
+[cineplanet] 989 sessions in sessioncache
+  ✓ 24 movies, 0 showtimes
+
+--- Muvix Chile ---
+[muvix] Starting (Playwright, ignoreHTTPSErrors)
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/Cinemas
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/GetComingSoonScheduledFilms(includeSessions)
+[muvix] captured: https://muvix.cl/IT-CDN/ImageAPI/Advertisement
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/SiteGroups
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/SiteGroupCinemaLinks
+[muvix] captured: https://muvix.cl/Browsing/Home/NowShowing
+[muvix] captured: https://muvix.cl/Browsing/Home/ComingSoon
+[muvix] captured: https://syndication.twitter.com/settings
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/SiteGroups
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/Cinemas
+[muvix] captured: https://muvix.cl/WSVistaWebClient/OData.svc/Cinemas
+[muvix] 0 movies
+  ✓ 0 movies, 0 showtimes
+
+Wrote /home/runner/work/muvi/muvi/data/peliculas.json
+
+Wrote /home/runner/work/muvi/muvi/data/funciones.json
+
+Wrote /home/runner/work/muvi/muvi/data/actualizaciones.json
+
+=== Done ===
+Movies: 28
+Showtimes: 1782
+Errors: cinepolis
+
+Check data/debug/*.json to see all intercepted API calls for parser refinement.

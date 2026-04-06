@@ -1,5 +1,202 @@
 [
   {
+    "id": "hoppers",
+    "titulo": "Hoppers",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108245/poster.jpg",
+    "genero": [
+      "Animación",
+      "Familiar"
+    ],
+    "duracion_min": 105,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-03-05",
+    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
+    "id": "proyecto-fin-del-mundo",
+    "titulo": "Proyecto Fin Del Mundo",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108249/poster.jpg",
+    "genero": [
+      "Ciencia Ficción",
+      "Aventuras"
+    ],
+    "duracion_min": 156,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-03-19",
+    "sinopsis": "Un astronauta intenta salvar la Tierra estando solo en el espacio exterior.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "super-mario-galaxy",
+    "titulo": "Super Mario Galaxy",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108256/poster.jpg",
+    "genero": [
+      "Animación",
+      "Aventuras"
+    ],
+    "duracion_min": 98,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-04-02",
+    "sinopsis": "Super Mario Galaxy: La película es una película animada basada en el mundo de Super Mario Bros. y es una continuación de Super Mario Bros. ",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
+    "id": "la-misteriosa-mirada-del-flamenco",
+    "titulo": "La Misteriosa Mirada Del Flamenco",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108822/poster.jpg",
+    "genero": [
+      "Drama"
+    ],
+    "duracion_min": 109,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-03-12",
+    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "bts-world-tour-arirang-in-goyang",
+    "titulo": "Bts World Tour Arirang In Goyang",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108971/poster.jpg",
+    "genero": [
+      "Concierto",
+      "Live Viewing"
+    ],
+    "duracion_min": 180,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-11",
+    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
+    "id": "bts-world-tour-arirang-in-japan",
+    "titulo": "Bts World Tour Arirang In Japan",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108972/poster.jpg",
+    "genero": [
+      "Concierto",
+      "Live Viewing"
+    ],
+    "duracion_min": 180,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-18",
+    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
+    "id": "power-to-the-people-john-y-yoko",
+    "titulo": "Power To The People: John Y Yoko",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/109630/poster.jpg",
+    "genero": [
+      "Concierto"
+    ],
+    "duracion_min": 81,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-04-29",
+    "sinopsis": "Power To The People: John & Yoko Live in NYC es la película-concierto multipantalla de 2026 de dos grandes conciertos en directo de John Lennon y Yoko Ono en Madison Square Garden, Nueva York el 30 de agosto de 1972, restaurado, reeditado y remasterizado recientemente por el equipo de los Lennon, ganador de siete premios GRAMMY®.\r\nJohn & Yoko/Plastic Ono Band junto con Elephant's Memory e invitados especiales se presentaron en estos conciertos One To One, ahora legendarios y con entradas agotadas, ante un público total de 40,000 personas, recaudando más de 1.5 millones de dólares (equivalentes a 11.5 millones de dólares en 2026) para niños con discapacidades intelectuales y del desarrollo. Fueron los únicos conciertos completos que John Lennon (junto a Yoko Ono) dió tras dejar a los Beatles.\r\nFilmada originalmente en 1972 por el director multicámara, Steve Gebhardt, esta versión del 2026 de la película-concierto está dirigida por Simon Hilton, editada por Ben Wainwright-Pearce y producida por Peter Worsley y Sean Ono Lennon. La producción musical es de Sean Ono Lennon; mezcla y ingeniería de Paul Hicks y Sam Gannon. \r\nEntre los éxitos interpretados se incluyen «New York City», «Instant Karma!», «Imagine» y «Mother» de John, además de «Don't Worry Kyoko» y «Open Your Box» de Yoko, así como emocionantes versiones de «Come Together» y «Hound Dog» y, como bis, «Give Peace a Chance» con invitados especiales como Stevie Wonder, Melanie y muchos otros.\r\n",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "iron-maiden-burning-ambition",
+    "titulo": "Iron Maiden: Burning Ambition",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/109492/poster.jpg",
+    "genero": [
+      "Documental"
+    ],
+    "duracion_min": 102,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-05-07",
+    "sinopsis": "La historia de 50 años de Iron Maiden mediante entrevistas al grupo, última charla de Di'Anno, testimonios de famosos, metraje inédito y animaciones de Eddie. Con Bardem, Ulrich y Simmons.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "scream-7",
+    "titulo": "Scream 7",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/107367/poster.jpg",
+    "genero": [
+      "Terror",
+      "Horror"
+    ],
+    "duracion_min": 114,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-02-26",
+    "sinopsis": "Cuando un nuevo asesino Ghostface emerge en el tranquilo pueblo donde Sidney Prescott (Neve Campbell) ha construido una nueva vida, sus peores temores se hacen realidad cuando su hija (Isabel May) se convierte en el siguiente objetivo. Decidida a proteger a su familia, Sidney deberá enfrentar los horrores de su pasado para poner fin al derramamiento de sangre de una vez por todas.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "cumbres-borrascosas",
+    "titulo": "Cumbres Borrascosas",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108116/poster.jpg",
+    "genero": [
+      "Romance",
+      "Drama"
+    ],
+    "duracion_min": 136,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-02-12",
+    "sinopsis": "Una imaginación audaz y original de una de las historias de amor más grandes de todos los tiempos, “Cumbres Borrascosas” de Emerald Fennell está protagonizada por Margot Robbie como Cathy y Jacob Elordi como Heathcliff, cuya pasión prohibida se transforma de romántica a intoxicante en un épico relato de deseo, amor y locura.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "jugada-maestra",
+    "titulo": "Jugada Maestra",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108828/poster.jpg",
+    "genero": [
+      "Comedia",
+      "Acción"
+    ],
+    "duracion_min": 105,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-03-26",
+    "sinopsis": "Protagonizada por Glen Powell y Margaret Qualley, esta es la historia de Becket Redfellow, expulsado de su escandalosamente rica familia y dispuesto a todo para recuperar su herencia, incluso eliminar a quienes se interpongan en su camino. ",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "te-van-a-matar",
+    "titulo": "Te Van A Matar",
+    "poster_url": "https://www.cinemark.cl/media/images/movies/108253/poster.jpg",
+    "genero": [
+      "Horror",
+      "Acción"
+    ],
+    "duracion_min": 94,
+    "clasificacion": "MA+18",
+    "fecha_estreno": "2026-03-26",
+    "sinopsis": "La película desata una mezcla de horror, acción y comedia extrema y bañada en sangre, en la que una joven debe sobrevivir la noche en el Virgil, la retorcida y misteriosa guarida-trampa de muerte de un culto demoníaco, antes de convertirse en su próxima ofrenda en una épica batalla cinematográfica llena de muertes impactantes y un humor oscuro y perverso. TE VAN A MATAR está protagonizada por Zazie Beetz, Myha’La, Paterson Joseph, Tom Felton, Heather Graham y Patricia Arquette.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "ho00001771",
     "titulo": "BODA SANGRIENTA 2",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001771?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -55,21 +252,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001710",
-    "titulo": "CUMBRES BORRASCOSAS",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001710?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Adaptación del clásico de Emily Brontë \"Cumbres borrascosas\".",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -150,51 +332,6 @@
     ]
   },
   {
-    "id": "ho00001781",
-    "titulo": "IRON MAIDEN: BURNING AMBITION",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001781?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DOCUMENTAL"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La historia de 50 años de Iron Maiden mediante entrevistas al grupo, última charla de Di'Anno, testimonios de famosos, metraje inédito y animaciones de Eddie. Con Bardem, Ulrich y Simmons.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001751",
-    "titulo": "JUGADA MAESTRA",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001751?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "COMEDIA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Protagonizada por Glen Powell y Margaret Qualley, esta es la historia de Becket Redfellow, expulsado de su escandalosamente rica familia y dispuesto a todo para recuperar su herencia, incluso eliminar a quienes se interpongan en su camino.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001754",
-    "titulo": "LA MISTERIOSA MIRADA DEL FLAMENCO",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001754?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001715",
     "titulo": "LA NOVIA DEL DIABLO",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001715?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -269,51 +406,6 @@
     ]
   },
   {
-    "id": "ho00001780",
-    "titulo": "POWER TO THE PEOPLE: JOHN Y YOKO",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001780?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CONCIERTO"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Power To The People: John & Yoko Live in NYC es la película-concierto multipantalla de 2026 de dos grandes conciertos en directo de John Lennon y Yoko Ono en Madison Square Garden, Nueva York el 30 de agosto de 1972, restaurado, reeditado y remasterizado recientemente por el equipo de los Lennon, ganador de siete premios GRAMMY®. John & Yoko/Plastic Ono Band junto con Elephant's Memory e invitados especiales se presentaron en estos conciertos One To One, ahora legendarios y con entradas agotadas, ante un público total de 40,000 personas, recaudando más de 1.5 millones de dólares (equivalentes a 11.5 millones de dólares en 2026) para niños con discapacidades intelectuales y del desarrollo. Fueron los únicos conciertos completos que John Lennon (junto a Yoko Ono) dió tras dejar a los Beatles. Filmada originalmente en 1972 por el director multicámara, Steve Gebhardt, esta versión del 2026 de la película-concierto está dirigida por Simon Hilton, editada por Ben Wainwright-Pearce y producida por Peter Worsley y Sean Ono Lennon. La producción musical es de Sean Ono Lennon; mezcla y ingeniería de Paul Hicks y Sam Gannon. Entre los éxitos interpretados se incluyen «New York City», «Instant Karma!», «Imagine» y «Mother» de John, además de «Don't Worry Kyoko» y «Open Your Box» de Yoko, así como emocionantes versiones de «Come Together» y «Hound Dog» y, como bis, «Give Peace a Chance» con invitados especiales como Stevie Wonder, Melanie y muchos otros.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001770",
-    "titulo": "PROYECTO FIN DEL MUNDO",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001770?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CIENCIA FICCION"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Un astronauta intenta salvar la Tierra estando solo en el espacio exterior.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001738",
-    "titulo": "SCREAM 7",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001738?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "TERROR"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Cuando un nuevo asesino Ghostface emerge en el tranquilo pueblo donde Sidney Prescott (Neve Campbell) ha construido una nueva vida, sus peores temores se hacen realidad cuando su hija (Isabel May) se convierte en el siguiente objetivo. Decidida a proteger a su familia, Sidney deberá enfrentar los horrores de su pasado para poner fin al derramamiento de sangre de una vez por todas.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001774",
     "titulo": "SI VAS PARA CHILE",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001774?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -339,21 +431,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Super Mario Galaxy: La película es una película animada basada en el mundo de Super Mario Bros. y es una continuación de Super Mario Bros. La película, que estrenó en 2023, recaudó más de 1,3 mil millones de dólares a nivel mundial. Ambas películas son producidas por Chris Meledandri de Illumination y Shigeru Miyamoto de Nintendo.\r\n\r\nLa película será cofinanciada por Universal Pictures y Nintendo y será estrenada a nivel mundial por Universal Pictures.\r\n\r\nSuper Mario Galaxy: La película es dirigida una vez más por los realizadores Aaron Horvath y Michael Jelenic, con un guión nuevamente a cargo de Matthew Fogel, y con el regreso de Brian Tyler para componer la banda Sonora.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001776",
-    "titulo": "TE VAN A MATAR",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001776?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "TERROR"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La película desata una mezcla de horror, acción y comedia extrema y bañada en sangre, en la que una joven debe sobrevivir la noche en el Virgil, la retorcida y misteriosa guarida-trampa de muerte de un culto demoníaco, antes de convertirse en su próxima ofrenda en una épica batalla cinematográfica llena de muertes impactantes y un humor oscuro y perverso. TE VAN A MATAR está protagonizada por Zazie Beetz, Myha’La, Paterson Joseph, Tom Felton, Heather Graham y Patricia Arquette",
     "cadenas_ids": [
       "cineplanet"
     ]
