@@ -1,9 +1,14 @@
 /**
  * Muvix Chile scraper
- * muvix.cl has an invalid/expired SSL cert — use ignoreHTTPSErrors.
+ * Uses direct API calls — no browser needed.
+ * Endpoints discovered via Playwright network interception on a prior run:
+ *   GET https://muvix.cl/Browsing/Home/NowShowing → Array<MuvixMovie>
+ * SSL cert on muvix.cl may be expired; Node fetch tolerates it.
  */
-import { chromium } from "playwright";
-import type { ScrapedMovie, ScrapedShowtime, ScrapeResult } from "./types.js";
+import type { ScrapedMovie, ScrapeResult } from "./types.js";
+
+const BASE = "https://muvix.cl";
+const CINEPLANET_CDN = "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic";
 
 function slugify(text: string): string {
   return text
@@ -14,28 +19,41 @@ function slugify(text: string): string {
     .slice(0, 80);
 }
 
-function str(v: unknown): string {
-  return typeof v === "string" ? v.trim() : "";
+function normalizeRating(r: string): string {
+  const map: Record<string, string> = {
+    "TE": "TE", "TE": "TE", "T.E": "TE",
+    "TE+7": "TE+7", "TE7": "TE+7", "T.E+7": "TE+7",
+    "TE+14": "TE+14", "TE14": "TE+14", "T.E+14": "TE+14",
+    "MA+14": "MA+14", "MA14": "MA+14",
+    "MA+18": "MA+18", "MA18": "MA+18",
+  };
+  return map[(r ?? "").replace(/\s/g, "")] ?? "TE";
 }
 
-function num(v: unknown): number {
-  if (typeof v === "number") return v;
-  if (typeof v === "string") { const n = parseInt(v, 10); return isNaN(n) ? 0 : n; }
-  return 0;
+interface MuvixMovie {
+  Id: string;               // "h-HO00000882"
+  Title: string;
+  PosterImageUrl: string;   // "//muvix.cl/CDN/media/entity/get/FilmPosterGraphic/HO00000882?..."
+  Rating: string;           // "T.E", "T.E+7", etc.
+  ReleaseDate: string;      // "/Date(1775098800000)/"
+  CinemaId: string;
+  Experiences: string[];    // ["AERA", "TRADICIONAL", "MX4D"]
 }
 
-function extractArray(body: unknown): unknown[] | null {
-  if (Array.isArray(body)) return body;
-  if (body && typeof body === "object") {
-    const obj = body as Record<string, unknown>;
-    for (const key of ["data", "movies", "films", "results", "items", "content", "peliculas", "cartelera"]) {
-      if (Array.isArray(obj[key])) return obj[key] as unknown[];
-    }
-    for (const val of Object.values(obj)) {
-      if (Array.isArray(val) && (val as unknown[]).length > 1) return val as unknown[];
-    }
+async function fetchJson<T>(url: string): Promise<T | null> {
+  try {
+    const res = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+        "Accept": "application/json",
+        "Referer": BASE,
+      },
+    });
+    if (!res.ok) return null;
+    return res.json() as Promise<T>;
+  } catch {
+    return null;
   }
-  return null;
 }
 
 export class MuvixScraper {
@@ -43,142 +61,56 @@ export class MuvixScraper {
   readonly displayName = "Muvix Chile";
 
   async scrape(): Promise<ScrapeResult> {
-    console.log("[muvix] Starting (Playwright, ignoreHTTPSErrors)");
+    console.log("[muvix] Starting (direct API)");
     const scraped_at = new Date().toISOString();
-    const browser = await chromium.launch({
-      headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
 
     try {
-      const context = await browser.newContext({
-        userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
-        locale: "es-CL",
-        ignoreHTTPSErrors: true, // muvix.cl has expired/invalid SSL
-      });
-      const page = await context.newPage();
-
-      const captured: Array<{ url: string; body: unknown }> = [];
-
-      page.on("response", async (response) => {
-        const ct = response.headers()["content-type"] ?? "";
-        if (!ct.includes("json")) return;
-        try {
-          const body = await response.json();
-          captured.push({ url: response.url(), body });
-          console.log(`[muvix] captured: ${response.url().split("?")[0]}`);
-        } catch { /* ignore */ }
-      });
-
-      await page.goto("https://www.muvix.cl", {
-        waitUntil: "domcontentloaded",
-        timeout: 30_000,
-      });
-      await page.waitForTimeout(7000);
-      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-      await page.waitForTimeout(3000);
-
-      // Try WordPress REST API (muvix may be on WP)
-      for (const endpoint of [
-        "https://www.muvix.cl/wp-json/wp/v2/posts?per_page=50",
-        "https://www.muvix.cl/wp-json/muvix/v1/movies",
-        "https://www.muvix.cl/wp-json/wp/v2/pelicula?per_page=50",
-      ]) {
-        try {
-          const body = await page.evaluate(async (url) => {
-            const r = await fetch(url);
-            if (!r.ok) return null;
-            return r.json();
-          }, endpoint);
-          if (body) {
-            captured.push({ url: endpoint, body });
-            console.log(`[muvix] WP endpoint worked: ${endpoint}`);
-          }
-        } catch { /* try next */ }
+      const data = await fetchJson<MuvixMovie[]>(`${BASE}/Browsing/Home/NowShowing`);
+      if (!data?.length) {
+        throw new Error("NowShowing returned empty or null");
       }
 
-      await browser.close();
+      // Deduplicate by Id (each movie appears once per cinema)
+      const seen = new Set<string>();
+      const movies: ScrapedMovie[] = [];
 
-      // Find best movie array
-      let movies: ScrapedMovie[] = [];
+      for (const m of data) {
+        if (seen.has(m.Id)) continue;
+        seen.add(m.Id);
 
-      for (const { url, body } of captured) {
-        const arr = extractArray(body);
-        if (!arr || arr.length < 2) continue;
-        const first = arr[0] as Record<string, unknown>;
+        // Extract HO code from Id ("h-HO00000882" → "HO00000882")
+        const hoCode = m.Id.replace(/^h-/, "").toUpperCase();
 
-        const hasTitle = "title" in first || "titulo" in first || "name" in first;
-        const hasMedia = "poster" in first || "posterUrl" in first || "image" in first ||
-          "featured_media" in first || "_embedded" in first || "thumbnail" in first;
+        // Use the shared Vista CDN (same CDN that Cineplanet uses — shared HO system)
+        const poster_url = hoCode
+          ? `${CINEPLANET_CDN}/${hoCode}?referenceScheme=HeadOffice&allowPlaceHolder=true`
+          : (m.PosterImageUrl.startsWith("//") ? `https:${m.PosterImageUrl}` : m.PosterImageUrl);
 
-        if (!hasTitle) continue;
+        // Parse ReleaseDate from "/Date(1775098800000)/" → "YYYY-MM-DD"
+        const tsMatch = m.ReleaseDate.match(/\d+/);
+        const fecha_estreno = tsMatch
+          ? new Date(parseInt(tsMatch[0])).toISOString().split("T")[0]
+          : "";
 
-        console.log(`[muvix] Using array from: ${url.split("?")[0]} (${arr.length} items)`);
-
-        movies = (arr
-          .map((raw) => {
-            const m = raw as Record<string, unknown>;
-
-            // WordPress post shape
-            if ("rendered" in (m.title as Record<string, unknown> ?? {})) {
-              return parseWPPost(m);
-            }
-
-            const titulo = str(m.title) || str(m.titulo) || str(m.name) || "";
-            if (!titulo) return null;
-
-            const embedded = m._embedded as Record<string, unknown> | undefined;
-            const featuredMedia = embedded?.["wp:featuredmedia"] as Array<Record<string, unknown>> | undefined;
-            const poster_url =
-              str(m.poster) || str(m.posterUrl) || str(m.image) ||
-              (featuredMedia?.[0]?.source_url as string) || "";
-
-            return {
-              id: slugify(str(m.id) || str(m.slug) || titulo),
-              titulo,
-              poster_url,
-              genero: [],
-              duracion_min: num(m.duration) || num(m.runtime) || 0,
-              clasificacion: "TE" as const,
-              fecha_estreno: (str(m.releaseDate) || str(m.date) || "").split("T")[0],
-              sinopsis: str(m.synopsis) || str(m.description) || undefined,
-              cadenas_ids: ["muvix"],
-            } satisfies ScrapedMovie;
-          })
-          .filter((m): m is NonNullable<typeof m> => m !== null)) as ScrapedMovie[];
-
-        if (movies.length > 0) break;
+        movies.push({
+          id: slugify(m.Title),
+          titulo: m.Title,
+          poster_url,
+          genero: [],
+          duracion_min: 0,
+          clasificacion: normalizeRating(m.Rating),
+          fecha_estreno,
+          sinopsis: undefined,
+          cadenas_ids: ["muvix"],
+        });
       }
 
       console.log(`[muvix] ${movies.length} movies`);
       return { cadena_id: "muvix", movies, showtimes: [], scraped_at };
     } catch (err) {
-      await browser.close().catch(() => {});
       const error = err instanceof Error ? err.message : String(err);
       console.log(`[muvix] ERROR: ${error}`);
       return { cadena_id: "muvix", movies: [], showtimes: [], error, scraped_at };
     }
   }
-}
-
-function parseWPPost(post: Record<string, unknown>): ScrapedMovie | null {
-  const titleObj = post.title as Record<string, unknown> | undefined;
-  const titulo = str(titleObj?.rendered || "").replace(/<[^>]+>/g, "").trim();
-  if (!titulo) return null;
-
-  const embedded = post._embedded as Record<string, unknown> | undefined;
-  const featuredMedia = embedded?.["wp:featuredmedia"] as Array<Record<string, unknown>> | undefined;
-  const poster_url = (featuredMedia?.[0]?.source_url as string) ?? "";
-
-  return {
-    id: slugify(str(post.slug) || titulo),
-    titulo,
-    poster_url,
-    genero: [],
-    duracion_min: 0,
-    clasificacion: "TE",
-    fecha_estreno: str(post.date).split("T")[0],
-    sinopsis: undefined,
-    cadenas_ids: ["muvix"],
-  };
 }

@@ -134,6 +134,11 @@ export class CineplanetScraper {
       // Parse sessions
       const sessionsArr = extractArray(sessionsRaw) ?? [];
       console.log(`[cineplanet] ${sessionsArr.length} sessions in sessioncache`);
+      // Debug: log first session to discover actual field names
+      if (sessionsArr.length > 0) {
+        console.log(`[cineplanet] session[0] keys: ${Object.keys(sessionsArr[0] as object).join(", ")}`);
+        console.log(`[cineplanet] session[0] sample: ${JSON.stringify(sessionsArr[0]).slice(0, 300)}`);
+      }
 
       const showtimes: ScrapedShowtime[] = sessionsArr
         .map((raw, i) => {

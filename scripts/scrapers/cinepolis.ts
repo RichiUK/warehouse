@@ -83,12 +83,18 @@ export class CinepolisScraper {
         } catch { /* ignore */ }
       });
 
-      // cinepolis.cl → redirects to cinepolis.com/chile
-      await page.goto("https://www.cinepolis.com/chile", {
-        waitUntil: "domcontentloaded",
-        timeout: 30_000,
+      // cinepolis.com/cl — full Next.js SPA, needs networkidle to trigger API calls
+      await page.goto("https://cinepolis.com/cl", {
+        waitUntil: "networkidle",
+        timeout: 45_000,
       });
-      await page.waitForTimeout(8000);
+      await page.waitForTimeout(5000);
+      // Navigate to cartelera to trigger billboard API
+      await page.goto("https://cinepolis.com/cl/cartelera", {
+        waitUntil: "networkidle",
+        timeout: 30_000,
+      }).catch(() => { /* ignore — may fail on some envs */ });
+      await page.waitForTimeout(5000);
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
       await page.waitForTimeout(3000);
 
