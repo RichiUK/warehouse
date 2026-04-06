@@ -115,7 +115,7 @@ export class MuvixScraper {
 
         console.log(`[muvix] Using array from: ${url.split("?")[0]} (${arr.length} items)`);
 
-        movies = arr
+        movies = (arr
           .map((raw) => {
             const m = raw as Record<string, unknown>;
 
@@ -139,13 +139,13 @@ export class MuvixScraper {
               poster_url,
               genero: [],
               duracion_min: num(m.duration) || num(m.runtime) || 0,
-              clasificacion: "TE",
+              clasificacion: "TE" as const,
               fecha_estreno: (str(m.releaseDate) || str(m.date) || "").split("T")[0],
               sinopsis: str(m.synopsis) || str(m.description) || undefined,
               cadenas_ids: ["muvix"],
-            };
+            } satisfies ScrapedMovie;
           })
-          .filter((m): m is ScrapedMovie => m !== null);
+          .filter((m): m is NonNullable<typeof m> => m !== null)) as ScrapedMovie[];
 
         if (movies.length > 0) break;
       }

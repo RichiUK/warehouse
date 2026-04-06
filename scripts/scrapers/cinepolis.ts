@@ -121,7 +121,7 @@ export class CinepolisScraper {
         throw new Error("No movie data intercepted. Check network calls manually.");
       }
 
-      const movies: ScrapedMovie[] = bestMovies
+      const movies = (bestMovies
         .map((raw) => {
           const m = raw as Record<string, unknown>;
           const titulo = str(m.title) || str(m.titulo) || str(m.name) || str(m.movieName) || "";
@@ -142,9 +142,9 @@ export class CinepolisScraper {
             fecha_estreno: (str(m.releaseDate) || str(m.openingDate) || "").split("T")[0],
             sinopsis: str(m.synopsis) || str(m.description) || str(m.overview) || undefined,
             cadenas_ids: ["cinepolis"],
-          };
+          } satisfies ScrapedMovie;
         })
-        .filter((m): m is ScrapedMovie => m !== null);
+        .filter((m): m is NonNullable<typeof m> => m !== null)) as ScrapedMovie[];
 
       console.log(`[cinepolis] ${movies.length} movies parsed`);
       return { cadena_id: "cinepolis", movies, showtimes: [], scraped_at };
