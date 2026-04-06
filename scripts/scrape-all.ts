@@ -125,7 +125,9 @@ async function main() {
   }
 
   if (totalMovies > 0) {
-    writeJson("peliculas.json", mergedMovies);
+    // Enrich with TMDB metadata (poster, synopsis, title) if API key is set
+    const enriched = await enrichWithTmdb(mergedMovies);
+    writeJson("peliculas.json", enriched);
     writeJson("funciones.json", allShowtimes);
   } else {
     console.warn("\n⚠ No movies found across all chains. Keeping existing data.");
@@ -137,7 +139,6 @@ async function main() {
   console.log(`Movies: ${totalMovies}`);
   console.log(`Showtimes: ${allShowtimes.length}`);
   console.log(`Errors: ${results.filter((r) => r.error).map((r) => r.cadena_id).join(", ") || "none"}`);
-  console.log("\nCheck data/debug/*.json to see all intercepted API calls for parser refinement.");
 }
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
@@ -158,6 +159,58 @@ function normalizeTitle(title: string): string {
 
 function getMovieTitleForId(id: string, movies: ScrapedMovie[]): string {
   return movies.find((m) => m.id === id)?.titulo ?? id;
+}
+
+// ─── TMDB enrichment ─────────────────────────────────────────────────────────
+
+const TMDB_BASE = "https://api.themoviedb.org/3";
+const TMDB_IMG  = "https://image.tmdb.org/t/p/w500";
+
+async function enrichWithTmdb(movies: ScrapedMovie[]): Promise<ScrapedMovie[]> {
+  const apiKey = process.env.TMDB_API_KEY;
+  if (!apiKey) {
+    console.log("\n[tmdb] TMDB_API_KEY not set — skipping enrichment.");
+    return movies;
+  }
+
+  console.log(`\n[tmdb] Enriching ${movies.length} movies…`);
+  let hits = 0;
+
+  const enriched = await Promise.all(movies.map(async (movie) => {
+    try {
+      // Search in Spanish first, fall back to English
+      const query = encodeURIComponent(movie.titulo);
+      const url = `${TMDB_BASE}/search/movie?api_key=${apiKey}&query=${query}&language=es-CL&region=CL&include_adult=false`;
+      const res = await fetch(url);
+      if (!res.ok) return movie;
+
+      const data = await res.json() as { results?: Array<{
+        poster_path: string | null;
+        overview: string;
+        title: string;
+        original_title: string;
+        release_date: string;
+        genre_ids: number[];
+      }> };
+
+      const result = data.results?.[0];
+      if (!result) return movie;
+
+      hits++;
+      return {
+        ...movie,
+        // Only override if TMDB has better data
+        poster_url:   result.poster_path ? `${TMDB_IMG}${result.poster_path}` : movie.poster_url,
+        sinopsis:     result.overview || movie.sinopsis,
+        fecha_estreno: result.release_date || movie.fecha_estreno,
+      };
+    } catch {
+      return movie;
+    }
+  }));
+
+  console.log(`[tmdb] Enriched ${hits}/${movies.length} movies.`);
+  return enriched;
 }
 
 main().catch((err) => {

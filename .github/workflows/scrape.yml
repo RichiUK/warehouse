@@ -36,6 +36,7 @@ jobs:
           npm run scrape 2>&1 | tee data/scraper.log; exit ${PIPESTATUS[0]}
         env:
           NODE_ENV: production
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
 
       - name: Check for data changes
         id: changes

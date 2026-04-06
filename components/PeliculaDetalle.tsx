@@ -223,12 +223,22 @@ export default function PeliculaDetalle({ peliculaId }: PeliculaDetalleProps) {
         precioOriginal: mejorCalc.precio_base,
         urlCompra: mejorFuncion.url_compra,
         descuentoLabel,
+        hasFunciones: true as const,
       };
     })
     .filter((c): c is NonNullable<typeof c> => c !== null)
     .sort((a, b) => a.precio - b.precio);
 
   const precioMinimo = cinemasRanked[0]?.precio;
+
+  // Chains present on the movie but without scraped showtimes yet
+  const cinemasWithoutFunciones = pelicula.cadenas_ids
+    .filter((cadenaId) => !cinemasRanked.some((c) => c.cadenaId === cadenaId))
+    .map((cadenaId) => {
+      const cadena = CADENAS.find((c) => c.id === cadenaId);
+      return cadena ? { cadenaId, nombre: cadena.nombre, urlBase: cadena.url_base } : null;
+    })
+    .filter((c): c is NonNullable<typeof c> => c !== null);
 
   return (
     <div className="min-h-screen" style={{ background: "#332f37", fontFamily: "Montserrat, sans-serif" }}>
@@ -360,13 +370,35 @@ export default function PeliculaDetalle({ peliculaId }: PeliculaDetalleProps) {
               urlCompra={cinema.urlCompra}
               descuentoLabel={cinema.descuentoLabel}
             />
-            {i < cinemasRanked.length - 1 && (
+            {(i < cinemasRanked.length - 1 || cinemasWithoutFunciones.length > 0) && (
               <div style={{ height: 2, background: "#18191f" }} />
             )}
           </div>
         ))}
 
-        {cinemasRanked.length === 0 && (
+        {cinemasWithoutFunciones.map((cinema, i) => (
+          <div key={cinema.cadenaId}>
+            <a
+              href={cinema.urlBase}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-[22px] px-4 py-6 w-full"
+              style={{ background: "transparent", opacity: 0.5 }}
+            >
+              <ChainLogo cadenaId={cinema.cadenaId} />
+              <div className="flex flex-col gap-1 flex-1 min-w-0">
+                <p className="font-bold text-[18px] leading-tight text-white">{cinema.nombre}</p>
+                <p className="font-semibold text-[10px]" style={{ color: "#b6b6b6" }}>Sin horarios disponibles aún</p>
+              </div>
+              <p className="font-semibold text-[12px] shrink-0" style={{ color: "#b6b6b6" }}>Ver web →</p>
+            </a>
+            {i < cinemasWithoutFunciones.length - 1 && (
+              <div style={{ height: 2, background: "#18191f" }} />
+            )}
+          </div>
+        ))}
+
+        {cinemasRanked.length === 0 && cinemasWithoutFunciones.length === 0 && (
           <div className="px-4 py-12 text-center">
             <p className="font-medium text-[14px]" style={{ color: "#b6b6b6" }}>
               No hay funciones disponibles esta semana.
