@@ -1,8 +1,26 @@
 [
   {
+    "id": "hoppers",
+    "titulo": "HOPPERS: OPERACION CASTOR",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00013331?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Animación",
+      "Familiar"
+    ],
+    "duracion_min": 105,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-03-05",
+    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet",
+      "muvix"
+    ]
+  },
+  {
     "id": "proyecto-fin-del-mundo",
     "titulo": "Proyecto Fin Del Mundo",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014560?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014519?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Ciencia Ficción",
       "Aventuras"
@@ -13,7 +31,8 @@
     "sinopsis": "Un astronauta intenta salvar la Tierra estando solo en el espacio exterior.",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet"
+      "cineplanet",
+      "muvix"
     ]
   },
   {
@@ -30,7 +49,8 @@
     "sinopsis": "Super Mario Galaxy: La película es una película animada basada en el mundo de Super Mario Bros. y es una continuación de Super Mario Bros. ",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet"
+      "cineplanet",
+      "muvix"
     ]
   },
   {
@@ -44,23 +64,6 @@
     "clasificacion": "MA+14",
     "fecha_estreno": "2026-03-12",
     "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "hoppers",
-    "titulo": "HOPPERS: OPERACION CASTOR",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00013331?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Animación",
-      "Familiar"
-    ],
-    "duracion_min": 105,
-    "clasificacion": "TE",
-    "fecha_estreno": "2026-03-05",
-    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
     "cadenas_ids": [
       "cinemark",
       "cineplanet"
