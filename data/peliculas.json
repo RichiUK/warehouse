@@ -54,6 +54,23 @@
     ]
   },
   {
+    "id": "instinto-implacable",
+    "titulo": "Instinto Implacable",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014636?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Acción",
+      "Suspenso"
+    ],
+    "duracion_min": 93,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-04-09",
+    "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "la-misteriosa-mirada-del-flamenco",
     "titulo": "La Misteriosa Mirada Del Flamenco",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -136,17 +153,32 @@
     ]
   },
   {
-    "id": "scream-7",
-    "titulo": "Scream 7",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014397?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "buena-suerte-diviertete",
+    "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00012644?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Terror",
-      "Horror"
+      "Comedia"
     ],
-    "duracion_min": 114,
+    "duracion_min": 135,
     "clasificacion": "MA+14",
-    "fecha_estreno": "2026-02-26",
-    "sinopsis": "Cuando un nuevo asesino Ghostface emerge en el tranquilo pueblo donde Sidney Prescott (Neve Campbell) ha construido una nueva vida, sus peores temores se hacen realidad cuando su hija (Isabel May) se convierte en el siguiente objetivo. Decidida a proteger a su familia, Sidney deberá enfrentar los horrores de su pasado para poner fin al derramamiento de sangre de una vez por todas.",
+    "fecha_estreno": "2026-04-09",
+    "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "si-vas-para-chile",
+    "titulo": "Si Vas Para Chile",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014705?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Documental"
+    ],
+    "duracion_min": 70,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-09",
+    "sinopsis": "En el año 2021, el norte de Chile marcó un hito con la violenta marcha anti-inmigrantes junto a la quema de carpas y pertenencias de familias extranjeras en Iquique. Este relato coral es el testimonio vivo de quienes siguen ingresando al país a pesar de las adversidades, y de los habitantes del territorio que viven en medio de un creciente conflicto social, la crudeza del desierto de Atacama y del Altiplano andino.",
     "cadenas_ids": [
       "cinemark",
       "cineplanet"
@@ -182,22 +214,21 @@
     "fecha_estreno": "2026-03-26",
     "sinopsis": "Protagonizada por Glen Powell y Margaret Qualley, esta es la historia de Becket Redfellow, expulsado de su escandalosamente rica familia y dispuesto a todo para recuperar su herencia, incluso eliminar a quienes se interpongan en su camino. ",
     "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
+      "cinemark"
     ]
   },
   {
-    "id": "te-van-a-matar",
-    "titulo": "Te Van A Matar",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014658?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "scream-7",
+    "titulo": "Scream 7",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014397?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Horror",
-      "Acción"
+      "Terror",
+      "Horror"
     ],
-    "duracion_min": 94,
-    "clasificacion": "MA+18",
-    "fecha_estreno": "2026-03-26",
-    "sinopsis": "La película desata una mezcla de horror, acción y comedia extrema y bañada en sangre, en la que una joven debe sobrevivir la noche en el Virgil, la retorcida y misteriosa guarida-trampa de muerte de un culto demoníaco, antes de convertirse en su próxima ofrenda en una épica batalla cinematográfica llena de muertes impactantes y un humor oscuro y perverso. TE VAN A MATAR está protagonizada por Zazie Beetz, Myha’La, Paterson Joseph, Tom Felton, Heather Graham y Patricia Arquette.",
+    "duracion_min": 114,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-02-26",
+    "sinopsis": "Cuando un nuevo asesino Ghostface emerge en el tranquilo pueblo donde Sidney Prescott (Neve Campbell) ha construido una nueva vida, sus peores temores se hacen realidad cuando su hija (Isabel May) se convierte en el siguiente objetivo. Decidida a proteger a su familia, Sidney deberá enfrentar los horrores de su pasado para poner fin al derramamiento de sangre de una vez por todas.",
     "cadenas_ids": [
       "cinemark",
       "cineplanet"
@@ -229,21 +260,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "La novia regresa para participar en un macabro juego de escondite con su nueva familia política. La tradición demoníaca continúa en esta sangrienta secuela.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001740",
-    "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001740?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CIENCIA FICCION"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -339,36 +355,6 @@
     ]
   },
   {
-    "id": "ho00001784",
-    "titulo": "INSTINTO IMPLACABLE",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001784?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "ACCION"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001790",
-    "titulo": "LA CATADORAS",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001790?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Otoño de 1943. Rosa huye del Berlín bombardeado, llega a un pequeño pueblo aislado cerca de la frontera oriental. Allí viven sus suegros y donde su marido, que lucha en el frente, le dijo que se refugiara mientras esperaba el fin de la guerra y su regreso a casa. Rosa pronto descubrirá que dentro del bosque que limita el pueblo se esconde un secreto: el cuartel general de Hitler, la Guarida del Lobo. El Führer ve enemigos por todas partes, ser envenenado es su obsesión. Una mañana, al amanecer, Rose es recogida junto a otras jóvenes del pueblo para probar la comida que le han preparado. Divididas entre el miedo a morir y el hambre que las devora, las “catadoras” formarán alianzas, amistades y acuerdos secretos. Rosa lucha por ser aceptada, pero cuando finalmente supera la desconfianza de las “catadoras”, un acontecimiento la hará sentir traidora: la llegada de un oficial de las SS, que, contra toda razón, despierta en ella el sentimiento de amor. O simplemente la necesidad de sentirse viva, a pesar de todo lo que la rodea..",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001715",
     "titulo": "LA NOVIA DEL DIABLO",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001715?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -454,21 +440,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "En lo alto de un acantilado frente al mar, Sosuke, un niño de cinco años, rescata a una pequeña criatura marina atrapada en un frasco. Lo que no imagina es que esa criatura es Ponyo, una niña-pez hija de un hechicero submarino y una diosa del océano. Fascinada por el mundo humano, Ponyo decide convertirse en niña y vivir junto a Sosuke, desatando una ola de magia, amistad y caos en su camino. Una aventura mágica del legendario Studio Ghibli, dirigida por Hayao Miyazaki.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001774",
-    "titulo": "SI VAS PARA CHILE",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001774?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "En el año 2021, el norte de Chile marcó un hito con la violenta marcha anti-inmigrantes, quema de carpas y pertenencias de familias en Iquique. Este relato coral es el testimonio vivo de quienes siguen ingresando a pesar de las adversidades, y habitantes del territorio que viven en medio de un creciente conflicto social, la crudeza del desierto de Atacama y del Altiplano andino.",
     "cadenas_ids": [
       "cineplanet"
     ]
