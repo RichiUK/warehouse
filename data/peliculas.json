@@ -87,6 +87,39 @@
     ]
   },
   {
+    "id": "el-castillo-ambulante-2004",
+    "titulo": "El Castillo Ambulante [2004]",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014495?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Fantasía",
+      "Animación"
+    ],
+    "duracion_min": 119,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-16",
+    "sinopsis": "En esta poco convencional historia de amor, la joven sombrerera Sophie, convertida en una mujer de 90 años por una vanidosa bruja, cruza su destino con Howl, un mago mitad-hombre mitad-ave que viaja a bordo de un castillo ambulante. Para acabar con la maldición que le confiere el aspecto de una anciana, Sophie se embarca en esta fortaleza mágica donde conoce a Markl, el aprendiz de Howl, y a un impetuoso demonio de fuego llamado Calcifer, con quienes unirá fuerzas para detener una guerra que amenaza con destruir el mundo.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "diablo-viste-a-la-moda-2",
+    "titulo": "Diablo Viste A La Moda 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014699?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Comedia",
+      "Drama"
+    ],
+    "duracion_min": 120,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-04-30",
+    "sinopsis": "Sigue la lucha de Miranda Priestly contra Emily Charlton, su ex asistente convertida en ejecutiva rival, mientras compiten por los ingresos por publicidad en medio de la decadencia de los medios impresos y Miranda se acerca a la jubilación.",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
     "id": "bts-world-tour-arirang-in-goyang",
     "titulo": "BTS WORLD TOUR 'ARIRANG' IN GOYANG: LIVE VIEWING",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00010460?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -305,21 +338,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "En la noche de Halloween, una joven ilusionista se enfrenta a su prueba más letal cuando cruza su camino con El Bufón, una entidad asesina que convierte trucos y juegos en trampas mortales. Cada ilusión es un engaño, cada escape una mentira. Para sobrevivir, deberá usar su ingenio y habilidades antes de que el espectáculo termine… y el telón caiga para siempre.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001741",
-    "titulo": "EL CASTILLO AMBULANTE (2004)",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001741?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "ANIME"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Una joven llamada Sophie es transformada en una anciana por una maldición y encuentra refugio en el mágico castillo ambulante del misterioso mago Howl.",
     "cadenas_ids": [
       "cineplanet"
     ]

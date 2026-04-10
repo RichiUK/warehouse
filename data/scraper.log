@@ -3,14 +3,14 @@
 > tsx scripts/scrape-all.ts
 
 === CineCompara Scraper ===
-Started at: 2026-04-09T10:05:37.558Z
+Started at: 2026-04-10T10:03:07.506Z
 
 
 --- Cinemark Chile ---
 [cinemark] Starting (direct API, no browser)
 [cinemark] Found 21 cinemas
-[cinemark] 14 unique movies, 3751 sessions
-  ✓ 14 movies, 3751 showtimes
+[cinemark] 16 unique movies, 4307 sessions
+  ✓ 16 movies, 4307 showtimes
 
 --- Cinépolis Chile ---
 [cinepolis] Starting (Playwright)
@@ -25,9 +25,9 @@ Started at: 2026-04-09T10:05:37.558Z
 [cineplanet] ✓ moviescache intercepted
 [cineplanet] ✓ sessioncache intercepted
 [cineplanet] 28 movies in moviescache
-[cineplanet] 880 sessions in sessioncache
+[cineplanet] 1479 sessions in sessioncache
 [cineplanet] session[0] keys: id, showtime, formats, languages, sessionId
-[cineplanet] session[0] sample: {"id":"0000000004-138610","showtime":"2026-04-09T23:30:00-04:00","formats":["2D","PRIME"],"languages":["DOBLADA"],"sessionId":"138610"}
+[cineplanet] session[0] sample: {"id":"0000000004-138692","showtime":"2026-04-10T23:30:00-04:00","formats":["2D","PRIME"],"languages":["DOBLADA"],"sessionId":"138692"}
   ✓ 28 movies, 0 showtimes
 
 --- Muvix Chile ---
@@ -35,8 +35,8 @@ Started at: 2026-04-09T10:05:37.558Z
 [muvix] 3 movies
   ✓ 3 movies, 0 showtimes
 
-[tmdb] Enriching 29 movies…
-[tmdb] Enriched 0/29 movies.
+[tmdb] Enriching 30 movies…
+[tmdb] Enriched 0/30 movies.
 
 Wrote /home/runner/work/muvi/muvi/data/peliculas.json
 
@@ -45,6 +45,6 @@ Wrote /home/runner/work/muvi/muvi/data/funciones.json
 Wrote /home/runner/work/muvi/muvi/data/actualizaciones.json
 
 === Done ===
-Movies: 29
-Showtimes: 3751
+Movies: 30
+Showtimes: 4307
 Errors: cinepolis
