@@ -120,6 +120,21 @@
     ]
   },
   {
+    "id": "the-amazing-digital-circus",
+    "titulo": "The Amazing Digital Circus",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014724?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Animación"
+    ],
+    "duracion_min": 93,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-06-04",
+    "sinopsis": "¡La sensación viral de internet, The Amazing Digital Circus, llega a su esperada conclusión en un estreno cinematográfico en formato de película! Este «Último Acto» combina el episodio 8 con el nuevo episodio 9, de una hora de duración, para que los fans puedan verlo antes que nadie en el mundo.\r\nCon Caine estando desaparecido y el circo sumido en tinieblas, nuestro elenco queda solo con los errores y traumas de su pasado como única compañía. Mientras la perspectiva de la eternidad se cierne sobre ellos, descubren la verdad sobre el Circo Digital y su historia. ¿Aceptarán lo que han descubierto o tomarán... la otra opción? Además, es de suponer que en algún momento alguien dirá algo gracioso, porque este final no puede ser TAN deprimente, ¿verdad?\r\n",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
     "id": "bts-world-tour-arirang-in-goyang",
     "titulo": "BTS WORLD TOUR 'ARIRANG' IN GOYANG: LIVE VIEWING",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00010460?referenceScheme=HeadOffice&allowPlaceHolder=true",
