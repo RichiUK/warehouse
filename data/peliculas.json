@@ -54,6 +54,22 @@
     ]
   },
   {
+    "id": "la-misteriosa-mirada-del-flamenco",
+    "titulo": "La Misteriosa Mirada Del Flamenco",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Drama"
+    ],
+    "duracion_min": 109,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-03-12",
+    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "instinto-implacable",
     "titulo": "Instinto Implacable",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014636?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -65,22 +81,6 @@
     "clasificacion": "MA+14",
     "fecha_estreno": "2026-04-09",
     "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "la-misteriosa-mirada-del-flamenco",
-    "titulo": "La Misteriosa Mirada Del Flamenco",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Drama"
-    ],
-    "duracion_min": 109,
-    "clasificacion": "MA+14",
-    "fecha_estreno": "2026-03-12",
-    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
     "cadenas_ids": [
       "cinemark",
       "cineplanet"
