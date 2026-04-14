@@ -54,22 +54,6 @@
     ]
   },
   {
-    "id": "la-misteriosa-mirada-del-flamenco",
-    "titulo": "La Misteriosa Mirada Del Flamenco",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Drama"
-    ],
-    "duracion_min": 109,
-    "clasificacion": "MA+14",
-    "fecha_estreno": "2026-03-12",
-    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
-    ]
-  },
-  {
     "id": "instinto-implacable",
     "titulo": "Instinto Implacable",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014636?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -112,7 +96,7 @@
       "Drama"
     ],
     "duracion_min": 120,
-    "clasificacion": "TE",
+    "clasificacion": "TE+7",
     "fecha_estreno": "2026-04-30",
     "sinopsis": "Sigue la lucha de Miranda Priestly contra Emily Charlton, su ex asistente convertida en ejecutiva rival, mientras compiten por los ingresos por publicidad en medio de la decadencia de los medios impresos y Miranda se acerca a la jubilación.",
     "cadenas_ids": [
@@ -132,6 +116,22 @@
     "sinopsis": "¡La sensación viral de internet, The Amazing Digital Circus, llega a su esperada conclusión en un estreno cinematográfico en formato de película! Este «Último Acto» combina el episodio 8 con el nuevo episodio 9, de una hora de duración, para que los fans puedan verlo antes que nadie en el mundo.\r\nCon Caine estando desaparecido y el circo sumido en tinieblas, nuestro elenco queda solo con los errores y traumas de su pasado como única compañía. Mientras la perspectiva de la eternidad se cierne sobre ellos, descubren la verdad sobre el Circo Digital y su historia. ¿Aceptarán lo que han descubierto o tomarán... la otra opción? Además, es de suponer que en algún momento alguien dirá algo gracioso, porque este final no puede ser TAN deprimente, ¿verdad?\r\n",
     "cadenas_ids": [
       "cinemark"
+    ]
+  },
+  {
+    "id": "la-misteriosa-mirada-del-flamenco",
+    "titulo": "La Misteriosa Mirada Del Flamenco",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Drama"
+    ],
+    "duracion_min": 109,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-03-12",
+    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
     ]
   },
   {
@@ -266,6 +266,36 @@
     ]
   },
   {
+    "id": "ho00001793",
+    "titulo": "HOKUM: LA MALDICIÓN DE LA BRUJA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001793?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Un escritor de terror visita una posada irlandesa para esparcir las cenizas de sus padres, sin saber que se dice que la propiedad está embrujada por una bruja.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001791",
+    "titulo": "BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LI",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001791?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CONCIERTO"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Grabado durante su gira mundial completamente agotada, BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LIVE IN 3D) lleva a la pantalla grande una nueva e innovadora experiencia de concierto de una de las artistas más celebradas y exitosas de su generación. Presentada en un inmersivo 3D, la película está dirigida por los ganadores del Premio de la Academia® James Cameron y Billie Eilish. Próximament",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
     "id": "ho00001787",
     "titulo": "BLUEY EN CINES: MOMENTOS DE DIVERSION CON AMIGOS",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001787?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -291,6 +321,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "La novia regresa para participar en un macabro juego de escondite con su nueva familia política. La tradición demoníaca continúa en esta sangrienta secuela.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001794",
+    "titulo": "CHAO: LA SIRENA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001794?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIME"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Ambientada en un mundo futurista donde humanos y sirenas coexisten, esta alocada comedia romántica con toques de fantasía sigue a un tranquilo oficinista llamado Stephan, cuya rutina se ve alterada cuando la princesa sirena ChaO le propone matrimonio inesperadamente. Un amor inesperado y genuino comenzará a forjarse.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -356,6 +401,21 @@
     ]
   },
   {
+    "id": "ho00001796",
+    "titulo": "EN LA ZONA GRIS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001796?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ACCION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "En la Zona Gris demuestra que las misiones más peligrosas ocurren… entre el blanco y el negro.\r\nUn equipo de operativos que vive en las sombras acepta una misión suicida: recuperar una fortuna robada a uno de los hombres más peligrosos del mundo. Pero cuando el plan se desmorona, el golpe perfecto se transforma en una guerra de engaños, poder y supervivencia.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
     "id": "ho00001761",
     "titulo": "EXIT 8",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001761?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -396,6 +456,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Tras la resurrección récord de EVIL DEAD: EL DESPERTAR, el guionista y director Lee Cronin vuelve a una de las historias de terror más icónicas de todos los tiempos con una reinterpretación audaz y retorcida: LA POSESIÓN DE LA MOMIA. La joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años después, la familia devastada queda en shock cuando la niña regresa, y lo que debería ser un reencuentro feliz se convierte en una pesadilla viviente. La película está protagonizada por Jack Reynor, Laia Costa, May Calamawy y Natalie Grace, con Veronica Falcón. Escrita y dirigida por Lee Cronin, y producida por James Wan, Jason Blum y John Keville. Los productores ejecutivos son Michael Clear, Judson Scott, Macdara Kelleher y Lee Cronin.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001795",
+    "titulo": "LAS OVEJAS DETECTIVES",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001795?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "El pastor George, lee misterios de asesinatos a sus ovejas. Cuando lo matan, las ovejas se dan cuenta de que ha sido asesinado y se disponen a resolver el caso por sí mismas, aventurándose desde su pradera hacia el complejo mundo humano.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -471,6 +546,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Tras concluir la ceremonia de apertura de la Tempestad de la Federación del Reino Demonio, Rimuru y sus compañeros son invitados por la Emperadora Celestial Hermesia, de la gran nación élfica —la Dinastía Magi Salion—, a visitar su isla turística privada. Mientras el grupo disfruta de sus breves vacaciones, aparece una misteriosa mujer llamada Yura. Un nuevo incidente se desarrolla con el infinito mar azul como telón de fondo.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001792",
+    "titulo": "ZONA DE RIESGO",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001792?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ACCION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Los obreros de una construcción en Londres desentierran una bomba de la Segunda Guerra Mundial sin explotar, lo que obliga a la población a evacuar la ciudad. Unos ladrones oportunistas, aprovechan el caos para llevar a cabo un elaborado atraco.",
     "cadenas_ids": [
       "cineplanet"
     ]
