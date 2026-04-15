@@ -200,6 +200,22 @@
     ]
   },
   {
+    "id": "bluey-en-cines-diversion-2026",
+    "titulo": "Bluey En Cines: Diversion [2026]",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014706?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Animación",
+      "Familiar"
+    ],
+    "duracion_min": 111,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-04-23",
+    "sinopsis": "Bluey en Cines: Momentos de Diversión con Amigos es una hora de diversión que incluye ocho episodios de las tres temporadas de la serie, ¡todos celebrando momentos de juego con amigos y familiares! La compilación muestra algunos de los juegos favoritos de Bluey y resalta momentos especiales de amistad, todos repletos de alegría y risas.",
+    "cadenas_ids": [
+      "cinemark"
+    ]
+  },
+  {
     "id": "si-vas-para-chile",
     "titulo": "Si Vas Para Chile",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014705?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -356,21 +372,6 @@
     ]
   },
   {
-    "id": "ho00001779",
-    "titulo": "DRAMA",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001779?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Profundamente enamorados y en plena cuenta regresiva para el día de su boda, la pareja ve su \r\nfelicidad puesta a prueba cuando salen a la luz secretos que jamás habrían imaginado.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001753",
     "titulo": "EL BUFON 2",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001753?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -396,6 +397,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Sigue la lucha de Miranda Priestly contra Emily Charlton, su ex asistente convertida en ejecutiva rival, mientras compiten por los ingresos por publicidad en medio de la decadencia de los medios impresos y Miranda se acerca a la jubilación.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001779",
+    "titulo": "EL DRAMA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001779?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Profundamente enamorados y en plena cuenta regresiva para el día de su boda, la pareja ve su \r\nfelicidad puesta a prueba cuando salen a la luz secretos que jamás habrían imaginado.",
     "cadenas_ids": [
       "cineplanet"
     ]
