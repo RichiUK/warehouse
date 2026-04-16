@@ -1,23 +1,5 @@
 [
   {
-    "id": "hoppers",
-    "titulo": "HOPPERS: OPERACION CASTOR",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00013331?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Animación",
-      "Familiar"
-    ],
-    "duracion_min": 105,
-    "clasificacion": "TE",
-    "fecha_estreno": "2026-03-05",
-    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet",
-      "muvix"
-    ]
-  },
-  {
     "id": "proyecto-fin-del-mundo",
     "titulo": "Proyecto Fin Del Mundo",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014519?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -54,20 +36,20 @@
     ]
   },
   {
-    "id": "instinto-implacable",
-    "titulo": "Instinto Implacable",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014636?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "el-drama",
+    "titulo": "El Drama",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014730?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Acción",
-      "Suspenso"
+      "Drama"
     ],
-    "duracion_min": 93,
+    "duracion_min": 105,
     "clasificacion": "MA+14",
-    "fecha_estreno": "2026-04-09",
-    "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
+    "fecha_estreno": "2026-04-16",
+    "sinopsis": "Profundamente enamorados y en plena cuenta regresiva para el día de su boda, la pareja ve su felicidad puesta a prueba cuando salen a la luz secretos que jamás habrían imaginado.",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet"
+      "cineplanet",
+      "muvix"
     ]
   },
   {
@@ -84,7 +66,25 @@
     "sinopsis": "En esta poco convencional historia de amor, la joven sombrerera Sophie, convertida en una mujer de 90 años por una vanidosa bruja, cruza su destino con Howl, un mago mitad-hombre mitad-ave que viaja a bordo de un castillo ambulante. Para acabar con la maldición que le confiere el aspecto de una anciana, Sophie se embarca en esta fortaleza mágica donde conoce a Markl, el aprendiz de Howl, y a un impetuoso demonio de fuego llamado Calcifer, con quienes unirá fuerzas para detener una guerra que amenaza con destruir el mundo.",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet"
+      "cineplanet",
+      "muvix"
+    ]
+  },
+  {
+    "id": "la-posesion-de-la-momia",
+    "titulo": "La Posesion De La Momia",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014738?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Terror"
+    ],
+    "duracion_min": 135,
+    "clasificacion": "MA+18",
+    "fecha_estreno": "2026-04-16",
+    "sinopsis": "Tras la resurrección récord de EVIL DEAD: EL DESPERTAR, el guionista y director Lee Cronin vuelve a una de las historias de terror más icónicas de todos los tiempos con una reinterpretación audaz y retorcida: LA POSESIÓN DE LA MOMIA.\r\n\r\nLa joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años después, la familia devastada queda en shock cuando la niña regresa, y lo que debería ser un reencuentro feliz se convierte en una pesadilla viviente. La película está protagonizada por Jack Reynor, Laia Costa, May Calamawy y Natalie Grace, con Veronica Falcón. Escrita y dirigida por Lee Cronin, y producida por James Wan, Jason Blum y John Keville. Los productores ejecutivos son Michael Clear, Judson Scott, Macdara Kelleher y Lee Cronin.\r\n",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet",
+      "muvix"
     ]
   },
   {
@@ -119,19 +119,21 @@
     ]
   },
   {
-    "id": "la-misteriosa-mirada-del-flamenco",
-    "titulo": "La Misteriosa Mirada Del Flamenco",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014522?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "hoppers",
+    "titulo": "HOPPERS: OPERACION CASTOR",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00013331?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Drama"
+      "Animación",
+      "Familiar"
     ],
-    "duracion_min": 109,
-    "clasificacion": "MA+14",
-    "fecha_estreno": "2026-03-12",
-    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
+    "duracion_min": 105,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-03-05",
+    "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet"
+      "cineplanet",
+      "muvix"
     ]
   },
   {
@@ -184,22 +186,6 @@
     ]
   },
   {
-    "id": "buena-suerte-diviertete",
-    "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00012644?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Comedia"
-    ],
-    "duracion_min": 135,
-    "clasificacion": "MA+14",
-    "fecha_estreno": "2026-04-09",
-    "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
-    ]
-  },
-  {
     "id": "bluey-en-cines-diversion-2026",
     "titulo": "Bluey En Cines: Diversion [2026]",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014706?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -216,50 +202,50 @@
     ]
   },
   {
-    "id": "si-vas-para-chile",
-    "titulo": "Si Vas Para Chile",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014705?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "el-mago-del-kremlin",
+    "titulo": "El Mago Del Kremlin",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014739?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Documental"
-    ],
-    "duracion_min": 70,
-    "clasificacion": "TE+7",
-    "fecha_estreno": "2026-04-09",
-    "sinopsis": "En el año 2021, el norte de Chile marcó un hito con la violenta marcha anti-inmigrantes junto a la quema de carpas y pertenencias de familias extranjeras en Iquique. Este relato coral es el testimonio vivo de quienes siguen ingresando al país a pesar de las adversidades, y de los habitantes del territorio que viven en medio de un creciente conflicto social, la crudeza del desierto de Atacama y del Altiplano andino.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "cumbres-borrascosas",
-    "titulo": "Cumbres Borrascosas",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014329?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Romance",
       "Drama"
     ],
-    "duracion_min": 136,
+    "duracion_min": 145,
     "clasificacion": "MA+14",
-    "fecha_estreno": "2026-02-12",
-    "sinopsis": "Una imaginación audaz y original de una de las historias de amor más grandes de todos los tiempos, “Cumbres Borrascosas” de Emerald Fennell está protagonizada por Margot Robbie como Cathy y Jacob Elordi como Heathcliff, cuya pasión prohibida se transforma de romántica a intoxicante en un épico relato de deseo, amor y locura.",
+    "fecha_estreno": "2026-04-16",
+    "sinopsis": "En la Rusia posterior al colapso soviético, un asesor político brillante (Paul Dano) se convierte en el arquitecto detrás de la imagen pública de un nuevo líder: Vladimir Putin.\r\nA medida que el poder crece, también lo hace la maquinaria que lo sostiene —medios, narrativa y control revelando el lado más oscuro y estratégico del poder contemporáneo.",
     "cadenas_ids": [
       "cinemark",
       "cineplanet"
     ]
   },
   {
-    "id": "jugada-maestra",
-    "titulo": "Jugada Maestra",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00010421?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "la-novia-del-diablo",
+    "titulo": "La Novia Del Diablo",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014726?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Comedia",
-      "Acción"
+      "Terror",
+      "Suspenso"
     ],
-    "duracion_min": 105,
+    "duracion_min": 116,
+    "clasificacion": "MA+18",
+    "fecha_estreno": "2026-04-16",
+    "sinopsis": "El hogar de Echa y Ariel era inicialmente armonioso. Sin embargo, su vida cambió y se volvió aterradora después de que Echa fuera perturbada por un genio llamado Jin Dasim, quien se enamoró de ella.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet",
+      "muvix"
+    ]
+  },
+  {
+    "id": "las-catadoras",
+    "titulo": "Las Catadoras",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014633?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Drama"
+    ],
+    "duracion_min": 123,
     "clasificacion": "MA+14",
-    "fecha_estreno": "2026-03-26",
-    "sinopsis": "Protagonizada por Glen Powell y Margaret Qualley, esta es la historia de Becket Redfellow, expulsado de su escandalosamente rica familia y dispuesto a todo para recuperar su herencia, incluso eliminar a quienes se interpongan en su camino. ",
+    "fecha_estreno": "2026-04-16",
+    "sinopsis": "Otoño de 1943. Rosa huye del Berlín bombardeado, llega a un pequeño pueblo aislado cerca de la frontera oriental. Allí viven sus suegros y donde su marido, que lucha en el frente, le dijo que se refugiara mientras esperaba el fin de la guerra y su regreso a casa. Rosa pronto descubrirá que dentro del bosque que limita el pueblo se esconde un secreto: el cuartel general de Hitler, la Guarida del Lobo. El Führer ve enemigos por todas partes, ser envenenado es su obsesión. Una mañana, al amanecer, Rose es recogida junto a otras jóvenes del pueblo para probar la comida que le han preparado. Divididas entre el miedo a morir y el hambre que las devora, las “catadoras” formarán alianzas, amistades y acuerdos secretos. Rosa lucha por ser aceptada, pero cuando finalmente supera la desconfianza de las “catadoras”, un acontecimiento la hará sentir traidora: la llegada de un oficial de las SS, que, contra toda razón, despierta en ella el sentimiento de amor. O simplemente la necesidad de sentirse viva, a pesar de todo lo que la rodea..",
     "cadenas_ids": [
       "cinemark"
     ]
@@ -327,16 +313,16 @@
     ]
   },
   {
-    "id": "ho00001771",
-    "titulo": "BODA SANGRIENTA 2",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001771?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "ho00001740",
+    "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001740?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "TERROR"
+      "CIENCIA FICCION"
     ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
-    "sinopsis": "La novia regresa para participar en un macabro juego de escondite con su nueva familia política. La tradición demoníaca continúa en esta sangrienta secuela.",
+    "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -402,21 +388,6 @@
     ]
   },
   {
-    "id": "ho00001779",
-    "titulo": "EL DRAMA",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001779?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Profundamente enamorados y en plena cuenta regresiva para el día de su boda, la pareja ve su \r\nfelicidad puesta a prueba cuando salen a la luz secretos que jamás habrían imaginado.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001796",
     "titulo": "EN LA ZONA GRIS",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001796?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -447,31 +418,31 @@
     ]
   },
   {
-    "id": "ho00001715",
-    "titulo": "LA NOVIA DEL DIABLO",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001715?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "ho00001784",
+    "titulo": "INSTINTO IMPLACABLE",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001784?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "TERROR"
+      "ACCION"
     ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
-    "sinopsis": "El hogar de Echa y Ariel era inicialmente armonioso. Sin embargo, su vida cambió y se volvió aterradora después de que Echa fuera perturbada por un genio llamado Jin Dasim, quien se enamoró de ella.",
+    "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
     "cadenas_ids": [
       "cineplanet"
     ]
   },
   {
-    "id": "ho00001777",
-    "titulo": "LA POSESION DE LA MOMIA",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001777?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "ho00001754",
+    "titulo": "LA MISTERIOSA MIRADA DEL FLAMENCO",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001754?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "TERROR"
+      "DRAMA"
     ],
     "duracion_min": 0,
     "clasificacion": "TE",
     "fecha_estreno": "",
-    "sinopsis": "Tras la resurrección récord de EVIL DEAD: EL DESPERTAR, el guionista y director Lee Cronin vuelve a una de las historias de terror más icónicas de todos los tiempos con una reinterpretación audaz y retorcida: LA POSESIÓN DE LA MOMIA. La joven hija de un periodista desaparece en el desierto sin dejar rastro. Ocho años después, la familia devastada queda en shock cuando la niña regresa, y lo que debería ser un reencuentro feliz se convierte en una pesadilla viviente. La película está protagonizada por Jack Reynor, Laia Costa, May Calamawy y Natalie Grace, con Veronica Falcón. Escrita y dirigida por Lee Cronin, y producida por James Wan, Jason Blum y John Keville. Los productores ejecutivos son Michael Clear, Judson Scott, Macdara Kelleher y Lee Cronin.",
+    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -487,21 +458,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "El pastor George, lee misterios de asesinatos a sus ovejas. Cuando lo matan, las ovejas se dan cuenta de que ha sido asesinado y se disponen a resolver el caso por sí mismas, aventurándose desde su pradera hacia el complejo mundo humano.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001783",
-    "titulo": "MATAPANKI",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001783?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "COMEDIA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Ricardo es un punk que pasa sus días tomando y yendo a tocatas con sus dos mejores amigos. A pesar de su apariencia ruda, tiene un lado tierno: cuida a su abuela. Tras probar un extraño copete llamado Matapanki, adquiere superpoderes que se activan cada vez que bebe alcohol. Decidido a cambiar la sociedad, se lanza a la acción, pero todo se descontrola cuando, tras un error brutal, desata un conflicto mundial en su contra.",
     "cadenas_ids": [
       "cineplanet"
     ]
