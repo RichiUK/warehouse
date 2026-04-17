@@ -104,6 +104,23 @@
     ]
   },
   {
+    "id": "billie-eilish-hit-me-hard",
+    "titulo": "BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LI",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014745?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Documental",
+      "Concierto"
+    ],
+    "duracion_min": 114,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-05-07",
+    "sinopsis": "Grabado durante su gira mundial completamente agotada, BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LIVE IN 3D) lleva a la pantalla grande una nueva e innovadora experiencia de concierto de una de las artistas más celebradas y exitosas de su generación. Presentada en un inmersivo 3D, la película está dirigida por los ganadores del Premio de la Academia® James Cameron y Billie Eilish.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "the-amazing-digital-circus",
     "titulo": "The Amazing Digital Circus",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014724?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -278,21 +295,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Un escritor de terror visita una posada irlandesa para esparcir las cenizas de sus padres, sin saber que se dice que la propiedad está embrujada por una bruja.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001791",
-    "titulo": "BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LI",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001791?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CONCIERTO"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Grabado durante su gira mundial completamente agotada, BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LIVE IN 3D) lleva a la pantalla grande una nueva e innovadora experiencia de concierto de una de las artistas más celebradas y exitosas de su generación. Presentada en un inmersivo 3D, la película está dirigida por los ganadores del Premio de la Academia® James Cameron y Billie Eilish. Próximament",
     "cadenas_ids": [
       "cineplanet"
     ]
