@@ -210,7 +210,7 @@
       "Animación",
       "Familiar"
     ],
-    "duracion_min": 111,
+    "duracion_min": 55,
     "clasificacion": "TE",
     "fecha_estreno": "2026-04-23",
     "sinopsis": "Bluey en Cines: Momentos de Diversión con Amigos es una hora de diversión que incluye ocho episodios de las tres temporadas de la serie, ¡todos celebrando momentos de juego con amigos y familiares! La compilación muestra algunos de los juegos favoritos de Bluey y resalta momentos especiales de amistad, todos repletos de alegría y risas.",
@@ -340,6 +340,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Ambientada en un mundo futurista donde humanos y sirenas coexisten, esta alocada comedia romántica con toques de fantasía sigue a un tranquilo oficinista llamado Stephan, cuya rutina se ve alterada cuando la princesa sirena ChaO le propone matrimonio inesperadamente. Un amor inesperado y genuino comenzará a forjarse.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001798",
+    "titulo": "CUERPO CELESTE",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001798?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DRAMA"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "En el verano de 1990, durante la transición a la democracia, una familia comienza a desmoronarse. A sus quince años, una adolescente busca su lugar en un mundo donde todo lo que conocía se desvanece.",
     "cadenas_ids": [
       "cineplanet"
     ]
