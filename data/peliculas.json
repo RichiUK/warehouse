@@ -154,23 +154,6 @@
     ]
   },
   {
-    "id": "bts-world-tour-arirang-in-japan",
-    "titulo": "BTS WORLD TOUR 'ARIRANG' IN JAPAN: LIVE VIEWING",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014517?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Concierto",
-      "Live Viewing"
-    ],
-    "duracion_min": 180,
-    "clasificacion": "TE+7",
-    "fecha_estreno": "2026-04-18",
-    "sinopsis": "La realeza del pop, BTS, regresa a los escenarios internacionales con su esperada gira mundial, la primera a gran escala en casi cuatro años. La gira recorrerá 34 ciudades en todo el mundo, con un total de 82 conciertos, comenzando con presentaciones emblemáticas en Goyang (Corea del Sur) y Tokio (Japón), lo que representa un récord histórico en cuanto a fechas de gira para el género del K-pop. \r\n\r\nNo te pierdas la oportunidad de vivir dos conciertos completos, transmitidos en vivo en salas de cine de todo el mundo.\r\n\r\nBajo el título ARIRANG, la gira mundial de BTS presenta su quinto álbum completo, que refleja la identidad del grupo desde una perspectiva honesta y emociones universales como el anhelo y el amor profundo, plasmadas en una música que los define en sus propios términos.\r\n\r\nCon un espectacular diseño del escenario en 360 grados, el espectáculo ofrece una experiencia inmersiva que coloca al público en el centro mismo del show. Disfruta de los momentos más electrizantes del esperado regreso artístico de BTS en los cines de todo el mundo, el 11 de abril desde Goyang y el 18 de abril desde Tokio.",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
-    ]
-  },
-  {
     "id": "power-to-the-people-john-y-yoko",
     "titulo": "Power To The People: John Y Yoko",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014652?referenceScheme=HeadOffice&allowPlaceHolder=true",
