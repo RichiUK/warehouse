@@ -88,6 +88,23 @@
     ]
   },
   {
+    "id": "michael",
+    "titulo": "Michael",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014684?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Drama",
+      "Músical"
+    ],
+    "duracion_min": 127,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-23",
+    "sinopsis": "Michael es la representación cinematográfica de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido jamás.\r\n\r\nLa película narra la vida de Michael Jackson más allá de la música, recorriendo su trayectoria desde el descubrimiento de su extraordinario talento como líder de los Jackson Five hasta convertirse en un artista visionario cuya ambición creativa le impulsó a convertirse en el artista más grande del mundo.\r\n\r\nDestacando tanto su vida fuera del escenario como algunas de las actuaciones más emblemáticas de sus inicios en solitario, la película ofrece al público un asiento en primera fila para ver a Michael Jackson como nunca antes. Aquí es donde comienza su historia.\r\n",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "diablo-viste-a-la-moda-2",
     "titulo": "Diablo Viste A La Moda 2",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014699?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -105,7 +122,7 @@
   },
   {
     "id": "billie-eilish-hit-me-hard",
-    "titulo": "BILLIE EILISH - HIT ME HARD AND SOFT: THE TOUR (LI",
+    "titulo": "BILLIE EILISH HIT ME HARD AND SOFT TOUR IN 3D",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014745?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "Documental",
@@ -328,7 +345,7 @@
   },
   {
     "id": "ho00001794",
-    "titulo": "CHAO: LA SIRENA",
+    "titulo": "CHAO LA SIRENA",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001794?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
       "ANIME"
@@ -517,21 +534,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Rick, un cantante de bodas venido a menos, y Danny, una estrella de una boy band en decadencia, forjan una amistad gracias a la música y a una improvisada sesión nocturna. Cuando Danny convierte la canción de Rick en un éxito, Rick se propone recuperar el reconocimiento que cree merecer.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001788",
-    "titulo": "MICHAEL",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001788?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Michael es la representación cinematográfica de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido jamás. La película narra la vida de Michael Jackson más allá de la música, recorriendo su trayectoria desde el descubrimiento de su extraordinario talento como líder de los Jackson Five hasta convertirse en un artista visionario cuya ambición creativa le impulsó a convertirse en el artista más grande del mundo. Destacando tanto su vida fuera del escenario como algunas de las actuaciones más emblemáticas de sus inicios en solitario, la película ofrece al público un asiento en primera fila para ver a Michael Jackson como nunca antes. Aquí es donde comienza su historia.",
     "cadenas_ids": [
       "cineplanet"
     ]
