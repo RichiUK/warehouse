@@ -18,6 +18,24 @@
     ]
   },
   {
+    "id": "el-bufon-2",
+    "titulo": "El Bufon 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014399?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Terror",
+      "Horror"
+    ],
+    "duracion_min": 87,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-04-23",
+    "sinopsis": "En la noche de Halloween, una joven ilusionista se enfrenta a su prueba más letal cuando cruza su camino con El Bufón, una entidad asesina que convierte trucos y juegos en trampas mortales. Cada ilusión es un engaño, cada escape una mentira. Para sobrevivir, deberá usar su ingenio y habilidades antes de que el espectáculo termine… y el telón caiga para siempre.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet",
+      "muvix"
+    ]
+  },
+  {
     "id": "super-mario-galaxy",
     "titulo": "SUPER MARIO GALAXY: LA PELÍCULA",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014521?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -46,6 +64,23 @@
     "clasificacion": "MA+14",
     "fecha_estreno": "2026-04-16",
     "sinopsis": "Profundamente enamorados y en plena cuenta regresiva para el día de su boda, la pareja ve su felicidad puesta a prueba cuando salen a la luz secretos que jamás habrían imaginado.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "michael",
+    "titulo": "Michael",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014684?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Drama",
+      "Músical"
+    ],
+    "duracion_min": 127,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-23",
+    "sinopsis": "Michael es la representación cinematográfica de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido jamás.\r\n\r\nLa película narra la vida de Michael Jackson más allá de la música, recorriendo su trayectoria desde el descubrimiento de su extraordinario talento como líder de los Jackson Five hasta convertirse en un artista visionario cuya ambición creativa le impulsó a convertirse en el artista más grande del mundo.\r\n\r\nDestacando tanto su vida fuera del escenario como algunas de las actuaciones más emblemáticas de sus inicios en solitario, la película ofrece al público un asiento en primera fila para ver a Michael Jackson como nunca antes. Aquí es donde comienza su historia.\r\n",
     "cadenas_ids": [
       "cinemark",
       "cineplanet",
@@ -85,23 +120,6 @@
       "cinemark",
       "cineplanet",
       "muvix"
-    ]
-  },
-  {
-    "id": "michael",
-    "titulo": "Michael",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014684?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Drama",
-      "Músical"
-    ],
-    "duracion_min": 127,
-    "clasificacion": "TE+7",
-    "fecha_estreno": "2026-04-23",
-    "sinopsis": "Michael es la representación cinematográfica de la vida y el legado de uno de los artistas más influyentes que el mundo haya conocido jamás.\r\n\r\nLa película narra la vida de Michael Jackson más allá de la música, recorriendo su trayectoria desde el descubrimiento de su extraordinario talento como líder de los Jackson Five hasta convertirse en un artista visionario cuya ambición creativa le impulsó a convertirse en el artista más grande del mundo.\r\n\r\nDestacando tanto su vida fuera del escenario como algunas de las actuaciones más emblemáticas de sus inicios en solitario, la película ofrece al público un asiento en primera fila para ver a Michael Jackson como nunca antes. Aquí es donde comienza su historia.\r\n",
-    "cadenas_ids": [
-      "cinemark",
-      "cineplanet"
     ]
   },
   {
@@ -166,8 +184,7 @@
     "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet",
-      "muvix"
+      "cineplanet"
     ]
   },
   {
@@ -219,37 +236,35 @@
     ]
   },
   {
-    "id": "el-mago-del-kremlin",
-    "titulo": "El Mago Del Kremlin",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014739?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "chao-la-sirena",
+    "titulo": "Chao: La Sirena",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014763?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Drama"
+      "Anime",
+      "Romance"
     ],
-    "duracion_min": 145,
-    "clasificacion": "MA+14",
-    "fecha_estreno": "2026-04-16",
-    "sinopsis": "En la Rusia posterior al colapso soviético, un asesor político brillante (Paul Dano) se convierte en el arquitecto detrás de la imagen pública de un nuevo líder: Vladimir Putin.\r\nA medida que el poder crece, también lo hace la maquinaria que lo sostiene —medios, narrativa y control revelando el lado más oscuro y estratégico del poder contemporáneo.",
+    "duracion_min": 90,
+    "clasificacion": "TE",
+    "fecha_estreno": "2026-04-23",
+    "sinopsis": "Ambientada en un mundo futurista donde humanos y sirenas coexisten, esta alocada comedia romántica con toques de fantasía sigue a un tranquilo oficinista llamado Stephan, cuya rutina se ve alterada cuando la princesa sirena ChaO le propone matrimonio inesperadamente. Un amor inesperado y genuino comenzará a forjarse.",
     "cadenas_ids": [
       "cinemark",
       "cineplanet"
     ]
   },
   {
-    "id": "la-novia-del-diablo",
-    "titulo": "La Novia Del Diablo",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014726?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "id": "cuerpo-celeste",
+    "titulo": "Cuerpo Celeste",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014766?referenceScheme=HeadOffice&allowPlaceHolder=true",
     "genero": [
-      "Terror",
-      "Suspenso"
+      "Drama"
     ],
-    "duracion_min": 116,
-    "clasificacion": "MA+18",
-    "fecha_estreno": "2026-04-16",
-    "sinopsis": "El hogar de Echa y Ariel era inicialmente armonioso. Sin embargo, su vida cambió y se volvió aterradora después de que Echa fuera perturbada por un genio llamado Jin Dasim, quien se enamoró de ella.",
+    "duracion_min": 96,
+    "clasificacion": "TE+7",
+    "fecha_estreno": "2026-04-23",
+    "sinopsis": "En el verano de 1990, durante la transición a la democracia, una familia comienza a desmoronarse. A sus quince años, una adolescente busca su lugar en un mundo donde todo lo que conocía se desvanece.",
     "cadenas_ids": [
-      "cinemark",
-      "cineplanet",
-      "muvix"
+      "cinemark"
     ]
   },
   {
@@ -263,22 +278,6 @@
     "clasificacion": "MA+14",
     "fecha_estreno": "2026-04-16",
     "sinopsis": "Otoño de 1943. Rosa huye del Berlín bombardeado, llega a un pequeño pueblo aislado cerca de la frontera oriental. Allí viven sus suegros y donde su marido, que lucha en el frente, le dijo que se refugiara mientras esperaba el fin de la guerra y su regreso a casa. Rosa pronto descubrirá que dentro del bosque que limita el pueblo se esconde un secreto: el cuartel general de Hitler, la Guarida del Lobo. El Führer ve enemigos por todas partes, ser envenenado es su obsesión. Una mañana, al amanecer, Rose es recogida junto a otras jóvenes del pueblo para probar la comida que le han preparado. Divididas entre el miedo a morir y el hambre que las devora, las “catadoras” formarán alianzas, amistades y acuerdos secretos. Rosa lucha por ser aceptada, pero cuando finalmente supera la desconfianza de las “catadoras”, un acontecimiento la hará sentir traidora: la llegada de un oficial de las SS, que, contra toda razón, despierta en ella el sentimiento de amor. O simplemente la necesidad de sentirse viva, a pesar de todo lo que la rodea..",
-    "cadenas_ids": [
-      "cinemark"
-    ]
-  },
-  {
-    "id": "scream-7",
-    "titulo": "Scream 7",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014397?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "Terror",
-      "Horror"
-    ],
-    "duracion_min": 114,
-    "clasificacion": "MA+14",
-    "fecha_estreno": "2026-02-26",
-    "sinopsis": "Cuando un nuevo asesino Ghostface emerge en el tranquilo pueblo donde Sidney Prescott (Neve Campbell) ha construido una nueva vida, sus peores temores se hacen realidad cuando su hija (Isabel May) se convierte en el siguiente objetivo. Decidida a proteger a su familia, Sidney deberá enfrentar los horrores de su pasado para poner fin al derramamiento de sangre de una vez por todas.",
     "cadenas_ids": [
       "cinemark"
     ]
@@ -329,51 +328,6 @@
     ]
   },
   {
-    "id": "ho00001740",
-    "titulo": "BUENA SUERTE DIVIÉRTETE NO MUERAS",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001740?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "CIENCIA FICCION"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Un hombre que afirma venir del futuro llega a un pequeño restaurante en Los Ángeles. Su misión: reclutar a los humanos descontentos —una combinación exacta e inesperada— para que, en el transcurso de una noche, formen parte de una misión global: detener a una inteligencia artificial que se ha vuelto rebelde y amenaza la supervivencia del mundo",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001794",
-    "titulo": "CHAO LA SIRENA",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001794?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "ANIME"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "Ambientada en un mundo futurista donde humanos y sirenas coexisten, esta alocada comedia romántica con toques de fantasía sigue a un tranquilo oficinista llamado Stephan, cuya rutina se ve alterada cuando la princesa sirena ChaO le propone matrimonio inesperadamente. Un amor inesperado y genuino comenzará a forjarse.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001798",
-    "titulo": "CUERPO CELESTE",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001798?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "En el verano de 1990, durante la transición a la democracia, una familia comienza a desmoronarse. A sus quince años, una adolescente busca su lugar en un mundo donde todo lo que conocía se desvanece.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001785",
     "titulo": "DAVID",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001785?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -419,21 +373,6 @@
     ]
   },
   {
-    "id": "ho00001753",
-    "titulo": "EL BUFON 2",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001753?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "TERROR"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "En la noche de Halloween, una joven ilusionista se enfrenta a su prueba más letal cuando cruza su camino con El Bufón, una entidad asesina que convierte trucos y juegos en trampas mortales. Cada ilusión es un engaño, cada escape una mentira. Para sobrevivir, deberá usar su ingenio y habilidades antes de que el espectáculo termine… y el telón caiga para siempre.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
     "id": "ho00001789",
     "titulo": "EL DIABLO VISTE A LA MODA 2",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001789?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -474,36 +413,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Un hombre (interpretado por Kazunari Ninomiya) queda atrapado en un pasillo subterráneo de metro que se repite infinitamente, con la misión de encontrar la “Salida 8”. Las reglas son claras: cada vez que detecte algo extraño (una anomalía), debe regresar al inicio; si no lo hace, se permite avanzar. Pero basta un solo error para comenzar otra vez. El suspenso crece con cada loop: ¿logrará alguna vez escapar de este corredor infinito y perturbador?",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001784",
-    "titulo": "INSTINTO IMPLACABLE",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001784?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "ACCION"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La vida pacífica de Nikki, ex heroína de guerra (Milla Jovovich), se ve destrozada cuando su hija es secuestrada por una red siniestra de tráfico sexual. Inmersa en el submundo criminal, mientras es perseguida por la policía y el ejército, ella debe luchar por cualquier medio posible para rescatar a su hija.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001754",
-    "titulo": "LA MISTERIOSA MIRADA DEL FLAMENCO",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001754?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "DRAMA"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "La historia nos sitúa a comienzos de los años 80, en el desierto chileno, Lidia, una niña de once años, crece en el seno de una amorosa familia queer marginada en un polvoriento y hostil pueblo minero. Son culpados por una misteriosa enfermedad que comienza a propagarse, se dice que se transmite con una sola mirada, cuando un hombre se enamora de otro. En este western moderno, Lidia emprende una búsqueda de venganza, enfrentándose a la violencia, el miedo y el odio, donde la familia es su único refugio y el amor podría ser el verdadero peligro.",
     "cadenas_ids": [
       "cineplanet"
     ]
