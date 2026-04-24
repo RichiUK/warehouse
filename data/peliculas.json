@@ -156,6 +156,22 @@
     ]
   },
   {
+    "id": "mortal-kombat-2",
+    "titulo": "Mortal Kombat 2",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014771?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "Acción"
+    ],
+    "duracion_min": 116,
+    "clasificacion": "MA+14",
+    "fecha_estreno": "2026-05-07",
+    "sinopsis": "De la mano de New Line Cinema llega la más reciente y explosiva entrega de la exitosa franquicia de videojuegos, en todo su brutal esplendor: Mortal Kombat II. Esta vez, los campeones favoritos de los fans —ahora acompañados por el mismísimo Johnny Cage— se enfrentan entre sí en la batalla definitiva, sangrienta y sin reglas, para derrotar el oscuro dominio de Shao Kahn, que amenaza con destruir el Reino de la Tierra y a sus defensores.",
+    "cadenas_ids": [
+      "cinemark",
+      "cineplanet"
+    ]
+  },
+  {
     "id": "the-amazing-digital-circus",
     "titulo": "The Amazing Digital Circus",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00014724?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -184,7 +200,8 @@
     "sinopsis": "Una amante de los animales aprovecha la oportunidad de utilizar una tecnología que coloca su conciencia en un castor robótico, descubriendo misterios dentro del mundo animal que van más allá de lo que podría haber imaginado.",
     "cadenas_ids": [
       "cinemark",
-      "cineplanet"
+      "cineplanet",
+      "muvix"
     ]
   },
   {
@@ -264,7 +281,8 @@
     "fecha_estreno": "2026-04-23",
     "sinopsis": "En el verano de 1990, durante la transición a la democracia, una familia comienza a desmoronarse. A sus quince años, una adolescente busca su lugar en un mundo donde todo lo que conocía se desvanece.",
     "cadenas_ids": [
-      "cinemark"
+      "cinemark",
+      "cineplanet"
     ]
   },
   {
@@ -443,21 +461,6 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Rick, un cantante de bodas venido a menos, y Danny, una estrella de una boy band en decadencia, forjan una amistad gracias a la música y a una improvisada sesión nocturna. Cuando Danny convierte la canción de Rick en un éxito, Rick se propone recuperar el reconocimiento que cree merecer.",
-    "cadenas_ids": [
-      "cineplanet"
-    ]
-  },
-  {
-    "id": "ho00001778",
-    "titulo": "MORTAL KOMBAT 2",
-    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001778?referenceScheme=HeadOffice&allowPlaceHolder=true",
-    "genero": [
-      "ACCION"
-    ],
-    "duracion_min": 0,
-    "clasificacion": "TE",
-    "fecha_estreno": "",
-    "sinopsis": "De la mano de New Line Cinema llega la más reciente y explosiva entrega de la exitosa franquicia de videojuegos, en todo su brutal esplendor: Mortal Kombat II. Esta vez, los campeones favoritos de los fans —ahora acompañados por el mismísimo Johnny Cage— se enfrentan entre sí en la batalla definitiva, sangrienta y sin reglas, para derrotar el oscuro dominio de Shao Kahn, que amenaza con destruir el Reino de la Tierra y a sus defensores.",
     "cadenas_ids": [
       "cineplanet"
     ]
