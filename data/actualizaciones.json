@@ -1,22 +1,22 @@
 [
   {
     "cadena_id": "cinemark",
-    "fecha_actualizacion": "2026-04-24T10:16:49.721Z",
+    "fecha_actualizacion": "2026-04-25T09:43:39.498Z",
     "estado": "ok"
   },
   {
     "cadena_id": "cinepolis",
-    "fecha_actualizacion": "2026-04-24T10:16:54.076Z",
+    "fecha_actualizacion": "2026-04-25T09:43:41.256Z",
     "estado": "sin_datos"
   },
   {
     "cadena_id": "cineplanet",
-    "fecha_actualizacion": "2026-04-24T10:17:08.515Z",
+    "fecha_actualizacion": "2026-04-25T09:43:56.931Z",
     "estado": "ok"
   },
   {
     "cadena_id": "muvix",
-    "fecha_actualizacion": "2026-04-24T10:17:18.471Z",
+    "fecha_actualizacion": "2026-04-25T09:44:06.050Z",
     "estado": "ok"
   }
 ]

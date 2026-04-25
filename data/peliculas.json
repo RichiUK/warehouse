@@ -436,6 +436,36 @@
     ]
   },
   {
+    "id": "ho00001815",
+    "titulo": "LA CHICA QUE SALTABA A TRAVÉS DEL TIEMPO (2006)",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001815?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Makoto, una estudiante despreocupada, descubre que tiene el poder de viajar en el tiempo. Al principio, lo usa para evitar errores, repetir instantes perfectos y esquivar cualquier problema… como si la vida tuviera un botón de “reset”.\r\n\r\nPero cada salto deja una huella.\r\n\r\nLo que parecía un regalo pronto se convierte en una cuenta regresiva emocional, donde las decisiones pesan más, los sentimientos se vuelven inevitables y el tiempo ya no está de su lado.\r\n\r\nDirigida por Mamoru Hosoda, esta historia entrañable y agridulce celebra dos décadas conquistando corazones con un mensaje tan simple como poderoso: hay momentos que, por más que queramos, solo se viven una vez.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001813",
+    "titulo": "LA VIDA QUE VENDRA",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001813?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DOCUMENTAL"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La algarabía y desencanto parecen ser el estado emocional que ha marcado la historia política de Chile en los últimos 50 años. Ilusiones que nacen y que prontamente se esfuman, me llevan a revisar imagenes de nuestra historia. Entre grabaciones amateur, archivos oficiales y recuerdos inconclusos, me pregunto cómo seguimos soñando con la vida que vendrá.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
     "id": "ho00001795",
     "titulo": "LAS OVEJAS DETECTIVES",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001795?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -466,6 +496,66 @@
     ]
   },
   {
+    "id": "ho00001812",
+    "titulo": "LOS HIJOS",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001812?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "DOCUMENTAL"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "La Expedición Aku Aku, liderada por el célebre noruego, Thor Heyerdahl llega a Rapa Nui en 1955. Se cruzarán en su camino un arqueólogo, un escultor y un profesor. Juntos vivirán una tragedia y también una proeza, el MOAI “se pondrá de pie”",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001809",
+    "titulo": "MANDALORIAN AND GROGU",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001809?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "CIENCIA FICCION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "El cruel Imperio ha caído, pero los señores de la guerra imperiales siguen dispersos por toda la Galaxia. La incipiente Nueva República trabaja para proteger las conquistas de la Rebelión con la ayuda del legendario cazarrecompensas mandaloriano, Din Djarin (Pedro Pascal), y su joven aprendiz, Grogu.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001817",
+    "titulo": "MIRAI: MI PEQUEÑA HERMANA (2018)",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001817?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "“Mirai” (Mirai) nos lleva al mundo de Kun, un pequeño que ve su vida cambiar por completo con la llegada de su nueva hermana. Celoso, confundido y sintiéndose desplazado, Kun comienza un viaje inesperado… uno que trasciende el tiempo y la imaginación.\r\n\r\nA través de encuentros mágicos con versiones del pasado y el futuro de su propia familia, Kun descubrirá secretos, heridas y lazos invisibles que lo conectan con quienes ama, incluyendo a una misteriosa chica del futuro: Mirai.\r\n\r\nDirigida por Mamoru Hosoda, esta película es una experiencia íntima y profundamente emocional sobre crecer, aceptar los cambios y entender que la familia es una historia que se construye a lo largo del tiempo.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001814",
+    "titulo": "OBSESION",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001814?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "TERROR"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Después de romper el Sauce del deseo para conquistar el corazón de la chica que le gusta, un romántico empedernido consigue exactamente lo que pidió, pero pronto descubre que algunos deseos tienen un precio oscuro y siniestro.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
     "id": "ho00001801",
     "titulo": "SE LEVANTA EL VIENTO",
     "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001801?referenceScheme=HeadOffice&allowPlaceHolder=true",
@@ -476,6 +566,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Inspirada en la vida del ingeniero aeronáutico Jiro Horikoshi, esta historia poética y melancólica narra la pasión de un hombre por volar, sus sueños y su lucha interna frente a la guerra y la pérdida.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001818",
+    "titulo": "SUMMER WARS (2009)",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001818?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "“Summer Wars” (Summer Wars) regresa en su 17° aniversario con una historia que mezcla lo mejor de dos mundos: la calidez de la familia y el vértigo del universo digital.\r\n\r\nKenji, un genio tímido de las matemáticas, acepta un trabajo de verano que parece sencillo… hasta que termina haciéndose pasar por el novio de Natsuki frente a toda su enorme y caótica familia. Pero mientras intenta sobrevivir a esta farsa, una crisis digital de escala global estalla en OZ, una realidad virtual donde millones de personas viven, trabajan y existen.\r\n\r\nLo que comienza como una mentira inocente se convierte en una carrera contrarreloj para salvar no solo a una familia, sino al mundo entero.\r\n\r\nDirigida por Mamoru Hosoda, esta película es una explosión de emoción, acción y corazón que celebra los lazos que nos conectan—en línea y en la vida real.",
     "cadenas_ids": [
       "cineplanet"
     ]
@@ -521,6 +626,21 @@
     "clasificacion": "TE",
     "fecha_estreno": "",
     "sinopsis": "Una reconocida vulcanóloga detecta señales inequívocas de una inminente erupción volcánica que podría devastar la ciudad. A medida que la actividad sísmica aumenta y los terremotos se intensifican, comienza una carrera contra el tiempo para evacuar, advertir a las autoridades y salvar vidas. Pero cuando la tierra empieza a romperse, cada decisión puede ser la última.",
+    "cadenas_ids": [
+      "cineplanet"
+    ]
+  },
+  {
+    "id": "ho00001816",
+    "titulo": "WOLF CHILDREN (2012)",
+    "poster_url": "https://cdn.apis.cineplanet.cl/CDN/media/entity/get/FilmPosterGraphic/HO00001816?referenceScheme=HeadOffice&allowPlaceHolder=true",
+    "genero": [
+      "ANIMACION"
+    ],
+    "duracion_min": 0,
+    "clasificacion": "TE",
+    "fecha_estreno": "",
+    "sinopsis": "Hana, una joven que se enamora de un misterioso hombre con un secreto imposible: es un hombre lobo. Juntos forman una familia y tienen dos hijos, Ame y Yuki, quienes heredan una doble naturaleza… mitad humanos, mitad lobos.\r\n\r\nCuando la vida da un giro inesperado, Hana deberá criar sola a sus hijos, enfrentándose a un mundo que no entendería quiénes son realmente. Entre la ciudad y el campo, entre la libertad salvaje y la vida humana, Ame y Yuki tendrán que decidir quiénes quieren ser.\r\n\r\nDirigida por Mamoru Hosoda, esta película es un viaje emocional sobre el amor incondicional, la maternidad y el dolor de dejar ir… con una belleza visual y sensibilidad que la convierten en una experiencia inolvidable.",
     "cadenas_ids": [
       "cineplanet"
     ]
