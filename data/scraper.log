@@ -3,17 +3,20 @@
 > tsx scripts/scrape-all.ts
 
 === CineCompara Scraper ===
-Started at: 2026-04-26T09:45:29.151Z
+Started at: 2026-04-27T10:55:04.042Z
 
 
 --- Cinemark Chile ---
 [cinemark] Starting (direct API, no browser)
 [cinemark] Found 21 cinemas
-[cinemark] 18 unique movies, 4143 sessions
-  ✓ 18 movies, 4143 showtimes
+[cinemark] 18 unique movies, 3524 sessions
+  ✓ 18 movies, 3524 showtimes
 
 --- Cinépolis Chile ---
 [cinepolis] Starting (Playwright)
+[cinepolis] captured: https://api-g.cinepolis.com/shared-services/locations/country/config/graphql
+[cinepolis] captured: https://tickets-static-content.cinepolis.com/web-takeover/build/takeovers/config/movie-ids.json
+[cinepolis] captured: https://tickets-static-content.cinepolis.com/web-takeover/build/takeovers/config/movie-ids.json
 [cinepolis] ERROR: No movie data intercepted. Check network calls manually.
   ⚠ Error: No movie data intercepted. Check network calls manually.
 
@@ -22,15 +25,15 @@ Started at: 2026-04-26T09:45:29.151Z
 [cineplanet] ✓ moviescache intercepted
 [cineplanet] ✓ sessioncache intercepted
 [cineplanet] 38 movies in moviescache
-[cineplanet] 1887 sessions in sessioncache
+[cineplanet] 1536 sessions in sessioncache
 [cineplanet] session[0] keys: id, showtime, formats, languages, sessionId
 [cineplanet] session[0] sample: {"id":"0000000001-73840","showtime":"2026-05-07T17:00:00-04:00","formats":["3D","CONV"],"languages":["SUBTITULAD"],"sessionId":"73840"}
   ✓ 38 movies, 0 showtimes
 
 --- Muvix Chile ---
 [muvix] Starting (direct API)
-[muvix] 7 movies
-  ✓ 7 movies, 0 showtimes
+[muvix] 6 movies
+  ✓ 6 movies, 0 showtimes
 
 [tmdb] Enriching 42 movies…
 [tmdb] Enriched 0/42 movies.
@@ -43,5 +46,5 @@ Wrote /home/runner/work/muvi/muvi/data/actualizaciones.json
 
 === Done ===
 Movies: 42
-Showtimes: 4143
+Showtimes: 3524
 Errors: cinepolis
