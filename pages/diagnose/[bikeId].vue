@@ -19,7 +19,7 @@
     </div>
 
     <!-- Scrollable content -->
-    <div ref="scrollEl" class="flex-1 overflow-y-auto pt-16 pb-36">
+    <div class="flex-1 overflow-y-auto pt-16 pb-36">
       <!-- Bike viewer -->
       <div
         class="relative transition-all duration-300 ease-in-out"
@@ -276,7 +276,6 @@ function onConfirmLeave() {
   router.push('/')
 }
 const searchFocused = ref(false)
-const scrollEl = ref<HTMLElement | null>(null)
 const categoryRefs: Record<string, HTMLElement> = {}
 
 // Categories that have at least one pending part selected
@@ -297,40 +296,7 @@ function onSearchFocus() {
   controlsOpen.value = false
 }
 
-function scrollToCategory(categoryId: string, delay = 80) {
-  setTimeout(() => {
-    const el = categoryRefs[categoryId]
-    const container = scrollEl.value
-    if (!el || !container) return
 
-    let offsetTop = 0
-    let node: HTMLElement | null = el
-    while (node && node !== container) {
-      offsetTop += node.offsetTop
-      node = node.offsetParent as HTMLElement | null
-    }
-
-    const HEADER_OFFSET = 8
-    container.scrollTo({ top: Math.max(0, offsetTop - HEADER_OFFSET), behavior: 'smooth' })
-  }, delay)
-}
-
-// Scroll when category opens
-watch(expandedCategory, async (newId) => {
-  if (!newId) return
-  await nextTick()
-  scrollToCategory(newId, 80)
-})
-
-// Scroll when a part is selected (bike shrinks → re-center)
-watch(pendingCount, async (count, prev) => {
-  const id = expandedCategory.value
-  if (!id) return
-  if ((count === 1 && prev === 0) || (count === 0 && prev === 1)) {
-    await nextTick()
-    scrollToCategory(id, 320)
-  }
-})
 
 function handleSelectCategory(categoryId: string) {
   controlsOpen.value = false
