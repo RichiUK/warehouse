@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen bg-(--ui-bg) flex flex-col">
+  <div class="relative h-dvh bg-(--ui-bg) flex flex-col">
     <!-- Header -->
     <div class="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-4 pt-9 pb-2 bg-(--ui-bg)">
       <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-black">
+  <div class="relative h-dvh overflow-hidden bg-black">
     <!-- Camera background (real scanner or fallback) -->
     <div class="absolute inset-0">
       <ClientOnly>

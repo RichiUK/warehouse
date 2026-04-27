@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen bg-(--ui-bg) flex flex-col px-4 relative">
-    <!-- Top bar (active shift only) -->
-    <div class="flex items-center justify-end pt-10 pb-2 h-16">
+  <div class="h-dvh bg-(--ui-bg) flex flex-col overflow-hidden">
+    <!-- Top bar -->
+    <div class="flex items-center justify-end px-4 pt-10 pb-2 shrink-0 h-16">
       <Transition name="fade">
         <UButton
           v-if="isShiftActive"
@@ -16,8 +16,8 @@
       </Transition>
     </div>
 
-    <!-- Centered greeting -->
-    <div class="flex-1 flex flex-col items-center justify-center text-center pb-12">
+    <!-- Centered greeting (fills remaining space) -->
+    <div class="flex-1 flex flex-col items-center justify-center text-center px-4">
       <Transition name="greeting" mode="out-in">
         <div v-if="!isShiftActive" key="pre">
           <p class="text-3xl font-semibold text-(--ui-text-highlighted) leading-snug">
@@ -35,8 +35,8 @@
       </Transition>
     </div>
 
-    <!-- Stats card (pb accounts for fixed button ~96px) -->
-    <div class="mb-4 pb-28">
+    <!-- Stats card -->
+    <div class="px-4 pb-3 shrink-0">
       <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-4 flex items-center justify-between w-full">
         <div class="flex flex-col gap-0.5">
           <span class="text-base text-(--ui-text-muted)">
@@ -52,6 +52,31 @@
           {{ isShiftActive ? currentSessionCount : lastShiftCount }}
         </span>
       </div>
+    </div>
+
+    <!-- CTA button -->
+    <div class="px-4 pb-10 shrink-0">
+      <UButton
+        v-if="!isShiftActive"
+        block
+        size="xl"
+        color="info"
+        class="h-14 text-base font-medium"
+        @click="startShift"
+      >
+        Start shift
+      </UButton>
+      <UButton
+        v-else
+        block
+        size="xl"
+        color="success"
+        icon="i-lucide-scan-qr-code"
+        to="/scan"
+        class="h-14 text-base font-medium"
+      >
+        Scan a Bike
+      </UButton>
     </div>
 
     <!-- End shift confirmation modal -->
@@ -82,31 +107,6 @@
         </div>
       </template>
     </UModal>
-
-    <!-- Bottom button (fixed so it always stays in viewport) -->
-    <div class="fixed bottom-0 left-0 right-0 px-4 pb-10 bg-(--ui-bg)">
-      <UButton
-        v-if="!isShiftActive"
-        block
-        size="xl"
-        color="info"
-        class="h-14 text-base font-medium"
-        @click="startShift"
-      >
-        Start shift
-      </UButton>
-      <UButton
-        v-else
-        block
-        size="xl"
-        color="success"
-        icon="i-lucide-scan-qr-code"
-        to="/scan"
-        class="h-14 text-base font-medium"
-      >
-        Scan a Bike
-      </UButton>
-    </div>
   </div>
 </template>
 

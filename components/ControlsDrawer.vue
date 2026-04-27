@@ -20,9 +20,9 @@
     <div
       v-if="modelValue"
       class="fixed bottom-0 left-0 right-0 z-30 bg-(--ui-bg-elevated) rounded-t-2xl pb-10 pt-3 px-4"
-      @touchstart.passive="onTouchStart"
-      @touchmove.passive="onTouchMove"
-      @touchend.passive="onTouchEnd"
+      @touchstart.capture.passive="onTouchStart"
+      @touchmove.capture.passive="onTouchMove"
+      @touchend.capture.passive="onTouchEnd"
     >
       <!-- Handle bar -->
       <div class="flex justify-center mb-4 cursor-pointer" @click="emit('update:modelValue', false)">
@@ -109,20 +109,22 @@ function send(action: string) {
   emit('command', action)
 }
 
-// Swipe-down to close
+// Swipe-down to close (works on any part of the drawer)
 let touchStartY = 0
+let touchStartX = 0
 
 function onTouchStart(e: TouchEvent) {
   touchStartY = e.touches[0].clientY
+  touchStartX = e.touches[0].clientX
 }
 
-function onTouchMove(_e: TouchEvent) {
-  // Could add drag visual here in future
-}
+function onTouchMove(_e: TouchEvent) {}
 
 function onTouchEnd(e: TouchEvent) {
-  const delta = e.changedTouches[0].clientY - touchStartY
-  if (delta > 60) {
+  const deltaY = e.changedTouches[0].clientY - touchStartY
+  const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX)
+  // Only close if swipe is clearly downward (not horizontal, not a tap)
+  if (deltaY > 50 && deltaY > deltaX * 1.5) {
     emit('update:modelValue', false)
   }
 }
