@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "image.tmdb.org", pathname: "/t/p/**" },
-      // Cinema chain CDNs — expanded as scrapers discover real poster URLs
+      // Cinema chain CDNs
       { protocol: "https", hostname: "**.cinemark.cl" },
       { protocol: "https", hostname: "**.cinepolis.cl" },
       { protocol: "https", hostname: "**.cineplanet.cl" },

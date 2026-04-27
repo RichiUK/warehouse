@@ -6,9 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "scrape": "tsx scripts/scrape-all.ts",
-    "scrape:install": "playwright install chromium"
+    "lint": "eslint"
   },
   "dependencies": {
     "next": "16.2.2",
@@ -22,9 +20,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
-    "playwright": "^1.44.0",
     "tailwindcss": "^4",
-    "tsx": "^4.19.2",
     "typescript": "^5"
   }
 }

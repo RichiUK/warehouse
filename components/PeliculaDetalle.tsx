@@ -231,7 +231,7 @@ export default function PeliculaDetalle({ peliculaId }: PeliculaDetalleProps) {
 
   const precioMinimo = cinemasRanked[0]?.precio;
 
-  // Chains present on the movie but without scraped showtimes yet
+  // Chains listed on the movie but without showtimes in the data
   const cinemasWithoutFunciones = pelicula.cadenas_ids
     .filter((cadenaId) => !cinemasRanked.some((c) => c.cadenaId === cadenaId))
     .map((cadenaId) => {
