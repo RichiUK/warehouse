@@ -3,6 +3,26 @@ export interface Part {
   name: string
 }
 
+export interface MockTask {
+  partId: string
+  partName: string
+  categoryId: string
+  action: 'replace' | 'adjust'
+}
+
+export const MOCK_TASKS: MockTask[] = [
+  { categoryId: 'cockpit', partId: 'brake-lever-front', partName: 'Brake Lever Front', action: 'replace' },
+  { categoryId: 'cockpit', partId: 'bell', partName: 'Bell', action: 'replace' },
+  { categoryId: 'cockpit', partId: 'handlebar', partName: 'Handlebar', action: 'adjust' },
+  { categoryId: 'basket', partId: 'basket-reflector', partName: 'Basket Reflector', action: 'replace' },
+  { categoryId: 'front-wheel-fork', partId: 'brake-cable-front-inner', partName: 'Brake Cable Front (Inner)', action: 'replace' },
+  { categoryId: 'front-wheel-fork', partId: 'reflector-front', partName: 'Reflector Front', action: 'replace' },
+  { categoryId: 'rear-wheel-fender', partId: 'brake-cable-rear-inner', partName: 'Brake Cable Rear (Inner)', action: 'replace' },
+  { categoryId: 'rear-wheel-fender', partId: 'light-rear', partName: 'Light Rear', action: 'replace' },
+  { categoryId: 'drivetrain', partId: 'chain', partName: 'Chain', action: 'replace' },
+  { categoryId: 'saddle', partId: 'saddle', partName: 'Saddle', action: 'adjust' },
+]
+
 export interface Category {
   id: string
   name: string
@@ -155,5 +175,5 @@ export const CATEGORIES: Category[] = [
 ]
 
 export function usePartsData() {
-  return { CATEGORIES }
+  return { CATEGORIES, MOCK_TASKS }
 }

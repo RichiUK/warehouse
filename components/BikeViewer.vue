@@ -18,21 +18,25 @@
         class="absolute cursor-pointer"
         :class="{
           'transition-all duration-200': activeCategoryId === category.id || !selectedCategoryIds.has(category.id),
-          'animate-selected': selectedCategoryIds.has(category.id) && activeCategoryId !== category.id,
+          'animate-selected': selectedCategoryIds.has(category.id) && activeCategoryId !== category.id && !completedCategoryIds.has(category.id),
         }"
         :style="{
           left:   pct(category.overlay.left,  359),
           top:    pct(category.overlay.top,   268),
           width:  pct(category.overlay.width, 359),
           height: pct(category.overlay.height, 268),
-          filter: (activeCategoryId === category.id || selectedCategoryIds.has(category.id))
-            ? 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(500%) hue-rotate(10deg) brightness(1.1)'
-            : 'none',
+          filter: completedCategoryIds.has(category.id)
+            ? 'brightness(0) saturate(100%) invert(71%) sepia(42%) saturate(544%) hue-rotate(90deg) brightness(1.05)'
+            : (activeCategoryId === category.id || selectedCategoryIds.has(category.id))
+              ? 'brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(500%) hue-rotate(10deg) brightness(1.1)'
+              : 'none',
           opacity: activeCategoryId === category.id
             ? 1
-            : selectedCategoryIds.has(category.id)
+            : completedCategoryIds.has(category.id)
               ? 1
-              : (hasSelections ? 0.4 : 0.8),
+              : selectedCategoryIds.has(category.id)
+                ? 1
+                : (hasSelections ? 0.4 : 0.8),
         }"
         @click="emit('select-category', category.id)"
       />
@@ -43,11 +47,14 @@
 <script setup lang="ts">
 import { CATEGORIES } from '~/composables/usePartsData'
 
-defineProps<{
+withDefaults(defineProps<{
   activeCategoryId: string | null
   hasSelections: boolean
   selectedCategoryIds: Set<string>
-}>()
+  completedCategoryIds?: Set<string>
+}>(), {
+  completedCategoryIds: () => new Set(),
+})
 
 const emit = defineEmits<{
   'select-category': [categoryId: string]

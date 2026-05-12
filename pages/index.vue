@@ -1,193 +1,74 @@
 <template>
-  <div class="h-dvh bg-(--ui-bg) flex flex-col overflow-hidden">
-    <!-- Top bar -->
-    <div class="flex items-center justify-end px-4 pt-10 pb-2 shrink-0 h-16">
-      <Transition name="fade">
-        <UButton
-          v-if="isShiftActive"
-          color="error"
-          size="sm"
-          icon="i-lucide-log-out"
-          trailing
-          @click="endShiftConfirmOpen = true"
+  <div class="role-selector h-dvh flex flex-col overflow-hidden">
+    <!-- Logo -->
+    <div class="flex items-center justify-center pt-14 pb-0 shrink-0">
+      <span class="text-xl font-black tracking-[0.3em] text-[#4ade80] uppercase">forestfleet</span>
+    </div>
+
+    <!-- Content -->
+    <div class="flex-1 flex flex-col items-center justify-center px-6 gap-10">
+      <!-- Greeting -->
+      <div class="text-center">
+        <p class="text-[2.1rem] font-black text-white uppercase tracking-tight leading-none">
+          WELCOME BACK,
+        </p>
+        <p class="text-[2.1rem] font-black text-[#4ade80] uppercase tracking-tight leading-tight">
+          ALEX
+        </p>
+        <p class="text-sm text-white/45 mt-4 tracking-wide">
+          Please select your role to continue
+        </p>
+      </div>
+
+      <!-- Role cards -->
+      <div class="w-full flex flex-col gap-3">
+        <button
+          v-for="role in roles"
+          :key="role.id"
+          class="w-full border border-white/10 bg-white/5 rounded-2xl px-5 py-5 flex items-center justify-between active:bg-white/10 transition-colors"
+          @click="selectRole(role.id)"
         >
-          End Shift
-        </UButton>
-      </Transition>
-    </div>
-
-    <!-- Centered greeting (fills remaining space) -->
-    <div class="flex-1 flex flex-col items-center justify-center text-center px-4">
-      <Transition name="greeting" mode="out-in">
-        <div v-if="!isShiftActive" key="pre">
-          <p class="text-3xl font-semibold text-(--ui-text-highlighted) leading-snug">
-            {{ greeting }},<br />Alex
-          </p>
-        </div>
-        <div v-else key="active">
-          <p class="text-3xl font-semibold text-(--ui-text-highlighted) leading-snug">
-            {{ scanPrompt }}
-          </p>
-          <p class="text-base text-(--ui-text-muted) mt-3">
-            Tap the button below to scan a bike
-          </p>
-        </div>
-      </Transition>
-    </div>
-
-    <!-- Stats card -->
-    <div class="px-4 pb-3 shrink-0">
-      <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-4 flex items-center justify-between w-full">
-        <div class="flex flex-col gap-0.5">
-          <span class="text-base text-(--ui-text-muted)">
-            {{ isShiftActive ? 'Bikes Diagnosed' : 'Last Shift Bikes Diagnosed' }}
-          </span>
-          <Transition name="fade">
-            <span v-if="!isShiftActive && lastShiftTimeAgo" class="text-xs text-(--ui-text-dimmed)">
-              {{ lastShiftTimeAgo }}
-            </span>
-          </Transition>
-        </div>
-        <span class="text-2xl font-bold text-(--ui-text-highlighted)">
-          {{ isShiftActive ? currentSessionCount : lastShiftCount }}
-        </span>
+          <div class="flex items-center gap-4">
+            <div class="w-9 h-9 rounded-xl bg-white/8 flex items-center justify-center">
+              <UIcon :name="role.icon" class="size-5 text-white/70" />
+            </div>
+            <span class="text-base font-bold text-white uppercase tracking-widest">{{ role.label }}</span>
+          </div>
+          <UIcon name="i-lucide-chevron-right" class="size-5 text-white/30" />
+        </button>
       </div>
     </div>
 
-    <!-- CTA button -->
-    <div class="px-4 pb-10 shrink-0">
-      <UButton
-        v-if="!isShiftActive"
-        block
-        size="xl"
-        color="info"
-        class="h-14 text-base font-medium"
-        @click="startShift"
-      >
-        Start shift
-      </UButton>
-      <UButton
-        v-else
-        block
-        size="xl"
-        color="success"
-        icon="i-lucide-scan-qr-code"
-        to="/scan"
-        class="h-14 text-base font-medium"
-      >
-        Scan a Bike
-      </UButton>
-    </div>
-
-    <!-- End shift confirmation modal -->
-    <UModal v-model:open="endShiftConfirmOpen" :close="false">
-      <template #body>
-        <div class="flex flex-col gap-4 px-1 pt-1">
-          <div class="w-11 h-11 rounded-full bg-warning/15 flex items-center justify-center">
-            <UIcon name="i-lucide-alert-circle" class="size-6 text-warning" />
-          </div>
-          <div>
-            <p class="text-base font-semibold text-(--ui-text-highlighted) leading-snug">
-              Are you sure you want to End Shift?
-            </p>
-            <p class="text-sm text-(--ui-text-muted) mt-1.5">
-              This will end your shift and stop counting tasks.
-            </p>
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="flex gap-3 w-full">
-          <UButton block variant="ghost" color="neutral" @click="endShiftConfirmOpen = false">
-            Cancel
-          </UButton>
-          <UButton block color="success" @click="onConfirmEndShift">
-            Confirm
-          </UButton>
-        </div>
-      </template>
-    </UModal>
+    <!-- Bottom spacer -->
+    <div class="pb-10 shrink-0" />
   </div>
 </template>
 
 <script setup lang="ts">
-const { isShiftActive, currentSessionCount, lastShiftCount, lastShiftEndedAt, startShift, endShift } = useShift()
+import type { AppRole } from '~/composables/useRole'
 
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const greetings: Record<string, string> = {
-  Sunday:    'Happy Sunday',
-  Monday:    'Happy Monday',
-  Tuesday:   'Happy Tuesday',
-  Wednesday: 'Happy Wednesday',
-  Thursday:  'Happy Thursday',
-  Friday:    'Happy Friday',
-  Saturday:  'Happy Saturday',
-}
+const router = useRouter()
+const { setRole } = useRole()
 
-const greeting = computed(() => greetings[days[new Date().getDay()]])
-
-const scanPrompts = [
-  "Let's find your bike",
-  'Scan to get started',
-  'Point at the QR code',
-  'Ready when you are',
+const roles: Array<{ id: AppRole; label: string; icon: string }> = [
+  { id: 'diagnoser', label: 'Diagnoser', icon: 'i-lucide-stethoscope' },
+  { id: 'mechanic', label: 'Mechanic', icon: 'i-lucide-wrench' },
 ]
-const scanPrompt = scanPrompts[Math.floor(Math.random() * scanPrompts.length)]
 
-// Live timestamp for last shift
-const now = ref(Date.now())
-let ticker: ReturnType<typeof setInterval>
-onMounted(() => { ticker = setInterval(() => { now.value = Date.now() }, 15_000) })
-onUnmounted(() => clearInterval(ticker))
-
-const lastShiftTimeAgo = computed(() => {
-  const endedAt = lastShiftEndedAt.value
-  if (!endedAt) return null
-
-  const nowDate = new Date(now.value)
-
-  const isToday = endedAt.toDateString() === nowDate.toDateString()
-  const yest = new Date(nowDate)
-  yest.setDate(yest.getDate() - 1)
-  const isYesterday = endedAt.toDateString() === yest.toDateString()
-
-  const hh = String(endedAt.getHours()).padStart(2, '0')
-  const mm = String(endedAt.getMinutes()).padStart(2, '0')
-
-  if (isYesterday) return `yesterday at ${hh}:${mm} hrs.`
-
-  if (isToday) {
-    const secs = Math.floor((now.value - endedAt.getTime()) / 1000)
-    if (secs < 60) return 'just now'
-    const mins = Math.floor(secs / 60)
-    if (mins < 60) return mins === 1 ? '1 min ago' : `${mins} mins ago`
-    const hrs = Math.floor(mins / 60)
-    return hrs === 1 ? '1 hour ago' : `${hrs} hours ago`
+function selectRole(role: AppRole) {
+  setRole(role)
+  if (role === 'diagnoser') {
+    router.push('/diagnoser')
+  } else {
+    router.push('/mechanic')
   }
-
-  // Older than yesterday
-  const day = endedAt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
-  return `${day} at ${hh}:${mm} hrs.`
-})
-
-// End shift modal
-const endShiftConfirmOpen = ref(false)
-
-function onConfirmEndShift() {
-  endShiftConfirmOpen.value = false
-  endShift()
 }
 </script>
 
 <style scoped>
-.greeting-enter-active { transition: opacity 0.35s ease, transform 0.35s ease; }
-.greeting-leave-active { transition: opacity 0.2s ease, transform 0.2s ease; }
-.greeting-enter-from   { opacity: 0; transform: translateY(10px); }
-.greeting-leave-to     { opacity: 0; transform: translateY(-8px); }
-
-.fade-enter-active { transition: opacity 0.3s ease; }
-.fade-leave-active { transition: opacity 0.2s ease; }
-.fade-enter-from,
-.fade-leave-to     { opacity: 0; }
-
+.role-selector {
+  background-color: #0a0c0f;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
 </style>

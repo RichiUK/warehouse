@@ -23,15 +23,14 @@
 
     <!-- Close button -->
     <div class="absolute top-6 left-4 z-10">
-      <NuxtLink to="/">
-        <UButton
-          color="neutral"
-          variant="solid"
-          size="sm"
-          icon="i-lucide-x"
-          class="bg-(--ui-bg-inverted) text-(--ui-bg)"
-        />
-      </NuxtLink>
+      <UButton
+        color="neutral"
+        variant="solid"
+        size="sm"
+        icon="i-lucide-x"
+        class="bg-(--ui-bg-inverted) text-(--ui-bg)"
+        @click="router.push(homeRoute())"
+      />
     </div>
 
     <!-- QR Frame + instructions (camera mode) -->
@@ -99,22 +98,34 @@
 import { QrcodeStream } from 'vue-qrcode-reader'
 
 const router = useRouter()
+const { currentRole } = useRole()
 const manualMode = ref(false)
 const manualBikeId = ref('')
 const errorMessage = ref('')
 const torchActive = ref(false)
 
+function bikeRoute(bikeId: string) {
+  const encoded = encodeURIComponent(bikeId)
+  return currentRole.value === 'mechanic'
+    ? `/mechanic/${encoded}`
+    : `/diagnose/${encoded}`
+}
+
+function homeRoute() {
+  return currentRole.value === 'mechanic' ? '/mechanic' : '/diagnoser'
+}
+
 // TODO: remove — test-only auto-navigate
 onMounted(() => {
   setTimeout(() => {
-    router.push('/diagnose/HF-TEST-001')
+    router.push(bikeRoute('HF-TEST-001'))
   }, 2000)
 })
 
 function onDetect(detectedCodes: Array<{ rawValue: string }>) {
   const code = detectedCodes[0]?.rawValue
   if (code) {
-    router.push(`/diagnose/${encodeURIComponent(code)}`)
+    router.push(bikeRoute(code))
   }
 }
 
@@ -136,7 +147,7 @@ function toggleTorch() {
 function submitManual() {
   const id = manualBikeId.value.trim()
   if (id) {
-    router.push(`/diagnose/${encodeURIComponent(id)}`)
+    router.push(bikeRoute(id))
   }
 }
 </script>

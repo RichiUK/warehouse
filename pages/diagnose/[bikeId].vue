@@ -260,7 +260,7 @@ function onBack() {
   if (confirmedParts.value.size > 0 || pendingCount.value > 0) {
     leaveConfirmOpen.value = true
   } else {
-    router.push('/')
+    router.push('/diagnoser')
   }
 }
 
@@ -273,7 +273,7 @@ function onConfirmLeave() {
     icon: 'i-lucide-alert-triangle',
     duration: 3000,
   })
-  router.push('/')
+  router.push('/diagnoser')
 }
 const searchFocused = ref(false)
 const categoryRefs: Record<string, HTMLElement> = {}
@@ -345,7 +345,7 @@ function onConfirm() {
     icon: 'i-lucide-check-circle',
     duration: 4000,
   })
-  router.push('/')
+  router.push('/diagnoser')
 }
 </script>
 
