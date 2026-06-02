@@ -48,10 +48,10 @@
 
 <script setup lang="ts">
 import type { AppRole } from '~/composables/useRole'
-import { ROLE_NAMES } from '~/composables/useRole'
+import { ROLE_NAME_POOLS, ROLE_NAMES } from '~/composables/useRole'
 
 const router = useRouter()
-const { setRole } = useRole()
+const { setRole, currentName } = useRole()
 
 const roles: Array<{ id: AppRole; label: string; icon: string }> = [
   { id: 'diagnoser', label: 'Diagnoser', icon: 'i-lucide-stethoscope' },
@@ -60,9 +60,11 @@ const roles: Array<{ id: AppRole; label: string; icon: string }> = [
 ]
 
 const hoveredRole = ref<AppRole | null>(null)
-const hoveredName = computed(() =>
-  hoveredRole.value ? ROLE_NAMES[hoveredRole.value] : ROLE_NAMES.diagnoser,
-)
+// Show a sample name from the pool on hover, default to diagnoser first name
+const hoveredName = computed(() => {
+  if (!hoveredRole.value) return ROLE_NAMES.diagnoser
+  return ROLE_NAME_POOLS[hoveredRole.value][0]
+})
 
 function selectRole(role: AppRole) {
   setRole(role)

@@ -12,51 +12,102 @@
           </UButton>
         </div>
 
-        <!-- Scrollable parts list -->
-        <div class="flex-1 overflow-y-auto pt-3 pb-36 px-2 flex flex-col gap-2">
-          <template v-for="category in CATEGORIES" :key="category.id">
-            <button
-              class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-colors duration-200"
-              :class="expandedCategory === category.id ? 'border-(--ui-text-muted)' : 'border-(--ui-bg-accented)'"
-              @click="toggleCategory(category.id)"
-            >
-              <span class="text-base text-(--ui-text-toned)">{{ category.name }}</span>
-              <div class="flex items-center gap-2">
-                <Transition name="fade">
-                  <UBadge v-if="getCategoryCount(category.id) > 0" color="primary" variant="soft" size="sm">
-                    {{ getCategoryCount(category.id) }} selected
-                  </UBadge>
-                </Transition>
-                <UIcon
-                  :name="expandedCategory === category.id ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'"
-                  class="size-5 text-(--ui-text-toned)"
-                />
-              </div>
-            </button>
+        <!-- Search bar -->
+        <div class="px-2 pt-3 pb-2 shrink-0">
+          <UInput
+            v-model="searchQuery"
+            placeholder="Search Part"
+            icon="i-lucide-search"
+            size="md"
+            class="w-full"
+            variant="outline"
+          >
+            <template v-if="searchQuery" #trailing>
+              <button class="flex items-center justify-center p-0.5 rounded" @click="searchQuery = ''">
+                <UIcon name="i-lucide-x" class="size-4 text-(--ui-text-muted)" />
+              </button>
+            </template>
+          </UInput>
+        </div>
 
-            <Transition name="accordion">
-              <div v-if="expandedCategory === category.id" class="flex flex-col gap-2 overflow-hidden">
-                <div v-for="part in category.parts" :key="part.id" class="pl-4">
-                  <button
-                    class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-all duration-150"
-                    :class="getPartBorderClass(part.id)"
-                    @click="togglePart(category.id, part.id, part.name)"
-                  >
-                    <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
-                    <Transition name="fade">
-                      <span
-                        v-if="getPartAction(part.id) && !pendingIds.has(part.id)"
-                        class="flex items-center gap-1 bg-(--ui-bg) border border-(--ui-border-accented) rounded-md px-2 py-1"
-                      >
-                        <UIcon :name="actionIcons[getPartAction(part.id)!]" class="size-3 text-(--ui-text)" />
-                        <span class="text-xs text-(--ui-text)">{{ actionLabels[getPartAction(part.id)!] }}</span>
-                      </span>
-                    </Transition>
-                  </button>
-                </div>
+        <!-- Scrollable parts list -->
+        <div class="flex-1 overflow-y-auto pb-36 px-2 flex flex-col gap-2">
+
+          <!-- Flat search results -->
+          <template v-if="searchQuery">
+            <template v-for="category in filteredCategories" :key="category.id">
+              <p class="text-xs text-(--ui-text-muted) uppercase tracking-wider px-1 pt-2 pb-1">{{ category.name }}</p>
+              <div
+                v-for="part in filteredParts(category)"
+                :key="part.id"
+              >
+                <button
+                  class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3 flex items-center justify-between transition-all duration-150"
+                  :class="getPartBorderClass(part.id)"
+                  @click="togglePart(category.id, part.id, part.name)"
+                >
+                  <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
+                  <Transition name="fade">
+                    <span
+                      v-if="getPartAction(part.id) && !pendingIds.has(part.id)"
+                      class="flex items-center gap-1 bg-(--ui-bg) border border-(--ui-border-accented) rounded-md px-2 py-1"
+                    >
+                      <UIcon :name="actionIcons[getPartAction(part.id)!]" class="size-3 text-(--ui-text)" />
+                      <span class="text-xs text-(--ui-text)">{{ actionLabels[getPartAction(part.id)!] }}</span>
+                    </span>
+                  </Transition>
+                </button>
               </div>
-            </Transition>
+            </template>
           </template>
+
+          <!-- Accordion (no search) -->
+          <template v-else>
+            <template v-for="category in CATEGORIES" :key="category.id">
+              <button
+                class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-colors duration-200"
+                :class="expandedCategory === category.id ? 'border-(--ui-text-muted)' : 'border-(--ui-bg-accented)'"
+                @click="toggleCategory(category.id)"
+              >
+                <span class="text-base text-(--ui-text-toned)">{{ category.name }}</span>
+                <div class="flex items-center gap-2">
+                  <Transition name="fade">
+                    <UBadge v-if="getCategoryCount(category.id) > 0" color="primary" variant="soft" size="sm">
+                      {{ getCategoryCount(category.id) }} selected
+                    </UBadge>
+                  </Transition>
+                  <UIcon
+                    :name="expandedCategory === category.id ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'"
+                    class="size-5 text-(--ui-text-toned)"
+                  />
+                </div>
+              </button>
+
+              <Transition name="accordion">
+                <div v-if="expandedCategory === category.id" class="flex flex-col gap-2 overflow-hidden">
+                  <div v-for="part in category.parts" :key="part.id" class="pl-4">
+                    <button
+                      class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-all duration-150"
+                      :class="getPartBorderClass(part.id)"
+                      @click="togglePart(category.id, part.id, part.name)"
+                    >
+                      <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
+                      <Transition name="fade">
+                        <span
+                          v-if="getPartAction(part.id) && !pendingIds.has(part.id)"
+                          class="flex items-center gap-1 bg-(--ui-bg) border border-(--ui-border-accented) rounded-md px-2 py-1"
+                        >
+                          <UIcon :name="actionIcons[getPartAction(part.id)!]" class="size-3 text-(--ui-text)" />
+                          <span class="text-xs text-(--ui-text)">{{ actionLabels[getPartAction(part.id)!] }}</span>
+                        </span>
+                      </Transition>
+                    </button>
+                  </div>
+                </div>
+              </Transition>
+            </template>
+          </template>
+
         </div>
 
         <!-- ActionDrawer for pending selections -->
@@ -87,21 +138,39 @@ const emit = defineEmits<{
   'confirm': [tasks: MockTask[]]
 }>()
 
-// Local state — pre-populated from currentTasks
 const confirmedMap = ref<Map<string, MockTask>>(new Map())
 const pendingIds = ref<Set<string>>(new Set())
 const pendingMeta = ref<Map<string, { categoryId: string; partId: string; partName: string }>>(new Map())
 const expandedCategory = ref<string | null>(null)
+const searchQuery = ref('')
 
-// Re-populate when sheet opens
 watch(() => props.modelValue, (open) => {
   if (open) {
     confirmedMap.value = new Map(props.currentTasks.map(t => [t.partId, t]))
     pendingIds.value = new Set()
     pendingMeta.value = new Map()
     expandedCategory.value = null
+    searchQuery.value = ''
   }
 })
+
+// Search filtering
+const filteredCategories = computed(() => {
+  if (!searchQuery.value) return CATEGORIES
+  const q = searchQuery.value.toLowerCase()
+  return CATEGORIES.filter(cat =>
+    cat.name.toLowerCase().includes(q)
+    || cat.parts.some(p => p.name.toLowerCase().includes(q)),
+  )
+})
+
+function filteredParts(category: typeof CATEGORIES[0]) {
+  if (!searchQuery.value) return category.parts
+  const q = searchQuery.value.toLowerCase()
+  return category.parts.filter(p =>
+    p.name.toLowerCase().includes(q) || category.name.toLowerCase().includes(q),
+  )
+}
 
 function toggleCategory(id: string) {
   expandedCategory.value = expandedCategory.value === id ? null : id
@@ -113,14 +182,11 @@ function togglePart(categoryId: string, partId: string, partName: string) {
   const nextConfirmed = new Map(confirmedMap.value)
 
   if (nextPending.has(partId)) {
-    // Deselect pending
     nextPending.delete(partId)
     nextMeta.delete(partId)
   } else if (nextConfirmed.has(partId)) {
-    // Remove from confirmed
     nextConfirmed.delete(partId)
   } else {
-    // Add to pending
     nextPending.add(partId)
     nextMeta.set(partId, { categoryId, partId, partName })
   }

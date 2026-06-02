@@ -64,6 +64,19 @@
         </div>
       </div>
 
+      <!-- Add more parts button (above task list) -->
+      <div class="px-2 pb-2">
+        <UButton
+          block
+          variant="outline"
+          color="neutral"
+          icon="i-lucide-plus"
+          @click="addPartsOpen = true"
+        >
+          Add more parts
+        </UButton>
+      </div>
+
       <!-- Parts accordion -->
       <div class="px-2 flex flex-col gap-2">
         <template v-for="category in taskCategories" :key="category.id">
@@ -154,18 +167,6 @@
           </Transition>
         </template>
 
-        <!-- Add more parts button -->
-        <div class="pt-1 pb-2">
-          <UButton
-            block
-            variant="outline"
-            color="neutral"
-            icon="i-lucide-plus"
-            @click="addPartsOpen = true"
-          >
-            Add more parts
-          </UButton>
-        </div>
       </div>
     </div>
 
