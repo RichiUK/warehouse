@@ -40,11 +40,21 @@
         />
       </div>
 
-      <!-- Damage report -->
+      <!-- Repair category card -->
       <div class="px-2 mb-3">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center gap-3">
-          <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
-          <span class="text-sm text-(--ui-text-toned)">Damage report: <span class="text-(--ui-text-highlighted)">{{ mockDamageReport }}</span></span>
+        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
+            <div>
+              <p class="text-sm font-medium text-(--ui-text-highlighted)">
+                {{ categoryInfo.label }}<span v-if="categoryInfo.sublabel" class="text-(--ui-text-muted)"> · {{ categoryInfo.sublabel }}</span>
+              </p>
+              <p class="text-xs text-(--ui-text-muted) mt-0.5">{{ categoryInfo.time }} estimated</p>
+            </div>
+          </div>
+          <UBadge :color="categoryInfo.color" variant="soft" size="sm">
+            {{ categoryInfo.time }}
+          </UBadge>
         </div>
       </div>
 
@@ -198,12 +208,30 @@
 
 <script setup lang="ts">
 import { MOCK_TASKS } from '~/composables/usePartsData'
+import { calcRepairCategory, useBikeStore } from '~/composables/useBikeStore'
+import type { AssignedPart } from '~/composables/useDiagnoser'
 
 const { CATEGORIES } = usePartsData()
 const route = useRoute()
 const router = useRouter()
 const bikeId = computed(() => decodeURIComponent(route.params.bikeId as string))
-const mockDamageReport = 'No Electric Assist'
+const { getRecord } = useBikeStore()
+
+// Category: from diagnoser session if available, else compute from mock tasks
+const categoryInfo = computed(() => {
+  const record = getRecord(bikeId.value)
+  if (record) return record.category
+  // Fallback: build a mock confirmed parts map from MOCK_TASKS
+  const mockParts = new Map<string, AssignedPart>(
+    MOCK_TASKS.map(t => [t.partId, {
+      categoryId: t.categoryId,
+      partId: t.partId,
+      partName: t.partName,
+      action: t.action,
+    }]),
+  )
+  return calcRepairCategory(mockParts)
+})
 const toast = useToast()
 const { incrementRepaired } = useMechanicShift()
 const { checkedTaskIds, reset, toggleTask, isChecked } = useMechanic()

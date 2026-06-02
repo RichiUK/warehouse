@@ -3,11 +3,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   devtools: { enabled: true },
   ssr: false,
-  nitro: {
-    prerender: {
-      routes: ['/'],
-    },
-  },
+  future: { compatibilityVersion: 3 },
 
   colorMode: {
     preference: 'dark',

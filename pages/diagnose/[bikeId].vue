@@ -43,11 +43,21 @@
         />
       </div>
 
-      <!-- Damage report -->
+      <!-- Damage report / live category preview -->
       <div class="px-2 mb-3">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center gap-3">
-          <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
-          <span class="text-sm text-(--ui-text-toned)">Damage report: <span class="text-(--ui-text-highlighted)">{{ mockDamageReport }}</span></span>
+        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
+            <div>
+              <p class="text-sm font-medium text-(--ui-text-highlighted)">
+                {{ liveCategory.label }}<span v-if="liveCategory.sublabel" class="text-(--ui-text-muted)"> · {{ liveCategory.sublabel }}</span>
+              </p>
+              <p class="text-xs text-(--ui-text-muted) mt-0.5">{{ liveCategory.time }} estimated</p>
+            </div>
+          </div>
+          <UBadge :color="liveCategory.color" variant="soft" size="sm">
+            {{ liveCategory.time }}
+          </UBadge>
         </div>
       </div>
 
@@ -245,6 +255,7 @@
 
 <script setup lang="ts">
 import type { PartAction } from '~/composables/useDiagnoser'
+import { calcRepairCategory } from '~/composables/useBikeStore'
 
 const route = useRoute()
 const router = useRouter()
@@ -268,9 +279,8 @@ const {
 } = useDiagnoser()
 
 const { incrementDiagnosed } = useShift()
+const { storeRecord } = useBikeStore()
 const toast = useToast()
-
-const mockDamageReport = 'No Electric Assist'
 
 const controlsOpen = ref(true)
 const confirmOpen = ref(false)
@@ -352,12 +362,16 @@ function getPartBorderClass(partId: string) {
   return 'border-(--ui-border-accented)'
 }
 
+// Live category — updates as parts are confirmed
+const liveCategory = computed(() => calcRepairCategory(confirmedParts.value))
+
 function onSubmit() {
   confirmOpen.value = true
 }
 
 function onConfirm() {
   confirmOpen.value = false
+  storeRecord(bikeId.value, confirmedParts.value)
   incrementDiagnosed()
   toast.add({
     title: 'The bike was successfully diagnosed.',
