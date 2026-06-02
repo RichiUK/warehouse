@@ -52,3 +52,7 @@ postcss.config.mjs.bak
 
 # Claude Code internals
 .claude/
+
+# nuxt
+/.nuxt/
+/.output/
