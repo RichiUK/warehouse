@@ -11,7 +11,7 @@
         </div>
         <Transition name="fade">
           <UButton
-            v-if="allTasksChecked"
+            v-if="allTasksDone"
             color="success"
             icon="i-lucide-check-check"
             size="sm"
@@ -33,8 +33,8 @@
       >
         <BikeViewer
           :active-category-id="expandedCategory"
-          :has-selections="checkedTaskIds.size > 0"
-          :selected-category-ids="pendingCategoryIds"
+          :has-selections="hasUnsavedProgress"
+          :selected-category-ids="partialCategoryIds"
           :completed-category-ids="completedCategoryIds"
           @select-category="handleSelectCategory"
         />
@@ -46,9 +46,7 @@
           <div class="flex items-center gap-3">
             <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
             <div>
-              <p class="text-sm font-medium text-(--ui-text-highlighted)">
-                {{ categoryInfo.label }}<span v-if="categoryInfo.sublabel" class="text-(--ui-text-muted)"> · {{ categoryInfo.sublabel }}</span>
-              </p>
+              <p class="text-sm font-medium text-(--ui-text-highlighted)">{{ categoryInfo.label }}</p>
               <p class="text-xs text-(--ui-text-muted) mt-0.5">{{ categoryInfo.time }} estimated</p>
             </div>
           </div>
@@ -64,14 +62,11 @@
           <!-- Category header -->
           <button
             class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-colors duration-200"
-            :class="expandedCategory === category.id
-              ? 'border-(--ui-text-muted)'
-              : 'border-(--ui-bg-accented)'"
+            :class="expandedCategory === category.id ? 'border-(--ui-text-muted)' : 'border-(--ui-bg-accented)'"
             @click="toggleExpanded(category.id)"
           >
             <span class="text-base text-(--ui-text-toned)">{{ category.name }}</span>
             <div class="flex items-center gap-2">
-              <!-- Task count badge — yellow when pending, green when all done -->
               <UBadge
                 :color="isCategoryComplete(category.id) ? 'success' : 'warning'"
                 variant="soft"
@@ -79,72 +74,102 @@
               >
                 {{ isCategoryComplete(category.id)
                   ? 'Done'
-                  : `${getCategoryCheckedCount(category.id)}/${getCategoryTaskCount(category.id)} tasks` }}
+                  : `${getCategoryDoneCount(category.id)}/${getTasksForCategory(category.id).length} tasks` }}
               </UBadge>
               <UIcon
                 :name="expandedCategory === category.id ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'"
-                class="size-6 text-(--ui-text-toned) transition-transform duration-200"
+                class="size-6 text-(--ui-text-toned)"
               />
             </div>
           </button>
 
           <!-- Task rows -->
           <Transition name="accordion">
-            <div
-              v-if="expandedCategory === category.id"
-              class="flex flex-col gap-2 overflow-hidden"
-            >
-              <div
-                v-for="task in getTasksForCategory(category.id)"
-                :key="task.partId"
-                class="pl-4"
-              >
-                <button
-                  class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-all duration-150"
-                  :class="isChecked(task.partId)
-                    ? 'border-(--ui-success) bg-(--ui-success)/5'
-                    : 'border-(--ui-bg-accented)'"
-                  @click="toggleTask(task.partId)"
+            <div v-if="expandedCategory === category.id" class="flex flex-col gap-2 overflow-hidden">
+              <div v-for="task in getTasksForCategory(category.id)" :key="task.partId" class="pl-4">
+                <div
+                  class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3.5 flex items-center justify-between transition-all duration-150"
+                  :class="taskRowClass(task.partId)"
                 >
-                  <span class="text-base text-(--ui-text-toned)">{{ task.partName }}</span>
-                  <div class="flex items-center gap-2">
-                    <!-- Action badge -->
+                  <!-- Tap area for checkbox toggle -->
+                  <button class="flex-1 text-left" @click="toggleTask(task.partId)">
+                    <span class="text-base" :class="isOos(task.partId) ? 'text-(--ui-text-muted) line-through' : 'text-(--ui-text-toned)'">
+                      {{ task.partName }}
+                    </span>
+                  </button>
+
+                  <div class="flex items-center gap-2 shrink-0">
+                    <!-- Action badge (replace/adjust) — hidden when OOS -->
                     <span
+                      v-if="!isOos(task.partId)"
                       class="flex items-center gap-1 rounded-md px-2 py-1 text-xs"
-                      :class="task.action === 'replace'
-                        ? 'bg-error/10 text-error'
-                        : 'bg-info/10 text-info'"
+                      :class="task.action === 'replace' ? 'bg-error/10 text-error' : 'bg-info/10 text-info'"
                     >
-                      <UIcon
-                        :name="task.action === 'replace' ? 'i-lucide-refresh-cw' : 'i-lucide-wrench'"
-                        class="size-3"
-                      />
+                      <UIcon :name="task.action === 'replace' ? 'i-lucide-refresh-cw' : 'i-lucide-wrench'" class="size-3" />
                       {{ task.action === 'replace' ? 'Replace' : 'Adjust' }}
                     </span>
-                    <!-- Checkbox -->
-                    <div
+
+                    <!-- OOS badge (when marked OOS) -->
+                    <span v-if="isOos(task.partId)" class="flex items-center gap-1 rounded-md px-2 py-1 text-xs bg-warning/10 text-warning">
+                      <UIcon name="i-lucide-package-x" class="size-3" />
+                      Out of Stock
+                    </span>
+
+                    <!-- OOS toggle button -->
+                    <button
+                      class="w-7 h-7 rounded-md flex items-center justify-center transition-colors shrink-0"
+                      :class="isOos(task.partId)
+                        ? 'bg-warning/15 text-warning'
+                        : 'text-(--ui-text-dimmed) hover:text-warning hover:bg-warning/10'"
+                      @click="toggleOos(task.partId)"
+                    >
+                      <UIcon name="i-lucide-package-x" class="size-4" />
+                    </button>
+
+                    <!-- Checkbox (disabled when OOS) -->
+                    <button
                       class="w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-150 shrink-0"
                       :class="isChecked(task.partId)
                         ? 'bg-(--ui-success) border-(--ui-success)'
-                        : 'border-(--ui-border-accented) bg-transparent'"
+                        : isOos(task.partId)
+                          ? 'border-(--ui-border-accented) opacity-30 cursor-not-allowed'
+                          : 'border-(--ui-border-accented) bg-transparent'"
+                      :disabled="isOos(task.partId)"
+                      @click="!isOos(task.partId) && toggleTask(task.partId)"
                     >
-                      <UIcon
-                        v-if="isChecked(task.partId)"
-                        name="i-lucide-check"
-                        class="size-3 text-white"
-                      />
-                    </div>
+                      <UIcon v-if="isChecked(task.partId)" name="i-lucide-check" class="size-3 text-white" />
+                    </button>
                   </div>
-                </button>
+                </div>
               </div>
             </div>
           </Transition>
         </template>
+
+        <!-- Add more parts button -->
+        <div class="pt-1 pb-2">
+          <UButton
+            block
+            variant="outline"
+            color="neutral"
+            icon="i-lucide-plus"
+            @click="addPartsOpen = true"
+          >
+            Add more parts
+          </UButton>
+        </div>
       </div>
     </div>
 
     <!-- Controls drawer -->
     <ControlsDrawer v-model="controlsOpen" />
+
+    <!-- Add more parts sheet -->
+    <AddPartsSheet
+      v-model="addPartsOpen"
+      :current-tasks="taskList"
+      @confirm="onAddPartsConfirm"
+    />
 
     <!-- Leave without saving modal -->
     <UModal v-model:open="leaveConfirmOpen" :close="false">
@@ -207,7 +232,7 @@
 </template>
 
 <script setup lang="ts">
-import { MOCK_TASKS } from '~/composables/usePartsData'
+import type { MockTask } from '~/composables/usePartsData'
 import { calcRepairCategory, useBikeStore } from '~/composables/useBikeStore'
 import type { AssignedPart } from '~/composables/useDiagnoser'
 
@@ -216,69 +241,72 @@ const route = useRoute()
 const router = useRouter()
 const bikeId = computed(() => decodeURIComponent(route.params.bikeId as string))
 const { getRecord } = useBikeStore()
-
-// Category: from diagnoser session if available, else compute from mock tasks
-const categoryInfo = computed(() => {
-  const record = getRecord(bikeId.value)
-  if (record) return record.category
-  // Fallback: build a mock confirmed parts map from MOCK_TASKS
-  const mockParts = new Map<string, AssignedPart>(
-    MOCK_TASKS.map(t => [t.partId, {
-      categoryId: t.categoryId,
-      partId: t.partId,
-      partName: t.partName,
-      action: t.action,
-    }]),
-  )
-  return calcRepairCategory(mockParts)
-})
 const toast = useToast()
 const { incrementRepaired } = useMechanicShift()
-const { checkedTaskIds, reset, toggleTask, isChecked } = useMechanic()
+const {
+  checkedTaskIds,
+  oosTaskIds,
+  taskList,
+  allTasksDone,
+  hasUnsavedProgress,
+  reset,
+  toggleTask,
+  toggleOos,
+  isChecked,
+  isOos,
+  isDone,
+  updateTaskList,
+} = useMechanic()
 
 const expandedCategory = ref<string | null>(null)
 const controlsOpen = ref(true)
 const leaveConfirmOpen = ref(false)
 const confirmOpen = ref(false)
+const addPartsOpen = ref(false)
 
-onMounted(() => {
-  reset()
+onMounted(() => reset())
+
+// Repair category — from diagnoser record or derived from current task list
+const categoryInfo = computed(() => {
+  const record = getRecord(bikeId.value)
+  if (record) return record.category
+  const mockParts = new Map<string, AssignedPart>(
+    taskList.value.map(t => [t.partId, { categoryId: t.categoryId, partId: t.partId, partName: t.partName, action: t.action }]),
+  )
+  return calcRepairCategory(mockParts)
 })
 
-// Only show categories that have mock tasks
+// Categories that have tasks
 const taskCategories = computed(() =>
-  CATEGORIES.filter(cat => MOCK_TASKS.some(t => t.categoryId === cat.id)),
+  CATEGORIES.filter(cat => taskList.value.some(t => t.categoryId === cat.id)),
 )
 
 function getTasksForCategory(categoryId: string) {
-  return MOCK_TASKS.filter(t => t.categoryId === categoryId)
+  return taskList.value.filter(t => t.categoryId === categoryId)
 }
 
-function getCategoryTaskCount(categoryId: string) {
-  return MOCK_TASKS.filter(t => t.categoryId === categoryId).length
-}
-
-function getCategoryCheckedCount(categoryId: string) {
-  return MOCK_TASKS.filter(t => t.categoryId === categoryId && isChecked(t.partId)).length
+function getCategoryDoneCount(categoryId: string) {
+  return taskList.value.filter(t => t.categoryId === categoryId && isDone(t.partId)).length
 }
 
 function isCategoryComplete(categoryId: string) {
   const tasks = getTasksForCategory(categoryId)
-  return tasks.length > 0 && tasks.every(t => isChecked(t.partId))
+  return tasks.length > 0 && tasks.every(t => isDone(t.partId))
 }
 
-// All tasks checked → enable submit
-const allTasksChecked = computed(() =>
-  MOCK_TASKS.length > 0 && MOCK_TASKS.every(t => isChecked(t.partId)),
-)
+function taskRowClass(partId: string) {
+  if (isChecked(partId)) return 'border-(--ui-success) bg-(--ui-success)/5'
+  if (isOos(partId)) return 'border-warning/40 bg-warning/5'
+  return 'border-(--ui-bg-accented)'
+}
 
-// Categories with some checked (but not complete) → yellow highlight on bike
-const pendingCategoryIds = computed(() => {
+// Categories partially done (some done, not all) → yellow pulse on bike
+const partialCategoryIds = computed(() => {
   const ids = new Set<string>()
-  MOCK_TASKS.forEach((task) => {
-    if (isChecked(task.partId) && !isCategoryComplete(task.categoryId)) {
-      ids.add(task.categoryId)
-    }
+  taskCategories.value.forEach((cat) => {
+    const done = getCategoryDoneCount(cat.id)
+    const total = getTasksForCategory(cat.id).length
+    if (done > 0 && done < total) ids.add(cat.id)
   })
   return ids
 })
@@ -292,7 +320,6 @@ const completedCategoryIds = computed(() => {
   return ids
 })
 
-// Shrink bike when a category is expanded
 const bikeSmall = computed(() => expandedCategory.value !== null)
 
 function toggleExpanded(categoryId: string) {
@@ -301,14 +328,15 @@ function toggleExpanded(categoryId: string) {
 }
 
 function handleSelectCategory(categoryId: string) {
-  // Only respond to clicks on categories that have tasks
-  if (taskCategories.value.some(c => c.id === categoryId)) {
-    toggleExpanded(categoryId)
-  }
+  if (taskCategories.value.some(c => c.id === categoryId)) toggleExpanded(categoryId)
+}
+
+function onAddPartsConfirm(newTasks: MockTask[]) {
+  updateTaskList(newTasks)
 }
 
 function onBack() {
-  if (checkedTaskIds.value.size > 0) {
+  if (hasUnsavedProgress.value) {
     leaveConfirmOpen.value = true
   } else {
     router.push('/mechanic')
@@ -338,31 +366,11 @@ function onConfirm() {
 </script>
 
 <style scoped>
-/* Accordion open/close */
-.accordion-enter-active {
-  transition: opacity 0.2s ease, transform 0.22s ease;
-}
-.accordion-leave-active {
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-.accordion-enter-from {
-  opacity: 0;
-  transform: translateY(-6px);
-}
-.accordion-leave-to {
-  opacity: 0;
-  transform: translateY(-6px);
-}
+.accordion-enter-active { transition: opacity 0.2s ease, transform 0.22s ease; }
+.accordion-leave-active { transition: opacity 0.15s ease, transform 0.15s ease; }
+.accordion-enter-from, .accordion-leave-to { opacity: 0; transform: translateY(-6px); }
 
-/* Generic fade */
-.fade-enter-active {
-  transition: opacity 0.2s ease;
-}
-.fade-leave-active {
-  transition: opacity 0.15s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+.fade-enter-active { transition: opacity 0.2s ease; }
+.fade-leave-active { transition: opacity 0.15s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>

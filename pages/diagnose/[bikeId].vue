@@ -50,7 +50,7 @@
             <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
             <div>
               <p class="text-sm font-medium text-(--ui-text-highlighted)">
-                {{ liveCategory.label }}<span v-if="liveCategory.sublabel" class="text-(--ui-text-muted)"> · {{ liveCategory.sublabel }}</span>
+                {{ liveCategory.label }}
               </p>
               <p class="text-xs text-(--ui-text-muted) mt-0.5">{{ liveCategory.time }} estimated</p>
             </div>

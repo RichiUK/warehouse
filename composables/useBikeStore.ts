@@ -49,15 +49,15 @@ export function calcRepairCategory(confirmedParts: Map<string, AssignedPart>): C
   }
 
   if (total === 0) {
-    return { id: 'basic-service', label: 'Basic Service', time: '~5 min', color: 'success' }
+    return { id: 'basic-service', label: 'Basic service', time: '< 5 min', color: 'success' }
   }
   if (total <= 3) {
-    return { id: 'minor', label: 'Mechanic repair', sublabel: 'Minor', time: '~15 min', color: 'info' }
+    return { id: 'minor', label: 'Minor repair', time: '< 30 min', color: 'info' }
   }
   if (total <= 8) {
-    return { id: 'medium', label: 'Mechanic repair', sublabel: 'Medium', time: '~30 min', color: 'warning' }
+    return { id: 'medium', label: 'Medium repair', time: '30 – 60 min', color: 'warning' }
   }
-  return { id: 'major', label: 'Mechanic repair', sublabel: 'Major', time: '~60 min', color: 'error' }
+  return { id: 'major', label: 'Major repair', time: '> 60 min', color: 'error' }
 }
 
 const bikeRecords = ref<Map<string, BikeRecord>>(new Map())
