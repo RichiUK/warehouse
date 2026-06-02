@@ -1,21 +1,31 @@
 <template>
   <div class="relative h-dvh bg-(--ui-bg) flex flex-col">
     <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-4 pt-9 pb-2 bg-(--ui-bg)">
-      <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />
-      <Transition name="fade">
-        <UButton
-          v-if="confirmedParts.size > 0"
-          variant="outline"
-          color="primary"
-          icon="i-lucide-check-check"
-          size="sm"
-          trailing
-          @click="onSubmit"
-        >
-          Submit
-        </UButton>
-      </Transition>
+    <div class="fixed top-0 left-0 right-0 z-20 bg-(--ui-bg) px-4 pt-9 pb-2">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1">
+          <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />
+          <p class="text-base font-black uppercase tracking-wide leading-none">
+            <span class="text-(--ui-text-highlighted)">BIKE </span><span class="text-(--ui-primary)">{{ bikeId }}</span>
+          </p>
+        </div>
+        <Transition name="fade">
+          <UButton
+            v-if="confirmedParts.size > 0"
+            variant="outline"
+            color="primary"
+            icon="i-lucide-check-check"
+            size="sm"
+            trailing
+            @click="onSubmit"
+          >
+            <span class="flex items-center gap-1.5">
+              <span class="bg-(--ui-primary)/20 text-(--ui-primary) text-xs font-bold px-1.5 py-0.5 rounded">{{ confirmedParts.size }}</span>
+              Submit
+            </span>
+          </UButton>
+        </Transition>
+      </div>
     </div>
 
     <!-- Scrollable content -->
@@ -31,6 +41,14 @@
           :selected-category-ids="selectedCategoryIds"
           @select-category="handleSelectCategory"
         />
+      </div>
+
+      <!-- Damage report -->
+      <div class="px-2 mb-3">
+        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center gap-3">
+          <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
+          <span class="text-sm text-(--ui-text-toned)">Damage report: <span class="text-(--ui-text-highlighted)">{{ mockDamageReport }}</span></span>
+        </div>
       </div>
 
       <!-- Search -->
@@ -251,6 +269,8 @@ const {
 
 const { incrementDiagnosed } = useShift()
 const toast = useToast()
+
+const mockDamageReport = 'No Electric Assist'
 
 const controlsOpen = ref(true)
 const confirmOpen = ref(false)

@@ -1,20 +1,27 @@
 <template>
   <div class="relative h-dvh bg-(--ui-bg) flex flex-col">
     <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-4 pt-9 pb-2 bg-(--ui-bg)">
-      <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />
-      <Transition name="fade">
-        <UButton
-          v-if="allTasksChecked"
-          color="success"
-          icon="i-lucide-check-check"
-          size="sm"
-          trailing
-          @click="onSubmit"
-        >
-          Submit
-        </UButton>
-      </Transition>
+    <div class="fixed top-0 left-0 right-0 z-20 bg-(--ui-bg) px-4 pt-9 pb-2">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-1">
+          <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />
+          <p class="text-base font-black uppercase tracking-wide leading-none">
+            <span class="text-(--ui-text-highlighted)">BIKE </span><span class="text-(--ui-primary)">{{ bikeId }}</span>
+          </p>
+        </div>
+        <Transition name="fade">
+          <UButton
+            v-if="allTasksChecked"
+            color="success"
+            icon="i-lucide-check-check"
+            size="sm"
+            trailing
+            @click="onSubmit"
+          >
+            Submit
+          </UButton>
+        </Transition>
+      </div>
     </div>
 
     <!-- Scrollable content -->
@@ -31,6 +38,14 @@
           :completed-category-ids="completedCategoryIds"
           @select-category="handleSelectCategory"
         />
+      </div>
+
+      <!-- Damage report -->
+      <div class="px-2 mb-3">
+        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center gap-3">
+          <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
+          <span class="text-sm text-(--ui-text-toned)">Damage report: <span class="text-(--ui-text-highlighted)">{{ mockDamageReport }}</span></span>
+        </div>
       </div>
 
       <!-- Parts accordion -->
@@ -185,7 +200,10 @@
 import { MOCK_TASKS } from '~/composables/usePartsData'
 
 const { CATEGORIES } = usePartsData()
+const route = useRoute()
 const router = useRouter()
+const bikeId = computed(() => decodeURIComponent(route.params.bikeId as string))
+const mockDamageReport = 'No Electric Assist'
 const toast = useToast()
 const { incrementRepaired } = useMechanicShift()
 const { checkedTaskIds, reset, toggleTask, isChecked } = useMechanic()
