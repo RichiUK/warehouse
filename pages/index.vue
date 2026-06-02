@@ -7,13 +7,13 @@
 
     <!-- Content -->
     <div class="flex-1 flex flex-col items-center justify-center px-6 gap-10">
-      <!-- Greeting -->
+      <!-- Greeting — name changes per role as user hovers/selects -->
       <div class="text-center">
         <p class="text-[2.1rem] font-black text-white uppercase tracking-tight leading-none">
           WELCOME BACK,
         </p>
         <p class="text-[2.1rem] font-black text-[#4ade80] uppercase tracking-tight leading-tight">
-          ALEX
+          {{ hoveredName }}
         </p>
         <p class="text-sm text-white/45 mt-4 tracking-wide">
           Please select your role to continue
@@ -26,6 +26,8 @@
           v-for="role in roles"
           :key="role.id"
           class="w-full border border-white/10 bg-white/5 rounded-2xl px-5 py-5 flex items-center justify-between active:bg-white/10 transition-colors"
+          @pointerenter="hoveredRole = role.id"
+          @pointerleave="hoveredRole = null"
           @click="selectRole(role.id)"
         >
           <div class="flex items-center gap-4">
@@ -46,6 +48,7 @@
 
 <script setup lang="ts">
 import type { AppRole } from '~/composables/useRole'
+import { ROLE_NAMES } from '~/composables/useRole'
 
 const router = useRouter()
 const { setRole } = useRole()
@@ -53,15 +56,19 @@ const { setRole } = useRole()
 const roles: Array<{ id: AppRole; label: string; icon: string }> = [
   { id: 'diagnoser', label: 'Diagnoser', icon: 'i-lucide-stethoscope' },
   { id: 'mechanic', label: 'Mechanic', icon: 'i-lucide-wrench' },
+  { id: 'tester', label: 'Tester', icon: 'i-lucide-clipboard-check' },
 ]
+
+const hoveredRole = ref<AppRole | null>(null)
+const hoveredName = computed(() =>
+  hoveredRole.value ? ROLE_NAMES[hoveredRole.value] : ROLE_NAMES.diagnoser,
+)
 
 function selectRole(role: AppRole) {
   setRole(role)
-  if (role === 'diagnoser') {
-    router.push('/diagnoser')
-  } else {
-    router.push('/mechanic')
-  }
+  if (role === 'diagnoser') router.push('/diagnoser')
+  else if (role === 'mechanic') router.push('/mechanic')
+  else router.push('/tester')
 }
 </script>
 

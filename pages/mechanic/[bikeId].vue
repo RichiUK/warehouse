@@ -40,6 +40,14 @@
         />
       </div>
 
+      <!-- People card -->
+      <div v-if="bikeRecord?.diagnoserName" class="px-2 mb-2">
+        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-2.5 flex items-center gap-2">
+          <UIcon name="i-lucide-user" class="size-4 text-(--ui-text-muted) shrink-0" />
+          <span class="text-xs text-(--ui-text-muted)">Diagnosed by <span class="text-(--ui-text-highlighted) font-medium">{{ bikeRecord.diagnoserName }}</span></span>
+        </div>
+      </div>
+
       <!-- Repair category card -->
       <div class="px-2 mb-3">
         <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center justify-between gap-3">
@@ -240,7 +248,8 @@ const { CATEGORIES } = usePartsData()
 const route = useRoute()
 const router = useRouter()
 const bikeId = computed(() => decodeURIComponent(route.params.bikeId as string))
-const { getRecord } = useBikeStore()
+const { getRecord, storeMechanicWork } = useBikeStore()
+const { currentName } = useRole()
 const toast = useToast()
 const { incrementRepaired } = useMechanicShift()
 const {
@@ -265,6 +274,8 @@ const confirmOpen = ref(false)
 const addPartsOpen = ref(false)
 
 onMounted(() => reset())
+
+const bikeRecord = computed(() => getRecord(bikeId.value))
 
 // Repair category — from diagnoser record or derived from current task list
 const categoryInfo = computed(() => {
@@ -354,6 +365,12 @@ function onSubmit() {
 
 function onConfirm() {
   confirmOpen.value = false
+  storeMechanicWork(
+    bikeId.value,
+    currentName.value,
+    taskList.value as MockTask[],
+    Array.from(oosTaskIds.value),
+  )
   incrementRepaired()
   toast.add({
     title: 'The bike was successfully repaired.',

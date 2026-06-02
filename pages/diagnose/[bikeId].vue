@@ -280,6 +280,7 @@ const {
 
 const { incrementDiagnosed } = useShift()
 const { storeRecord } = useBikeStore()
+const { currentName } = useRole()
 const toast = useToast()
 
 const controlsOpen = ref(true)
@@ -371,7 +372,7 @@ function onSubmit() {
 
 function onConfirm() {
   confirmOpen.value = false
-  storeRecord(bikeId.value, confirmedParts.value)
+  storeRecord(bikeId.value, confirmedParts.value, currentName.value)
   incrementDiagnosed()
   toast.add({
     title: 'The bike was successfully diagnosed.',

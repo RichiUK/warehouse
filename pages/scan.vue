@@ -106,13 +106,15 @@ const torchActive = ref(false)
 
 function bikeRoute(bikeId: string) {
   const encoded = encodeURIComponent(bikeId)
-  return currentRole.value === 'mechanic'
-    ? `/mechanic/${encoded}`
-    : `/diagnose/${encoded}`
+  if (currentRole.value === 'mechanic') return `/mechanic/${encoded}`
+  if (currentRole.value === 'tester') return `/tester/${encoded}`
+  return `/diagnose/${encoded}`
 }
 
 function homeRoute() {
-  return currentRole.value === 'mechanic' ? '/mechanic' : '/diagnoser'
+  if (currentRole.value === 'mechanic') return '/mechanic'
+  if (currentRole.value === 'tester') return '/tester'
+  return '/diagnoser'
 }
 
 // TODO: remove — test-only auto-navigate
