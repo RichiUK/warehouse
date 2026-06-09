@@ -16,7 +16,7 @@
         <div class="px-2 pt-3 pb-2 shrink-0">
           <UInput
             v-model="searchQuery"
-            placeholder="Search Part"
+            placeholder="Search part"
             icon="i-lucide-search"
             size="md"
             class="w-full"
@@ -30,32 +30,42 @@
           </UInput>
         </div>
 
+        <!-- Counter -->
+        <div v-if="selectedIds.size > 0" class="px-3 pb-2 shrink-0">
+          <p class="text-xs text-(--ui-text-muted)">
+            <span class="text-(--ui-primary) font-semibold">{{ selectedIds.size }}</span> part{{ selectedIds.size !== 1 ? 's' : '' }} selected
+          </p>
+        </div>
+
         <!-- Scrollable parts list -->
-        <div class="flex-1 overflow-y-auto pb-36 px-2 flex flex-col gap-2">
+        <div class="flex-1 overflow-y-auto pb-8 px-2 flex flex-col gap-2">
 
           <!-- Flat search results -->
           <template v-if="searchQuery">
             <template v-for="category in filteredCategories" :key="category.id">
               <p class="text-xs text-(--ui-text-muted) uppercase tracking-wider px-1 pt-2 pb-1">{{ category.name }}</p>
-              <div
-                v-for="part in filteredParts(category)"
-                :key="part.id"
-              >
+              <div v-for="part in filteredParts(category)" :key="part.id">
                 <button
                   class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3 flex items-center justify-between transition-all duration-150"
-                  :class="getPartBorderClass(part.id)"
+                  :class="selectedIds.has(part.id)
+                    ? 'border-(--ui-primary) bg-(--ui-primary)/5'
+                    : 'border-(--ui-border-accented)'"
                   @click="togglePart(category.id, part.id, part.name)"
                 >
                   <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
-                  <Transition name="fade">
+                  <div class="flex items-center gap-2 shrink-0">
                     <span
-                      v-if="getPartAction(part.id) && !pendingIds.has(part.id)"
-                      class="flex items-center gap-1 bg-(--ui-bg) border border-(--ui-border-accented) rounded-md px-2 py-1"
-                    >
-                      <UIcon :name="actionIcons[getPartAction(part.id)!]" class="size-3 text-(--ui-text)" />
-                      <span class="text-xs text-(--ui-text)">{{ actionLabels[getPartAction(part.id)!] }}</span>
-                    </span>
-                  </Transition>
+                      v-if="isFromDiagnosis(part.id)"
+                      class="text-xs text-(--ui-text-dimmed) italic"
+                    >Diagnosed</span>
+                    <Transition name="fade">
+                      <UIcon
+                        v-if="selectedIds.has(part.id)"
+                        name="i-lucide-check"
+                        class="size-4 text-(--ui-primary)"
+                      />
+                    </Transition>
+                  </div>
                 </button>
               </div>
             </template>
@@ -73,7 +83,7 @@
                 <div class="flex items-center gap-2">
                   <Transition name="fade">
                     <UBadge v-if="getCategoryCount(category.id) > 0" color="primary" variant="soft" size="sm">
-                      {{ getCategoryCount(category.id) }} selected
+                      {{ getCategoryCount(category.id) }}
                     </UBadge>
                   </Transition>
                   <UIcon
@@ -84,23 +94,29 @@
               </button>
 
               <Transition name="accordion">
-                <div v-if="expandedCategory === category.id" class="flex flex-col gap-2 overflow-hidden">
+                <div v-if="expandedCategory === category.id" class="flex flex-col gap-1.5 overflow-hidden">
                   <div v-for="part in category.parts" :key="part.id" class="pl-4">
                     <button
-                      class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-all duration-150"
-                      :class="getPartBorderClass(part.id)"
+                      class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3 flex items-center justify-between transition-all duration-150"
+                      :class="selectedIds.has(part.id)
+                        ? 'border-(--ui-primary) bg-(--ui-primary)/5'
+                        : 'border-(--ui-border-accented)'"
                       @click="togglePart(category.id, part.id, part.name)"
                     >
                       <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
-                      <Transition name="fade">
+                      <div class="flex items-center gap-2 shrink-0">
                         <span
-                          v-if="getPartAction(part.id) && !pendingIds.has(part.id)"
-                          class="flex items-center gap-1 bg-(--ui-bg) border border-(--ui-border-accented) rounded-md px-2 py-1"
-                        >
-                          <UIcon :name="actionIcons[getPartAction(part.id)!]" class="size-3 text-(--ui-text)" />
-                          <span class="text-xs text-(--ui-text)">{{ actionLabels[getPartAction(part.id)!] }}</span>
-                        </span>
-                      </Transition>
+                          v-if="isFromDiagnosis(part.id)"
+                          class="text-xs text-(--ui-text-dimmed) italic"
+                        >Diagnosed</span>
+                        <Transition name="fade">
+                          <UIcon
+                            v-if="selectedIds.has(part.id)"
+                            name="i-lucide-check"
+                            class="size-4 text-(--ui-primary)"
+                          />
+                        </Transition>
+                      </div>
                     </button>
                   </div>
                 </div>
@@ -109,15 +125,6 @@
           </template>
 
         </div>
-
-        <!-- ActionDrawer for pending selections -->
-        <Transition name="slide-up">
-          <ActionDrawer
-            v-if="pendingIds.size > 0"
-            :count="pendingIds.size"
-            @action="applyAction"
-          />
-        </Transition>
       </div>
     </Transition>
   </Teleport>
@@ -126,7 +133,6 @@
 <script setup lang="ts">
 import type { MockTask } from '~/composables/usePartsData'
 import { CATEGORIES } from '~/composables/usePartsData'
-import type { PartAction } from '~/composables/useDiagnoser'
 
 const props = defineProps<{
   modelValue: boolean
@@ -138,23 +144,67 @@ const emit = defineEmits<{
   'confirm': [tasks: MockTask[]]
 }>()
 
-const confirmedMap = ref<Map<string, MockTask>>(new Map())
-const pendingIds = ref<Set<string>>(new Set())
-const pendingMeta = ref<Map<string, { categoryId: string; partId: string; partName: string }>>(new Map())
+// Which partIds are currently in the task list (pre-selected on open)
+const selectedIds = ref<Set<string>>(new Set())
+// Which parts came from diagnosis (so we can display "Diagnosed" indicator)
+const diagnosisIds = ref<Set<string>>(new Set())
 const expandedCategory = ref<string | null>(null)
 const searchQuery = ref('')
 
+// Build a lookup: partId → existing task metadata (preserves source etc.)
+const existingTaskMap = ref<Map<string, MockTask>>(new Map())
+
 watch(() => props.modelValue, (open) => {
   if (open) {
-    confirmedMap.value = new Map(props.currentTasks.map(t => [t.partId, t]))
-    pendingIds.value = new Set()
-    pendingMeta.value = new Map()
+    const sel = new Set<string>()
+    const diag = new Set<string>()
+    const map = new Map<string, MockTask>()
+    props.currentTasks.forEach((t) => {
+      sel.add(t.partId)
+      map.set(t.partId, t)
+      if (t.source === 'diagnosis') diag.add(t.partId)
+    })
+    selectedIds.value = sel
+    diagnosisIds.value = diag
+    existingTaskMap.value = map
     expandedCategory.value = null
     searchQuery.value = ''
   }
 })
 
-// Search filtering
+function isFromDiagnosis(partId: string) {
+  return diagnosisIds.value.has(partId)
+}
+
+function toggleCategory(id: string) {
+  expandedCategory.value = expandedCategory.value === id ? null : id
+}
+
+function togglePart(categoryId: string, partId: string, partName: string) {
+  const next = new Set(selectedIds.value)
+  if (next.has(partId)) {
+    next.delete(partId)
+  }
+  else {
+    next.add(partId)
+    // If it's a new part (not in existing), add metadata for later use
+    if (!existingTaskMap.value.has(partId)) {
+      const nextMap = new Map(existingTaskMap.value)
+      nextMap.set(partId, { partId, partName, categoryId, source: 'mechanic' })
+      existingTaskMap.value = nextMap
+    }
+  }
+  selectedIds.value = next
+}
+
+function getCategoryCount(categoryId: string) {
+  let n = 0
+  CATEGORIES.find(c => c.id === categoryId)?.parts.forEach((p) => {
+    if (selectedIds.value.has(p.id)) n++
+  })
+  return n
+}
+
 const filteredCategories = computed(() => {
   if (!searchQuery.value) return CATEGORIES
   const q = searchQuery.value.toLowerCase()
@@ -172,88 +222,28 @@ function filteredParts(category: typeof CATEGORIES[0]) {
   )
 }
 
-function toggleCategory(id: string) {
-  expandedCategory.value = expandedCategory.value === id ? null : id
-}
-
-function togglePart(categoryId: string, partId: string, partName: string) {
-  const nextPending = new Set(pendingIds.value)
-  const nextMeta = new Map(pendingMeta.value)
-  const nextConfirmed = new Map(confirmedMap.value)
-
-  if (nextPending.has(partId)) {
-    nextPending.delete(partId)
-    nextMeta.delete(partId)
-  } else if (nextConfirmed.has(partId)) {
-    nextConfirmed.delete(partId)
-  } else {
-    nextPending.add(partId)
-    nextMeta.set(partId, { categoryId, partId, partName })
-  }
-
-  pendingIds.value = nextPending
-  pendingMeta.value = nextMeta
-  confirmedMap.value = nextConfirmed
-}
-
-function applyAction(action: PartAction) {
-  const next = new Map(confirmedMap.value)
-  pendingIds.value.forEach((partId) => {
-    const meta = pendingMeta.value.get(partId)
-    if (meta && (action === 'replace' || action === 'adjust')) {
-      next.set(partId, {
-        partId,
-        partName: meta.partName,
-        categoryId: meta.categoryId,
-        action,
-      })
-    }
-  })
-  confirmedMap.value = next
-  pendingIds.value = new Set()
-  pendingMeta.value = new Map()
-}
-
-function getPartAction(partId: string): PartAction | null {
-  if (pendingIds.value.has(partId)) return null
-  const t = confirmedMap.value.get(partId)
-  return t ? t.action as PartAction : null
-}
-
-function getPartBorderClass(partId: string) {
-  if (pendingIds.value.has(partId)) return 'border-(--ui-primary)'
-  if (confirmedMap.value.has(partId)) return 'border-(--ui-border-accented) bg-(--ui-bg-accented)'
-  return 'border-(--ui-border-accented)'
-}
-
-function getCategoryCount(categoryId: string) {
-  let n = 0
-  confirmedMap.value.forEach(t => { if (t.categoryId === categoryId) n++ })
-  pendingIds.value.forEach((id) => {
-    const m = pendingMeta.value.get(id)
-    if (m?.categoryId === categoryId) n++
-  })
-  return n
-}
-
-const actionLabels: Record<PartAction, string> = {
-  replace: 'Replace',
-  adjust: 'Adjust',
-  'out-of-stock': 'Out of Stock',
-}
-
-const actionIcons: Record<PartAction, string> = {
-  replace: 'i-lucide-refresh-cw',
-  adjust: 'i-lucide-wrench',
-  'out-of-stock': 'i-lucide-package-x',
-}
-
 function onCancel() {
   emit('update:modelValue', false)
 }
 
 function onConfirm() {
-  emit('confirm', Array.from(confirmedMap.value.values()))
+  // Build final task list in category order, preserving existing metadata
+  const result: MockTask[] = []
+  CATEGORIES.forEach((cat) => {
+    cat.parts.forEach((part) => {
+      if (selectedIds.value.has(part.id)) {
+        const existing = existingTaskMap.value.get(part.id)
+        if (existing) {
+          result.push(existing)
+        }
+        else {
+          // Fallback: shouldn't happen since togglePart registers new parts
+          result.push({ partId: part.id, partName: part.name, categoryId: cat.id, source: 'mechanic' })
+        }
+      }
+    })
+  })
+  emit('confirm', result)
   emit('update:modelValue', false)
 }
 </script>
@@ -266,10 +256,6 @@ function onConfirm() {
 .accordion-enter-active { transition: opacity 0.2s ease, transform 0.22s ease; }
 .accordion-leave-active { transition: opacity 0.15s ease, transform 0.15s ease; }
 .accordion-enter-from, .accordion-leave-to { opacity: 0; transform: translateY(-6px); }
-
-.slide-up-enter-active { transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease; }
-.slide-up-leave-active { transition: transform 0.18s ease-in, opacity 0.15s ease; }
-.slide-up-enter-from, .slide-up-leave-to { transform: translateY(100%); opacity: 0; }
 
 .fade-enter-active { transition: opacity 0.2s ease; }
 .fade-leave-active { transition: opacity 0.15s ease; }

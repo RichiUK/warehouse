@@ -17,7 +17,7 @@ export function useMechanic() {
 
   /**
    * Initialise from diagnoser-selected parts.
-   * Parts have no pre-assigned action; mechanic marks OOS or checks them off.
+   * Tags each task as source: 'diagnosis' for traceability.
    * Falls back to MOCK_TASKS if the list is empty.
    */
   function initFromDiagnosis(diagnosedParts: DiagnosedPart[]) {
@@ -28,11 +28,11 @@ export function useMechanic() {
         partId: p.partId,
         partName: p.partName,
         categoryId: p.categoryId,
-        action: undefined,
+        source: 'diagnosis' as const,
       }))
     }
     else {
-      taskList.value = [...MOCK_TASKS]
+      taskList.value = MOCK_TASKS.map(t => ({ ...t, source: 'diagnosis' as const }))
     }
   }
 

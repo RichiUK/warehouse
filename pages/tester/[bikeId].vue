@@ -118,15 +118,6 @@
                 >
                   <span class="text-base text-(--ui-text-toned)">{{ task.partName }}</span>
                   <div class="flex items-center gap-2 shrink-0">
-                    <!-- Action badge -->
-                    <span
-                      class="flex items-center gap-1 rounded-md px-2 py-1 text-xs"
-                      :class="task.action === 'replace' ? 'bg-error/10 text-error' : 'bg-info/10 text-info'"
-                    >
-                      <UIcon :name="task.action === 'replace' ? 'i-lucide-refresh-cw' : 'i-lucide-wrench'" class="size-3" />
-                      {{ task.action === 'replace' ? 'Replace' : 'Adjust' }}
-                    </span>
-
                     <!-- Pass button -->
                     <button
                       class="w-7 h-7 rounded-md flex items-center justify-center transition-all duration-150 border text-xs font-bold"
@@ -198,7 +189,6 @@
 import type { MockTask } from '~/composables/usePartsData'
 import { MOCK_TASKS } from '~/composables/usePartsData'
 import { calcRepairCategory, useBikeStore } from '~/composables/useBikeStore'
-import type { AssignedPart } from '~/composables/useDiagnoser'
 
 const { CATEGORIES } = usePartsData()
 const route = useRoute()
@@ -231,10 +221,7 @@ const evaluableTaskIds = computed(() =>
 
 const categoryInfo = computed(() => {
   if (bikeRecord.value) return bikeRecord.value.category
-  const mockParts = new Map<string, AssignedPart>(
-    taskList.value.map(t => [t.partId, { categoryId: t.categoryId, partId: t.partId, partName: t.partName, action: t.action }]),
-  )
-  return calcRepairCategory(mockParts)
+  return calcRepairCategory(taskList.value.length)
 })
 
 const taskCategories = computed(() =>

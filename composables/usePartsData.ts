@@ -8,6 +8,8 @@ export interface MockTask {
   partName: string
   categoryId: string
   action?: 'replace' | 'adjust'
+  /** Traceability: which role added this task */
+  source?: 'diagnosis' | 'mechanic'
 }
 
 export const MOCK_TASKS: MockTask[] = [
