@@ -1,184 +1,187 @@
 <template>
   <div class="relative h-dvh bg-(--ui-bg) flex flex-col">
+
     <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-20 bg-(--ui-bg) px-4 pt-9 pb-2">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-1">
-          <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="router.push('/tester')" />
-          <p class="text-base font-black uppercase tracking-wide leading-none">
-            <span class="text-(--ui-text-highlighted)">BIKE </span><span class="text-(--ui-primary)">{{ bikeId }}</span>
-          </p>
-        </div>
+    <div class="shrink-0 bg-(--ui-bg) px-4 pt-9 pb-2">
+      <div class="flex items-center gap-3">
+        <!-- Back -->
+        <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="router.push('/tester')" />
+        <!-- Title -->
+        <p class="flex-1 text-base font-black uppercase tracking-wide leading-none">
+          <span class="text-(--ui-text-highlighted)">BIKE </span><span class="text-(--ui-primary)">{{ bikeId }}</span>
+        </p>
+        <!-- Submit button — appears when all evaluated -->
         <Transition name="fade">
           <UButton
-            v-if="allEvaluated(evaluableTaskIds)"
-            :color="hasFailures(evaluableTaskIds) ? 'error' : 'success'"
-            icon="i-lucide-check-check"
+            v-if="allChecklistEvaluated"
+            :color="failedChecks.length > 0 ? 'error' : 'success'"
             size="sm"
             trailing
-            @click="onSubmit"
+            @click="onFinish"
           >
-            Submit
+            {{ failedChecks.length > 0 ? `${failedChecks.length} failed` : 'All passed' }}
           </UButton>
         </Transition>
       </div>
+
+      <!-- Timer + progress strip -->
+      <div class="flex items-center gap-3 mt-2 pb-0.5">
+        <div class="flex items-center gap-1.5 text-xs text-(--ui-text-muted) shrink-0">
+          <UIcon name="i-lucide-timer" class="size-3.5" />
+          <span class="font-mono tabular-nums">{{ elapsedDisplay }}</span>
+        </div>
+        <div class="flex-1 h-1 bg-(--ui-bg-accented) rounded-full overflow-hidden">
+          <div
+            class="h-full rounded-full transition-all duration-300"
+            :class="failedChecks.length > 0 ? 'bg-error' : 'bg-(--ui-success)'"
+            :style="{ width: progressPercent + '%' }"
+          />
+        </div>
+        <span class="text-xs text-(--ui-text-muted) shrink-0 tabular-nums">{{ evaluatedCount }}/{{ TESTER_CHECKLIST.length }}</span>
+      </div>
     </div>
 
-    <!-- Scrollable content -->
-    <div class="flex-1 overflow-y-auto pt-16 pb-24">
-      <!-- Bike viewer -->
-      <div
-        class="relative transition-all duration-300 ease-in-out"
-        :class="expandedCategory ? 'px-[72px] py-2' : 'px-[18.74px] py-4'"
-      >
-        <BikeViewer
-          :active-category-id="expandedCategory"
-          :has-selections="evaluableTaskIds.length > 0"
-          :selected-category-ids="partialCategoryIds"
-          :completed-category-ids="passedCategoryIds"
-          @select-category="handleSelectCategory"
+    <!-- Stats strip -->
+    <div class="shrink-0 mx-4 mb-3 grid grid-cols-2 divide-x divide-(--ui-bg-accented) border border-(--ui-bg-accented) rounded-xl overflow-hidden bg-(--ui-bg-elevated)">
+      <div class="flex flex-col items-center justify-center py-2.5 gap-1">
+        <span
+          class="size-2.5 rounded-full"
+          :class="bikeCtx.iotStatus === 'online' ? 'bg-success shadow-[0_0_6px_theme(colors.green.400)]' : 'bg-error'"
         />
+        <span class="text-xs font-medium" :class="bikeCtx.iotStatus === 'online' ? 'text-(--ui-text-toned)' : 'text-error'">
+          {{ bikeCtx.iotStatus === 'online' ? 'Online' : 'Offline' }}
+        </span>
       </div>
-
-      <!-- People card -->
-      <div class="px-2 mb-2">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center gap-3">
-          <UIcon name="i-lucide-users" class="size-4 text-(--ui-text-muted) shrink-0" />
-          <div class="flex items-center gap-3 text-xs text-(--ui-text-muted) flex-wrap">
-            <span>Diagnosed by <span class="text-(--ui-text-highlighted) font-medium">{{ bikeRecord?.diagnoserName ?? '—' }}</span></span>
-            <span class="text-(--ui-text-dimmed)">·</span>
-            <span>Repaired by <span class="text-(--ui-text-highlighted) font-medium">{{ bikeRecord?.mechanicName ?? '—' }}</span></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Category card -->
-      <div class="px-2 mb-3">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
-            <div>
-              <p class="text-sm font-medium text-(--ui-text-highlighted)">{{ categoryInfo.label }}</p>
-              <p class="text-xs text-(--ui-text-muted) mt-0.5">{{ categoryInfo.time }} estimated</p>
-            </div>
-          </div>
-          <UBadge :color="categoryInfo.color" variant="soft" size="sm">{{ categoryInfo.time }}</UBadge>
-        </div>
-      </div>
-
-      <!-- Tasks accordion -->
-      <div class="px-2 flex flex-col gap-2">
-        <template v-for="category in taskCategories" :key="category.id">
-          <!-- Category header -->
-          <button
-            class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-4 flex items-center justify-between transition-colors duration-200"
-            :class="expandedCategory === category.id ? 'border-(--ui-text-muted)' : 'border-(--ui-bg-accented)'"
-            @click="toggleExpanded(category.id)"
-          >
-            <span class="text-base text-(--ui-text-toned)">{{ category.name }}</span>
-            <div class="flex items-center gap-2">
-              <UBadge
-                :color="isCategoryDone(category.id) ? (isCategoryPassed(category.id) ? 'success' : 'error') : 'warning'"
-                variant="soft"
-                size="sm"
-              >
-                {{ isCategoryDone(category.id)
-                  ? (isCategoryPassed(category.id) ? 'Passed' : 'Failed')
-                  : `${getCategoryEvaluatedCount(category.id)}/${getTasksForCategory(category.id).length} tested` }}
-              </UBadge>
-              <UIcon
-                :name="expandedCategory === category.id ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'"
-                class="size-6 text-(--ui-text-toned)"
-              />
-            </div>
-          </button>
-
-          <!-- Task rows -->
-          <Transition name="accordion">
-            <div v-if="expandedCategory === category.id" class="flex flex-col gap-2 overflow-hidden">
-              <div v-for="task in getTasksForCategory(category.id)" :key="task.partId" class="pl-4">
-
-                <!-- OOS task (not testable) -->
-                <div
-                  v-if="isOosTask(task.partId)"
-                  class="w-full bg-(--ui-bg-elevated) border border-warning/30 rounded-md px-4 py-3.5 flex items-center justify-between opacity-60"
-                >
-                  <span class="text-base text-(--ui-text-muted) line-through">{{ task.partName }}</span>
-                  <span class="flex items-center gap-1 rounded-md px-2 py-1 text-xs bg-warning/10 text-warning">
-                    <UIcon name="i-lucide-package-x" class="size-3" />
-                    Out of Stock
-                  </span>
-                </div>
-
-                <!-- Normal task (testable) -->
-                <div
-                  v-else
-                  class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3.5 flex items-center justify-between transition-all duration-150"
-                  :class="taskRowClass(task.partId)"
-                >
-                  <span class="text-base text-(--ui-text-toned)">{{ task.partName }}</span>
-                  <div class="flex items-center gap-2 shrink-0">
-                    <!-- Pass button -->
-                    <button
-                      class="w-7 h-7 rounded-md flex items-center justify-center transition-all duration-150 border text-xs font-bold"
-                      :class="getResult(task.partId) === 'pass'
-                        ? 'bg-(--ui-success) border-(--ui-success) text-white'
-                        : 'border-(--ui-border-accented) text-(--ui-text-muted) hover:border-(--ui-success) hover:text-(--ui-success)'"
-                      @click="setResult(task.partId, 'pass')"
-                    >
-                      <UIcon name="i-lucide-check" class="size-3.5" />
-                    </button>
-
-                    <!-- Fail button -->
-                    <button
-                      class="w-7 h-7 rounded-md flex items-center justify-center transition-all duration-150 border text-xs font-bold"
-                      :class="getResult(task.partId) === 'fail'
-                        ? 'bg-error border-error text-white'
-                        : 'border-(--ui-border-accented) text-(--ui-text-muted) hover:border-error hover:text-error'"
-                      @click="setResult(task.partId, 'fail')"
-                    >
-                      <UIcon name="i-lucide-x" class="size-3.5" />
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </Transition>
-        </template>
+      <div class="flex flex-col items-center justify-center py-2.5 gap-1">
+        <UIcon
+          :name="bikeCtx.batteryLevel > 60 ? 'i-lucide-battery-full' : bikeCtx.batteryLevel > 25 ? 'i-lucide-battery-medium' : 'i-lucide-battery-low'"
+          class="size-5"
+          :class="bikeCtx.batteryLevel <= 25 ? 'text-error' : 'text-(--ui-text-toned)'"
+        />
+        <span class="text-xs font-medium" :class="bikeCtx.batteryLevel <= 25 ? 'text-error' : 'text-(--ui-text-toned)'">
+          {{ bikeCtx.batteryLevel }}%
+        </span>
       </div>
     </div>
 
-    <!-- Confirm submit modal -->
-    <UModal v-model:open="confirmOpen" :close="false">
+    <!-- Divider -->
+    <div class="shrink-0 mx-4 border-t border-(--ui-bg-accented) mb-3" />
+
+    <!-- Scrollable checklist -->
+    <div class="flex-1 overflow-y-auto px-4 pb-8 flex flex-col gap-2.5">
+      <div
+        v-for="check in TESTER_CHECKLIST"
+        :key="check.id"
+        class="flex gap-2 items-stretch"
+      >
+        <!-- Label card -->
+        <div
+          class="flex-1 bg-(--ui-bg-elevated) border rounded-xl px-4 py-3 flex flex-col justify-center transition-colors duration-150 min-w-0"
+          :class="checkCardClass(check.id)"
+        >
+          <p class="text-sm font-medium leading-snug" :class="getResult(check.id) ? 'text-(--ui-text-highlighted)' : 'text-(--ui-text-toned)'">
+            {{ check.label }}
+          </p>
+          <p class="text-xs text-(--ui-text-muted) mt-0.5 leading-relaxed">{{ check.description }}</p>
+        </div>
+
+        <!-- Pass button -->
+        <button
+          class="shrink-0 w-[82px] flex flex-col items-center justify-center gap-1.5 rounded-xl border transition-all duration-150 active:scale-95"
+          :class="getResult(check.id) === 'pass'
+            ? 'bg-success border-success text-white'
+            : 'bg-success/10 border-success/25 text-success/70 hover:bg-success/20'"
+          @click="setResult(check.id, 'pass')"
+        >
+          <UIcon name="i-lucide-check" class="size-5 shrink-0" />
+          <span class="text-xs font-semibold tracking-wide">Pass</span>
+        </button>
+
+        <!-- Fail button -->
+        <button
+          class="shrink-0 w-[82px] flex flex-col items-center justify-center gap-1.5 rounded-xl border transition-all duration-150 active:scale-95"
+          :class="getResult(check.id) === 'fail'
+            ? 'bg-error border-error text-white'
+            : 'bg-error/10 border-error/25 text-error/70 hover:bg-error/20'"
+          @click="setResult(check.id, 'fail')"
+        >
+          <UIcon name="i-lucide-x" class="size-5 shrink-0" />
+          <span class="text-xs font-semibold tracking-wide">Fail</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Fail flow modal -->
+    <UModal v-model:open="failModalOpen" :close="false">
       <template #body>
         <div class="flex flex-col gap-4 px-1 pt-1">
-          <div
-            class="w-11 h-11 rounded-full flex items-center justify-center"
-            :class="hasFails ? 'bg-error/15' : 'bg-success/15'"
-          >
-            <UIcon
-              :name="hasFails ? 'i-lucide-alert-circle' : 'i-lucide-check-circle'"
-              class="size-6"
-              :class="hasFails ? 'text-error' : 'text-success'"
-            />
+          <div class="w-11 h-11 rounded-full bg-error/15 flex items-center justify-center">
+            <UIcon name="i-lucide-alert-circle" class="size-6 text-error" />
           </div>
           <div>
             <p class="text-base font-semibold text-(--ui-text-highlighted) leading-snug">
-              {{ hasFails ? 'Bike failed quality check' : 'Bike passed quality check' }}
+              {{ failedChecks.length }} check{{ failedChecks.length !== 1 ? 's' : '' }} failed
+            </p>
+            <p class="text-sm text-(--ui-text-muted) mt-1">
+              Bike returns to Diagnoser · supervisor on shift notified
+            </p>
+          </div>
+          <!-- Failed items list -->
+          <div class="flex flex-col gap-1">
+            <div
+              v-for="check in failedChecks"
+              :key="check.id"
+              class="flex items-center gap-2 px-3 py-2 bg-error/5 border border-error/20 rounded-lg"
+            >
+              <UIcon name="i-lucide-x-circle" class="size-3.5 text-error shrink-0" />
+              <span class="text-sm text-(--ui-text-toned)">{{ check.label }}</span>
+            </div>
+          </div>
+          <!-- Required notes -->
+          <div>
+            <p class="text-xs text-(--ui-text-muted) mb-1.5">Notes <span class="text-error">*required</span></p>
+            <UTextarea
+              v-model="failNotes"
+              placeholder="Describe what failed and what the Diagnoser should check..."
+              :rows="3"
+            />
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="flex gap-3 w-full">
+          <UButton block variant="ghost" color="neutral" @click="failModalOpen = false">Back</UButton>
+          <UButton block color="error" :disabled="!failNotes.trim()" @click="onConfirmFail">
+            Send back to Diagnoser
+          </UButton>
+        </div>
+      </template>
+    </UModal>
+
+    <!-- Pass modal -->
+    <UModal v-model:open="passModalOpen" :close="false">
+      <template #body>
+        <div class="flex flex-col gap-4 px-1 pt-1">
+          <div class="w-11 h-11 rounded-full bg-success/15 flex items-center justify-center">
+            <UIcon name="i-lucide-check-circle" class="size-6 text-success" />
+          </div>
+          <div>
+            <p class="text-base font-semibold text-(--ui-text-highlighted) leading-snug">
+              All checks passed!
             </p>
             <p class="text-sm text-(--ui-text-muted) mt-1.5">
-              {{ hasFails
-                ? `${failCount} task(s) failed. The bike will be flagged for re-work.`
-                : 'All tasks verified. The bike is ready to deploy.' }}
+              <span class="font-medium text-(--ui-text-highlighted)">BIKE {{ bikeId }}</span> → Ready for deployment
+            </p>
+            <p class="text-sm text-(--ui-text-muted) mt-0.5">
+              Test time: <span class="font-mono text-(--ui-text-toned)">{{ elapsedDisplay }}</span>
             </p>
           </div>
         </div>
       </template>
       <template #footer>
         <div class="flex gap-3 w-full">
-          <UButton block variant="ghost" color="neutral" @click="confirmOpen = false">Cancel</UButton>
-          <UButton block :color="hasFails ? 'error' : 'success'" @click="onConfirm">Confirm</UButton>
+          <UButton block variant="ghost" color="neutral" @click="passModalOpen = false">Cancel</UButton>
+          <UButton block color="success" @click="onConfirmPass">Confirm pass</UButton>
         </div>
       </template>
     </UModal>
@@ -186,119 +189,109 @@
 </template>
 
 <script setup lang="ts">
-import type { MockTask } from '~/composables/usePartsData'
-import { MOCK_TASKS } from '~/composables/usePartsData'
-import { calcRepairCategory, useBikeStore } from '~/composables/useBikeStore'
+import { TESTER_CHECKLIST } from '~/composables/useTester'
+import { useBikeStore } from '~/composables/useBikeStore'
+import { useBikeContext } from '~/composables/useBikeContext'
 
-const { CATEGORIES } = usePartsData()
 const route = useRoute()
 const router = useRouter()
 const bikeId = computed(() => decodeURIComponent(route.params.bikeId as string))
-const { getRecord } = useBikeStore()
+
+const { getRecord, storeTesterResult } = useBikeStore()
 const { incrementTested } = useTesterShift()
-const { reset, setResult, getResult, allEvaluated, hasFailures } = useTester()
+const { currentName } = useRole()
+const { dequeueTester } = useBikeQueue()
+const bikeCtx = computed(() => useBikeContext(bikeId.value))
+const {
+  testerStartedAt,
+  evaluatedCount,
+  allChecklistEvaluated,
+  failedChecks,
+  start,
+  reset,
+  setResult,
+  getResult,
+} = useTester()
 const toast = useToast()
 
-const expandedCategory = ref<string | null>(null)
-const confirmOpen = ref(false)
+const failModalOpen = ref(false)
+const passModalOpen = ref(false)
+const failNotes = ref('')
 
-onMounted(() => reset())
+// Timer
+const elapsedSeconds = ref(0)
+let timerInterval: ReturnType<typeof setInterval> | null = null
+
+onMounted(() => {
+  reset()
+  start()
+  timerInterval = setInterval(() => {
+    if (testerStartedAt.value) {
+      elapsedSeconds.value = Math.floor((Date.now() - testerStartedAt.value) / 1000)
+    }
+  }, 1000)
+})
+
+onUnmounted(() => {
+  if (timerInterval) clearInterval(timerInterval)
+})
+
+const elapsedDisplay = computed(() => {
+  const s = elapsedSeconds.value
+  const m = Math.floor(s / 60).toString().padStart(2, '0')
+  const sec = (s % 60).toString().padStart(2, '0')
+  return `${m}:${sec}`
+})
 
 const bikeRecord = computed(() => getRecord(bikeId.value))
 
-// Task list: from mechanic's actual work or fall back to mock
-const taskList = computed<MockTask[]>(() => bikeRecord.value?.mechanicTasks ?? [...MOCK_TASKS])
-const oosIds = computed<string[]>(() => bikeRecord.value?.mechanicOosIds ?? [])
-
-function isOosTask(partId: string) {
-  return oosIds.value.includes(partId)
-}
-
-// Only evaluable (non-OOS) tasks
-const evaluableTaskIds = computed(() =>
-  taskList.value.filter(t => !isOosTask(t.partId)).map(t => t.partId),
+const progressPercent = computed(() =>
+  Math.round((evaluatedCount.value / TESTER_CHECKLIST.length) * 100),
 )
 
-const categoryInfo = computed(() => {
-  if (bikeRecord.value) return bikeRecord.value.category
-  return calcRepairCategory(taskList.value.length)
-})
-
-const taskCategories = computed(() =>
-  CATEGORIES.filter(cat => taskList.value.some(t => t.categoryId === cat.id)),
-)
-
-function getTasksForCategory(categoryId: string) {
-  return taskList.value.filter(t => t.categoryId === categoryId)
-}
-
-function getCategoryEvaluatedCount(categoryId: string) {
-  return getTasksForCategory(categoryId)
-    .filter(t => !isOosTask(t.partId) && getResult(t.partId) !== null)
-    .length
-}
-
-function isCategoryDone(categoryId: string) {
-  const tasks = getTasksForCategory(categoryId).filter(t => !isOosTask(t.partId))
-  return tasks.length > 0 && tasks.every(t => getResult(t.partId) !== null)
-}
-
-function isCategoryPassed(categoryId: string) {
-  return getTasksForCategory(categoryId)
-    .filter(t => !isOosTask(t.partId))
-    .every(t => getResult(t.partId) === 'pass')
-}
-
-function taskRowClass(partId: string) {
-  const r = getResult(partId)
-  if (r === 'pass') return 'border-(--ui-success) bg-(--ui-success)/5'
-  if (r === 'fail') return 'border-error bg-error/5'
+function checkCardClass(checkId: string) {
+  const r = getResult(checkId)
+  if (r === 'pass') return 'border-success/40 bg-success/5'
+  if (r === 'fail') return 'border-error/40 bg-error/5'
   return 'border-(--ui-bg-accented)'
 }
 
-// Bike overlay: partially tested → yellow, all passed → green
-const partialCategoryIds = computed(() => {
-  const ids = new Set<string>()
-  taskCategories.value.forEach((cat) => {
-    const count = getCategoryEvaluatedCount(cat.id)
-    const total = getTasksForCategory(cat.id).filter(t => !isOosTask(t.partId)).length
-    if (count > 0 && count < total) ids.add(cat.id)
-  })
-  return ids
-})
-
-const passedCategoryIds = computed(() => {
-  const ids = new Set<string>()
-  taskCategories.value.forEach((cat) => {
-    if (isCategoryDone(cat.id) && isCategoryPassed(cat.id)) ids.add(cat.id)
-  })
-  return ids
-})
-
-function toggleExpanded(categoryId: string) {
-  expandedCategory.value = expandedCategory.value === categoryId ? null : categoryId
+function onFinish() {
+  if (failedChecks.value.length > 0) {
+    failNotes.value = ''
+    failModalOpen.value = true
+  }
+  else {
+    passModalOpen.value = true
+  }
 }
 
-function handleSelectCategory(categoryId: string) {
-  if (taskCategories.value.some(c => c.id === categoryId)) toggleExpanded(categoryId)
-}
-
-const hasFails = computed(() => hasFailures(evaluableTaskIds.value))
-const failCount = computed(() =>
-  evaluableTaskIds.value.filter(id => getResult(id) === 'fail').length,
-)
-
-function onSubmit() {
-  confirmOpen.value = true
-}
-
-function onConfirm() {
-  confirmOpen.value = false
+function onConfirmFail() {
+  failModalOpen.value = false
+  const failIds = failedChecks.value.map(c => c.id)
+  storeTesterResult(bikeId.value, currentName.value, 'fail', failIds, failNotes.value)
+  dequeueTester(bikeId.value)
   incrementTested()
   toast.add({
-    title: hasFails.value ? 'Bike failed quality check.' : 'Bike passed quality check.',
-    color: hasFails.value ? 'error' : 'success',
-    icon: hasFails.value ? 'i-lucide-alert-circle' : 'i-lucide-check-circle',
+    title: 'Bike failed quality check.',
+    description: `${failedChecks.value.length} check(s) failed. Sent back to Diagnoser.`,
+    color: 'error',
+    icon: 'i-lucide-alert-circle',
+    duration: 4000,
+  })
+  router.push('/tester')
+}
+
+function onConfirmPass() {
+  passModalOpen.value = false
+  storeTesterResult(bikeId.value, currentName.value, 'pass')
+  dequeueTester(bikeId.value)
+  incrementTested()
+  toast.add({
+    title: 'Bike passed — ready for deployment!',
+    description: `BIKE ${bikeId.value} · Test time: ${elapsedDisplay.value}`,
+    color: 'success',
+    icon: 'i-lucide-check-circle',
     duration: 4000,
   })
   router.push('/tester')
@@ -306,10 +299,6 @@ function onConfirm() {
 </script>
 
 <style scoped>
-.accordion-enter-active { transition: opacity 0.2s ease, transform 0.22s ease; }
-.accordion-leave-active { transition: opacity 0.15s ease, transform 0.15s ease; }
-.accordion-enter-from, .accordion-leave-to { opacity: 0; transform: translateY(-6px); }
-
 .fade-enter-active { transition: opacity 0.2s ease; }
 .fade-leave-active { transition: opacity 0.15s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }

@@ -1,7 +1,7 @@
 <template>
   <div class="relative h-dvh bg-(--ui-bg) flex flex-col">
     <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-20 bg-(--ui-bg) px-4 pt-9 pb-2">
+    <div class="fixed top-0 left-0 right-0 z-20 bg-(--ui-bg) px-4 pt-9 pb-1">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-1">
           <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />
@@ -22,10 +22,24 @@
           </UButton>
         </Transition>
       </div>
+      <!-- Timer + progress strip -->
+      <div class="flex items-center gap-3 mt-1.5 pb-1">
+        <div class="flex items-center gap-1.5 text-xs text-(--ui-text-muted)">
+          <UIcon name="i-lucide-timer" class="size-3.5" />
+          <span class="font-mono">{{ elapsedDisplay }}</span>
+        </div>
+        <div class="flex-1 h-1.5 bg-(--ui-bg-accented) rounded-full overflow-hidden">
+          <div
+            class="h-full bg-(--ui-success) rounded-full transition-all duration-300"
+            :style="{ width: progressPercent + '%' }"
+          />
+        </div>
+        <span class="text-xs text-(--ui-text-muted)">{{ doneCount }}/{{ taskList.length }}</span>
+      </div>
     </div>
 
     <!-- Scrollable content -->
-    <div class="flex-1 overflow-y-auto pt-16 pb-8">
+    <div class="flex-1 overflow-y-auto pt-20 pb-8">
 
       <!-- Bike viewer -->
       <div
@@ -73,6 +87,9 @@
                 {{ taskList.length }} task{{ taskList.length !== 1 ? 's' : '' }}
                 <template v-if="oosTaskIds.size > 0">
                   · <span class="text-warning">{{ oosTaskIds.size }} OOS</span>
+                </template>
+                <template v-if="cannotCompleteIds.size > 0">
+                  · <span class="text-error">{{ cannotCompleteIds.size }} cannot complete</span>
                 </template>
               </p>
             </div>
@@ -131,21 +148,20 @@
                   class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3 flex items-center justify-between transition-all duration-150"
                   :class="taskRowClass(task.partId)"
                 >
-                  <!-- Tap area for done toggle -->
-                  <button class="flex-1 text-left min-w-0 pr-3" @click="toggleTask(task.partId)">
+                  <!-- Part name + source tag -->
+                  <div class="flex-1 min-w-0 pr-3">
                     <p
                       class="text-base leading-snug"
-                      :class="isOos(task.partId) ? 'text-(--ui-text-muted) line-through' : 'text-(--ui-text-toned)'"
+                      :class="isOos(task.partId) || isCannotComplete(task.partId) ? 'text-(--ui-text-muted) line-through' : 'text-(--ui-text-toned)'"
                     >
                       {{ task.partName }}
                     </p>
-                    <!-- Source tag — only shown for mechanic-added parts -->
                     <p v-if="task.source === 'mechanic'" class="text-xs text-(--ui-primary) mt-0.5 font-medium">
                       + Added by you
                     </p>
-                  </button>
+                  </div>
 
-                  <div class="flex items-center gap-2 shrink-0">
+                  <div class="flex items-center gap-1.5 shrink-0">
                     <!-- OOS tag (when marked OOS) -->
                     <span
                       v-if="isOos(task.partId)"
@@ -155,28 +171,49 @@
                       OOS
                     </span>
 
-                    <!-- OOS toggle button -->
+                    <!-- Cannot complete tag -->
+                    <span
+                      v-if="isCannotComplete(task.partId)"
+                      class="flex items-center gap-1 rounded-md px-2 py-1 text-xs bg-error/10 text-error"
+                    >
+                      <UIcon name="i-lucide-alert-circle" class="size-3" />
+                      Can't do
+                    </span>
+
+                    <!-- OOS button -->
                     <button
                       class="w-7 h-7 rounded-md flex items-center justify-center transition-colors shrink-0"
                       :class="isOos(task.partId)
                         ? 'bg-warning/15 text-warning'
                         : 'text-(--ui-text-dimmed) hover:text-warning hover:bg-warning/10'"
                       :title="isOos(task.partId) ? 'Remove OOS tag' : 'Mark as out of stock'"
-                      @click="toggleOos(task.partId)"
+                      @click="onOosTap(task.partId)"
                     >
                       <UIcon name="i-lucide-package-x" class="size-4" />
                     </button>
 
-                    <!-- Done checkbox (disabled when OOS) -->
+                    <!-- Cannot complete button -->
+                    <button
+                      class="w-7 h-7 rounded-md flex items-center justify-center transition-colors shrink-0"
+                      :class="isCannotComplete(task.partId)
+                        ? 'bg-error/15 text-error'
+                        : 'text-(--ui-text-dimmed) hover:text-error hover:bg-error/10'"
+                      :title="isCannotComplete(task.partId) ? 'Remove cannot-complete' : 'Mark as cannot complete'"
+                      @click="toggleCannotComplete(task.partId)"
+                    >
+                      <UIcon name="i-lucide-ban" class="size-4" />
+                    </button>
+
+                    <!-- Done checkbox (disabled when OOS or cannot-complete) -->
                     <button
                       class="w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-150 shrink-0"
                       :class="isChecked(task.partId)
                         ? 'bg-(--ui-success) border-(--ui-success)'
-                        : isOos(task.partId)
+                        : (isOos(task.partId) || isCannotComplete(task.partId))
                           ? 'border-(--ui-border-accented) opacity-30 cursor-not-allowed'
                           : 'border-(--ui-border-accented) bg-transparent'"
-                      :disabled="isOos(task.partId)"
-                      @click="!isOos(task.partId) && toggleTask(task.partId)"
+                      :disabled="isOos(task.partId) || isCannotComplete(task.partId)"
+                      @click="!isOos(task.partId) && !isCannotComplete(task.partId) && toggleTask(task.partId)"
                     >
                       <UIcon v-if="isChecked(task.partId)" name="i-lucide-check" class="size-3 text-white" />
                     </button>
@@ -199,6 +236,31 @@
       :current-tasks="taskList"
       @confirm="onAddPartsConfirm"
     />
+
+    <!-- OOS confirmation modal -->
+    <UModal v-model:open="oosConfirmOpen" :close="false">
+      <template #body>
+        <div class="flex flex-col gap-4 px-1 pt-1">
+          <div class="w-11 h-11 rounded-full bg-warning/15 flex items-center justify-center">
+            <UIcon name="i-lucide-package-x" class="size-6 text-warning" />
+          </div>
+          <div>
+            <p class="text-base font-semibold text-(--ui-text-highlighted) leading-snug">
+              Tag as Out of Stock?
+            </p>
+            <p class="text-sm text-(--ui-text-muted) mt-1.5">
+              The bike stays in <strong class="text-(--ui-text-toned)">Greenhouse</strong>. Only a tag is added — bike does not change state.
+            </p>
+          </div>
+        </div>
+      </template>
+      <template #footer>
+        <div class="flex gap-3 w-full">
+          <UButton block variant="ghost" color="neutral" @click="oosConfirmOpen = false; pendingOosId = null">Cancel</UButton>
+          <UButton block color="warning" @click="onOosConfirm">Tag &amp; continue</UButton>
+        </div>
+      </template>
+    </UModal>
 
     <!-- Leave without saving modal -->
     <UModal v-model:open="leaveConfirmOpen" :close="false">
@@ -224,33 +286,6 @@
         </div>
       </template>
     </UModal>
-
-    <!-- Confirm submit modal -->
-    <UModal v-model:open="confirmOpen" :close="false">
-      <template #body>
-        <div class="flex flex-col gap-4 px-1 pt-1">
-          <div class="w-11 h-11 rounded-full bg-success/15 flex items-center justify-center">
-            <UIcon name="i-lucide-check-circle" class="size-6 text-success" />
-          </div>
-          <div>
-            <p class="text-base font-semibold text-(--ui-text-highlighted) leading-snug">
-              Mark bike as repaired?
-            </p>
-            <p class="text-sm text-(--ui-text-muted) mt-1.5">
-              {{ taskList.length }} task{{ taskList.length !== 1 ? 's' : '' }} complete
-              <template v-if="oosTaskIds.size > 0">, {{ oosTaskIds.size }} out of stock</template>.
-              <template v-if="mechanicAddedCount > 0"> You added {{ mechanicAddedCount }} part{{ mechanicAddedCount !== 1 ? 's' : '' }} beyond the diagnosis.</template>
-            </p>
-          </div>
-        </div>
-      </template>
-      <template #footer>
-        <div class="flex gap-3 w-full">
-          <UButton block variant="ghost" color="neutral" @click="confirmOpen = false">Cancel</UButton>
-          <UButton block color="success" @click="onConfirm">Confirm</UButton>
-        </div>
-      </template>
-    </UModal>
   </div>
 </template>
 
@@ -262,22 +297,25 @@ const { CATEGORIES } = usePartsData()
 const route = useRoute()
 const router = useRouter()
 const bikeId = computed(() => decodeURIComponent(route.params.bikeId as string))
-const { getRecord, storeMechanicWork } = useBikeStore()
+const { getRecord } = useBikeStore()
 const { currentName } = useRole()
-const toast = useToast()
-const { incrementRepaired } = useMechanicShift()
 const {
   checkedTaskIds,
   oosTaskIds,
+  cannotCompleteIds,
   taskList,
+  mechanicStartedAt,
   allTasksDone,
   hasUnsavedProgress,
   reset,
   initFromDiagnosis,
+  startTimer,
   toggleTask,
   toggleOos,
+  toggleCannotComplete,
   isChecked,
   isOos,
+  isCannotComplete,
   isDone,
   updateTaskList,
 } = useMechanic()
@@ -285,8 +323,13 @@ const {
 const expandedCategory = ref<string | null>(null)
 const controlsOpen = ref(true)
 const leaveConfirmOpen = ref(false)
-const confirmOpen = ref(false)
 const addPartsOpen = ref(false)
+const oosConfirmOpen = ref(false)
+const pendingOosId = ref<string | null>(null)
+
+// Timer
+const elapsedSeconds = ref(0)
+let timerInterval: ReturnType<typeof setInterval> | null = null
 
 onMounted(() => {
   const record = getRecord(bikeId.value)
@@ -295,7 +338,25 @@ onMounted(() => {
   }
   else {
     reset()
+    startTimer()
   }
+  // Start elapsed counter
+  timerInterval = setInterval(() => {
+    if (mechanicStartedAt.value) {
+      elapsedSeconds.value = Math.floor((Date.now() - mechanicStartedAt.value) / 1000)
+    }
+  }, 1000)
+})
+
+onUnmounted(() => {
+  if (timerInterval) clearInterval(timerInterval)
+})
+
+const elapsedDisplay = computed(() => {
+  const s = elapsedSeconds.value
+  const m = Math.floor(s / 60).toString().padStart(2, '0')
+  const sec = (s % 60).toString().padStart(2, '0')
+  return `${m}:${sec}`
 })
 
 const bikeRecord = computed(() => getRecord(bikeId.value))
@@ -303,6 +364,14 @@ const bikeRecord = computed(() => getRecord(bikeId.value))
 // Live repair category — recalculates as tasks/OOS changes
 const liveCategory = computed(() =>
   calcRepairCategory(taskList.value.length, oosTaskIds.value.size > 0),
+)
+
+// Progress
+const doneCount = computed(() =>
+  taskList.value.filter(t => isDone(t.partId)).length,
+)
+const progressPercent = computed(() =>
+  taskList.value.length > 0 ? Math.round((doneCount.value / taskList.value.length) * 100) : 0,
 )
 
 // Traceability counters
@@ -334,6 +403,7 @@ function isCategoryComplete(categoryId: string) {
 function taskRowClass(partId: string) {
   if (isChecked(partId)) return 'border-(--ui-success) bg-(--ui-success)/5'
   if (isOos(partId)) return 'border-warning/40 bg-warning/5'
+  if (isCannotComplete(partId)) return 'border-error/40 bg-error/5'
   return 'border-(--ui-bg-accented)'
 }
 
@@ -372,6 +442,26 @@ function onAddPartsConfirm(newTasks: MockTask[]) {
   updateTaskList(newTasks)
 }
 
+// OOS flow — show confirmation modal first
+function onOosTap(taskId: string) {
+  if (isOos(taskId)) {
+    // Already OOS — remove directly
+    toggleOos(taskId)
+  }
+  else {
+    pendingOosId.value = taskId
+    oosConfirmOpen.value = true
+  }
+}
+
+function onOosConfirm() {
+  if (pendingOosId.value) {
+    toggleOos(pendingOosId.value)
+  }
+  pendingOosId.value = null
+  oosConfirmOpen.value = false
+}
+
 function onBack() {
   if (hasUnsavedProgress.value) {
     leaveConfirmOpen.value = true
@@ -387,26 +477,8 @@ function onConfirmLeave() {
 }
 
 function onSubmit() {
-  confirmOpen.value = true
-}
-
-function onConfirm() {
-  confirmOpen.value = false
-  storeMechanicWork(
-    bikeId.value,
-    currentName.value,
-    taskList.value as MockTask[],
-    Array.from(oosTaskIds.value),
-  )
-  incrementRepaired()
-  toast.add({
-    title: 'Bike repair logged.',
-    description: `${taskList.value.length} tasks · ${oosTaskIds.value.size} OOS${mechanicAddedCount.value > 0 ? ` · ${mechanicAddedCount.value} added by you` : ''}`,
-    color: 'success',
-    icon: 'i-lucide-check-circle',
-    duration: 4000,
-  })
-  router.push('/mechanic')
+  // Navigate to submit + photos screen with elapsed time
+  router.push(`/mechanic/submit/${encodeURIComponent(bikeId.value)}?elapsed=${elapsedDisplay.value}`)
 }
 </script>
 

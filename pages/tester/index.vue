@@ -1,13 +1,26 @@
 <template>
   <div class="h-dvh bg-(--ui-bg) flex flex-col overflow-hidden">
     <!-- Top bar -->
-    <div class="flex items-center justify-end px-4 pt-10 pb-2 shrink-0 h-16">
+    <div class="flex items-center justify-between px-4 pt-10 pb-2 shrink-0 h-16">
+      <template v-if="isShiftActive">
+        <p class="text-sm text-(--ui-text-muted)">
+          {{ testerQueue.length > 0 ? `${testerQueue.length} bike${testerQueue.length !== 1 ? 's' : ''} waiting` : 'No bikes in queue' }}
+        </p>
+      </template>
+      <UButton
+        v-else
+        variant="ghost"
+        color="neutral"
+        icon="i-lucide-arrow-left"
+        size="sm"
+        to="/"
+      />
       <Transition name="fade">
         <UButton
           v-if="isShiftActive"
           color="error"
           size="sm"
-          icon="i-lucide-log-out"
+          icon="i-lucide-arrow-right"
           trailing
           @click="endShiftConfirmOpen = true"
         >
@@ -16,24 +29,56 @@
       </Transition>
     </div>
 
-    <!-- Centered greeting -->
-    <div class="flex-1 flex flex-col items-center justify-center text-center px-4">
-      <Transition name="greeting" mode="out-in">
-        <div v-if="!isShiftActive" key="pre">
-          <p class="text-3xl font-semibold text-(--ui-text-highlighted) leading-snug">
-            {{ greeting }},<br />Jordan
-          </p>
-        </div>
-        <div v-else key="active">
-          <p class="text-3xl font-semibold text-(--ui-text-highlighted) leading-snug">
-            Ready to test
-          </p>
-          <p class="text-base text-(--ui-text-muted) mt-3">
-            Tap the button below to scan a bike
-          </p>
-        </div>
-      </Transition>
-    </div>
+    <!-- Centered greeting (pre-shift) -->
+    <template v-if="!isShiftActive">
+      <div class="flex-1 flex flex-col items-center justify-center text-center px-4">
+        <p class="text-3xl font-semibold text-(--ui-text-highlighted) leading-snug">
+          {{ greeting }},<br />{{ currentName }}
+        </p>
+      </div>
+    </template>
+
+    <!-- Active shift: queue list or empty state -->
+    <template v-else>
+      <div class="flex-1 overflow-y-auto px-4 pt-2 pb-4 flex flex-col gap-3">
+        <Transition name="fade" mode="out-in">
+          <!-- Queue list -->
+          <div v-if="testerQueue.length > 0" key="queue" class="flex flex-col gap-2">
+            <p class="text-xs text-(--ui-text-dimmed) uppercase tracking-wider px-1 mb-1">Ready for testing</p>
+            <button
+              v-for="entry in testerQueue"
+              :key="entry.bikeId"
+              class="w-full bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3.5 flex items-center gap-3 text-left active:bg-(--ui-bg-accented) transition-colors"
+              @click="router.push(`/tester/job-card/${encodeURIComponent(entry.bikeId)}`)"
+            >
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                  <p class="text-base font-black uppercase tracking-wide text-(--ui-text-highlighted)">
+                    BIKE <span class="text-(--ui-primary)">{{ entry.bikeId }}</span>
+                  </p>
+                  <UBadge color="success" variant="soft" size="xs">PDI done</UBadge>
+                </div>
+                <p class="text-xs text-(--ui-text-muted)">
+                  PDI by
+                  <span class="font-medium text-(--ui-text-toned)">{{ getRecord(entry.bikeId)?.pdiName ?? '—' }}</span>
+                  <span class="text-(--ui-text-dimmed)"> · {{ queueTimeAgo(entry.addedAt, now) }}</span>
+                </p>
+              </div>
+              <UIcon name="i-lucide-chevron-right" class="size-5 text-(--ui-text-dimmed) shrink-0" />
+            </button>
+          </div>
+
+          <!-- Empty queue -->
+          <div v-else key="empty" class="flex-1 flex flex-col items-center justify-center text-center py-16">
+            <div class="w-14 h-14 rounded-full bg-(--ui-bg-accented) flex items-center justify-center mb-3">
+              <UIcon name="i-lucide-inbox" class="size-7 text-(--ui-text-dimmed)" />
+            </div>
+            <p class="text-lg font-semibold text-(--ui-text-highlighted)">No bikes yet</p>
+            <p class="text-sm text-(--ui-text-muted) mt-1">Bikes will appear here after PDI</p>
+          </div>
+        </Transition>
+      </div>
+    </template>
 
     <!-- Stats card -->
     <div class="px-4 pb-3 shrink-0">
@@ -66,12 +111,13 @@
       </UButton>
       <UButton
         v-else
-        block size="xl" color="success"
+        block size="xl" color="neutral"
+        variant="outline"
         icon="i-lucide-scan-qr-code"
         to="/scan"
-        class="h-14 text-base font-medium"
+        class="h-12 text-sm font-medium"
       >
-        Scan a Bike
+        Scan a bike manually
       </UButton>
     </div>
 
@@ -100,7 +146,14 @@
 </template>
 
 <script setup lang="ts">
+import { queueTimeAgo } from '~/composables/useBikeQueue'
+import { useBikeStore } from '~/composables/useBikeStore'
+
+const router = useRouter()
 const { isShiftActive, currentSessionCount, lastShiftCount, lastShiftEndedAt, startShift, endShift } = useTesterShift()
+const { currentName } = useRole()
+const { testerQueue } = useBikeQueue()
+const { getRecord } = useBikeStore()
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const greetings: Record<string, string> = {
@@ -137,10 +190,6 @@ function onConfirmEndShift() { endShiftConfirmOpen.value = false; endShift() }
 </script>
 
 <style scoped>
-.greeting-enter-active { transition: opacity 0.35s ease, transform 0.35s ease; }
-.greeting-leave-active { transition: opacity 0.2s ease, transform 0.2s ease; }
-.greeting-enter-from { opacity: 0; transform: translateY(10px); }
-.greeting-leave-to { opacity: 0; transform: translateY(-8px); }
 .fade-enter-active { transition: opacity 0.3s ease; }
 .fade-leave-active { transition: opacity 0.2s ease; }
 .fade-enter-from, .fade-leave-to { opacity: 0; }

@@ -21,12 +21,27 @@ export interface BikeRecord {
   totalParts: number
   category: CategoryInfo
   diagnoserName: string
+  diagnosedAt?: number
   // Parts flagged by diagnoser — passed to mechanic as starting task list
   diagnosedParts: DiagnosedPart[]
+  diagnoserNotes?: string
+  // Populated after mechanic accepts job
+  mechanicAcceptedAt?: number
   // Populated after mechanic submits
   mechanicName?: string
+  mechanicCompletedAt?: number
   mechanicTasks?: MockTask[]
   mechanicOosIds?: string[]
+  mechNotes?: string
+  // Populated after PDI
+  pdiName?: string
+  pdiCompletedAt?: number
+  // Populated after tester submits
+  testerName?: string
+  testedAt?: number
+  testResult?: 'pass' | 'fail'
+  failedChecks?: string[]
+  testerNotes?: string
 }
 
 /**
@@ -50,6 +65,7 @@ export function useBikeStore() {
     bikeId: string,
     selectedParts: Map<string, DiagnosedPart>,
     diagnoserName: string,
+    diagnoserNotes?: string,
   ) {
     const diagnosedParts = Array.from(selectedParts.values())
     const category = calcRepairCategory(diagnosedParts.length)
@@ -59,7 +75,9 @@ export function useBikeStore() {
       totalParts: diagnosedParts.length,
       category,
       diagnoserName,
+      diagnosedAt: Date.now(),
       diagnosedParts,
+      diagnoserNotes,
     })
     bikeRecords.value = next
   }
@@ -69,6 +87,7 @@ export function useBikeStore() {
     mechanicName: string,
     tasks: MockTask[],
     oosIds: string[],
+    notes?: string,
   ) {
     const existing = bikeRecords.value.get(bikeId)
     const hasOOS = oosIds.length > 0
@@ -82,8 +101,56 @@ export function useBikeStore() {
         diagnosedParts: [],
       }),
       mechanicName,
+      mechanicCompletedAt: Date.now(),
       mechanicTasks: tasks,
       mechanicOosIds: oosIds,
+      mechNotes: notes,
+    })
+    bikeRecords.value = next
+  }
+
+  function storePdiResult(
+    bikeId: string,
+    pdiName: string,
+  ) {
+    const existing = bikeRecords.value.get(bikeId)
+    const next = new Map(bikeRecords.value)
+    next.set(bikeId, {
+      ...(existing ?? {
+        bikeId,
+        totalParts: 0,
+        category: calcRepairCategory(0),
+        diagnoserName: '—',
+        diagnosedParts: [],
+      }),
+      pdiName,
+      pdiCompletedAt: Date.now(),
+    })
+    bikeRecords.value = next
+  }
+
+  function storeTesterResult(
+    bikeId: string,
+    testerName: string,
+    result: 'pass' | 'fail',
+    failedChecks?: string[],
+    testerNotes?: string,
+  ) {
+    const existing = bikeRecords.value.get(bikeId)
+    const next = new Map(bikeRecords.value)
+    next.set(bikeId, {
+      ...(existing ?? {
+        bikeId,
+        totalParts: 0,
+        category: calcRepairCategory(0),
+        diagnoserName: '—',
+        diagnosedParts: [],
+      }),
+      testerName,
+      testedAt: Date.now(),
+      testResult: result,
+      failedChecks,
+      testerNotes,
     })
     bikeRecords.value = next
   }
@@ -92,5 +159,5 @@ export function useBikeStore() {
     return bikeRecords.value.get(bikeId) ?? null
   }
 
-  return { storeRecord, storeMechanicWork, getRecord }
+  return { storeRecord, storeMechanicWork, storePdiResult, storeTesterResult, getRecord }
 }

@@ -1,7 +1,8 @@
 <template>
   <div class="relative h-dvh bg-(--ui-bg) flex flex-col">
+
     <!-- Header -->
-    <div class="fixed top-0 left-0 right-0 z-20 bg-(--ui-bg) px-4 pt-9 pb-2">
+    <div class="shrink-0 bg-(--ui-bg) px-4 pt-9 pb-2 z-10">
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-1">
           <UButton variant="ghost" color="neutral" icon="i-lucide-arrow-left" size="sm" @click="onBack" />
@@ -16,7 +17,7 @@
             icon="i-lucide-check-check"
             size="sm"
             trailing
-            @click="onSubmit"
+            @click="confirmOpen = true"
           >
             <span class="flex items-center gap-1.5">
               <span class="bg-white/20 text-white text-xs font-bold px-1.5 py-0.5 rounded">{{ selectedParts.size }}</span>
@@ -28,82 +29,7 @@
     </div>
 
     <!-- Scrollable content -->
-    <div class="flex-1 overflow-y-auto pt-16 pb-8">
-
-      <!-- Bike context card — IoT + Battery -->
-      <div class="px-2 pt-3 mb-2">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center justify-between gap-3">
-          <!-- IoT Status -->
-          <div class="flex items-center gap-2">
-            <span
-              class="size-2 rounded-full shrink-0"
-              :class="bikeCtx.iotStatus === 'online' ? 'bg-success shadow-[0_0_5px_theme(colors.green.400)]' : 'bg-error'"
-            />
-            <span class="text-sm" :class="bikeCtx.iotStatus === 'online' ? 'text-(--ui-text-toned)' : 'text-error'">
-              IoT {{ bikeCtx.iotStatus }}
-            </span>
-          </div>
-          <!-- Battery -->
-          <div class="flex items-center gap-1.5">
-            <UIcon
-              :name="bikeCtx.batteryLevel > 60 ? 'i-lucide-battery-full' : bikeCtx.batteryLevel > 25 ? 'i-lucide-battery-medium' : 'i-lucide-battery-low'"
-              class="size-4"
-              :class="bikeCtx.batteryLevel <= 25 ? 'text-error' : bikeCtx.batteryLevel <= 60 ? 'text-warning' : 'text-(--ui-text-muted)'"
-            />
-            <span
-              class="text-sm"
-              :class="bikeCtx.batteryLevel <= 25 ? 'text-error font-medium' : 'text-(--ui-text-toned)'"
-            >{{ bikeCtx.batteryLevel }}%</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Forest Guardian Reports -->
-      <div class="px-2 mb-3">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl overflow-hidden">
-          <div class="px-4 py-2.5 border-b border-(--ui-bg-accented) flex items-center gap-2">
-            <UIcon name="i-lucide-shield-alert" class="size-4 text-(--ui-text-muted)" />
-            <span class="text-xs font-semibold uppercase tracking-wider text-(--ui-text-muted)">Forest Guardian Reports</span>
-            <UBadge v-if="bikeCtx.guardianReports.length > 0" color="warning" variant="soft" size="xs" class="ml-auto">
-              {{ bikeCtx.guardianReports.length }}
-            </UBadge>
-          </div>
-
-          <!-- Reports list -->
-          <template v-if="bikeCtx.guardianReports.length > 0">
-            <div
-              v-for="(report, i) in bikeCtx.guardianReports"
-              :key="report.id"
-              class="px-4 py-2.5 flex items-center gap-3"
-              :class="i < bikeCtx.guardianReports.length - 1 ? 'border-b border-(--ui-bg-accented)' : ''"
-            >
-              <span
-                class="size-1.5 rounded-full shrink-0 mt-px"
-                :class="{
-                  'bg-error': report.severity === 'high',
-                  'bg-warning': report.severity === 'medium',
-                  'bg-(--ui-text-dimmed)': report.severity === 'low',
-                }"
-              />
-              <span class="text-sm text-(--ui-text-toned) flex-1">{{ report.text }}</span>
-              <UBadge
-                :color="report.severity === 'high' ? 'error' : report.severity === 'medium' ? 'warning' : 'neutral'"
-                variant="soft"
-                size="xs"
-                class="shrink-0"
-              >
-                {{ report.severity }}
-              </UBadge>
-            </div>
-          </template>
-
-          <!-- No reports -->
-          <div v-else class="px-4 py-3 flex items-center gap-2">
-            <UIcon name="i-lucide-check-circle" class="size-4 text-(--ui-text-dimmed)" />
-            <span class="text-sm text-(--ui-text-dimmed)">No field reports for this bike</span>
-          </div>
-        </div>
-      </div>
+    <div class="flex-1 overflow-y-auto pb-2">
 
       <!-- Bike viewer -->
       <div
@@ -118,19 +44,27 @@
         />
       </div>
 
-      <!-- Live damage report card -->
-      <div class="px-2 mb-3">
-        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl px-4 py-3 flex items-center justify-between gap-3">
-          <div class="flex items-center gap-3">
-            <UIcon name="i-lucide-clipboard-list" class="size-5 text-(--ui-text-muted) shrink-0" />
-            <div>
-              <p class="text-sm font-medium text-(--ui-text-highlighted)">{{ liveCategory.label }}</p>
-              <p class="text-xs text-(--ui-text-muted) mt-0.5">{{ liveCategory.time }} estimated</p>
-            </div>
-          </div>
-          <UBadge :color="liveCategory.color" variant="soft" size="sm">
-            {{ liveCategory.time }}
-          </UBadge>
+      <!-- IoT + Battery compact strip -->
+      <div class="px-4 mb-3 flex items-center gap-3">
+        <div
+          class="flex items-center gap-1.5 text-sm"
+          :class="bikeCtx.iotStatus === 'online' ? 'text-(--ui-text-toned)' : 'text-error'"
+        >
+          <span
+            class="size-2 rounded-full shrink-0"
+            :class="bikeCtx.iotStatus === 'online' ? 'bg-success shadow-[0_0_5px_theme(colors.green.400)]' : 'bg-error'"
+          />
+          {{ bikeCtx.iotStatus === 'online' ? 'Online' : 'Offline' }}
+        </div>
+        <div
+          class="flex items-center gap-1 text-sm"
+          :class="bikeCtx.batteryLevel <= 25 ? 'text-error' : 'text-(--ui-text-toned)'"
+        >
+          <UIcon
+            :name="bikeCtx.batteryLevel > 60 ? 'i-lucide-battery-full' : bikeCtx.batteryLevel > 25 ? 'i-lucide-battery-medium' : 'i-lucide-battery-low'"
+            class="size-4"
+          />
+          {{ bikeCtx.batteryLevel }}%
         </div>
       </div>
 
@@ -138,7 +72,7 @@
       <div class="px-2 mb-3">
         <UInput
           v-model="searchQuery"
-          placeholder="Search part"
+          placeholder="Search Part"
           icon="i-lucide-search"
           size="md"
           class="w-full"
@@ -155,22 +89,18 @@
       </div>
 
       <!-- Search results (flat list) -->
-      <div v-if="searchQuery" class="px-2 flex flex-col gap-1">
+      <div v-if="searchQuery" class="px-2 flex flex-col gap-1 pb-2">
         <template v-for="category in filteredCategories" :key="category.id">
           <p class="text-xs text-(--ui-text-muted) uppercase tracking-wider px-1 pt-2 pb-1">{{ category.name }}</p>
           <div v-for="part in filteredParts(category)" :key="part.id">
             <button
               class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3 flex items-center justify-between transition-all duration-150"
-              :class="isSelected(part.id) ? 'border-(--ui-primary) bg-(--ui-primary)/5' : 'border-(--ui-border-accented)'"
+              :class="isSelected(part.id) ? 'border-(--ui-success) bg-(--ui-success)/5' : 'border-(--ui-border-accented)'"
               @click="togglePart(category.id, part.id, part.name)"
             >
               <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
               <Transition name="fade">
-                <UIcon
-                  v-if="isSelected(part.id)"
-                  name="i-lucide-check"
-                  class="size-4 text-(--ui-primary)"
-                />
+                <UIcon v-if="isSelected(part.id)" name="i-lucide-check" class="size-4 text-(--ui-success)" />
               </Transition>
             </button>
           </div>
@@ -178,8 +108,8 @@
       </div>
 
       <!-- Parts accordion (no search) -->
-      <div v-else class="px-2 flex flex-col gap-2">
-        <template v-for="category in filteredCategories" :key="category.id">
+      <div v-else class="px-2 flex flex-col gap-2 pb-2">
+        <template v-for="category in CATEGORIES" :key="category.id">
           <!-- Category header -->
           <button
             :ref="el => { if (el) categoryRefs[category.id] = el as HTMLElement }"
@@ -190,17 +120,15 @@
             <span class="text-base text-(--ui-text-toned)">{{ category.name }}</span>
             <div class="flex items-center gap-1.5">
               <Transition name="fade">
-                <UBadge
+                <span
                   v-if="getCategorySelectedCount(category.id) > 0"
-                  color="primary"
-                  variant="soft"
-                  size="sm"
+                  class="text-xs text-(--ui-success) font-medium"
                 >
-                  {{ getCategorySelectedCount(category.id) }}
-                </UBadge>
+                  {{ getCategorySelectedCount(category.id) }} added
+                </span>
               </Transition>
               <UIcon
-                :name="expandedCategory === category.id ? 'i-lucide-chevron-down' : 'i-lucide-chevron-up'"
+                :name="expandedCategory === category.id ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'"
                 class="size-5 text-(--ui-text-toned) transition-transform duration-200"
               />
             </div>
@@ -212,16 +140,12 @@
               <div v-for="part in category.parts" :key="part.id" class="pl-4">
                 <button
                   class="w-full bg-(--ui-bg-elevated) border rounded-md px-4 py-3 flex items-center justify-between transition-all duration-150"
-                  :class="isSelected(part.id) ? 'border-(--ui-primary) bg-(--ui-primary)/5' : 'border-(--ui-border-accented)'"
+                  :class="isSelected(part.id) ? 'border-(--ui-success) bg-(--ui-success)/5' : 'border-(--ui-border-accented)'"
                   @click="togglePart(category.id, part.id, part.name)"
                 >
                   <span class="text-base text-(--ui-text-toned)">{{ part.name }}</span>
                   <Transition name="fade">
-                    <UIcon
-                      v-if="isSelected(part.id)"
-                      name="i-lucide-check"
-                      class="size-4 text-(--ui-primary)"
-                    />
+                    <UIcon v-if="isSelected(part.id)" name="i-lucide-check" class="size-4 text-(--ui-success)" />
                   </Transition>
                 </button>
               </div>
@@ -230,6 +154,39 @@
         </template>
       </div>
 
+      <!-- Notes field -->
+      <div class="px-2 mt-2 mb-2">
+        <div class="bg-(--ui-bg-elevated) border border-(--ui-bg-accented) rounded-xl overflow-hidden">
+          <div class="px-4 py-2.5 border-b border-(--ui-bg-accented) flex items-center gap-2">
+            <UIcon name="i-lucide-message-square" class="size-4 text-(--ui-text-muted)" />
+            <span class="text-xs font-semibold uppercase tracking-wider text-(--ui-text-muted)">Notes for mechanic</span>
+            <span class="ml-auto text-xs text-(--ui-text-dimmed)">Optional</span>
+          </div>
+          <UTextarea
+            v-model="notes"
+            placeholder="Describe any adjustments, context or observations..."
+            :rows="3"
+            class="w-full border-none rounded-none bg-transparent"
+            variant="none"
+          />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- IoT Controls bottom bar -->
+    <div class="shrink-0 bg-(--ui-bg) border-t border-(--ui-bg-accented) pb-safe">
+      <div class="grid grid-cols-4 gap-px bg-(--ui-bg-accented)">
+        <button
+          v-for="action in iotActions"
+          :key="action.label"
+          class="bg-(--ui-bg-elevated) flex flex-col items-center justify-center py-3 gap-1.5 active:bg-(--ui-bg-accented) transition-colors"
+          @click="onIotAction(action.label)"
+        >
+          <UIcon :name="action.icon" class="size-5 text-(--ui-text-toned)" />
+          <span class="text-xs text-(--ui-text-muted) leading-none">{{ action.label }}</span>
+        </button>
+      </div>
     </div>
 
     <!-- Leave without saving modal -->
@@ -265,28 +222,25 @@
     <UModal v-model:open="confirmOpen" :close="false">
       <template #body>
         <div class="flex flex-col gap-4 px-1 pt-1">
-          <div class="w-11 h-11 rounded-full bg-primary/15 flex items-center justify-center">
-            <UIcon name="i-lucide-clipboard-check" class="size-6 text-(--ui-primary)" />
+          <div class="w-11 h-11 rounded-full bg-warning/15 flex items-center justify-center">
+            <UIcon name="i-lucide-circle-alert" class="size-6 text-warning" />
           </div>
           <div>
             <p class="text-base font-semibold text-(--ui-text-highlighted) leading-snug">
-              Finish diagnosis?
+              Are you sure you want to finish the diagnosis?
             </p>
             <p class="text-sm text-(--ui-text-muted) mt-1.5">
-              <span class="text-(--ui-text-highlighted) font-medium">{{ selectedParts.size }} part{{ selectedParts.size !== 1 ? 's' : '' }}</span>
-              flagged — classified as
-              <span class="font-medium" :class="`text-${liveCategory.color}`">{{ liveCategory.label }}</span>.
-              This will be passed to the mechanic as a starting point.
+              The bike will be ready for the mechanic to start work.
             </p>
           </div>
         </div>
       </template>
       <template #footer>
         <div class="flex gap-3 w-full">
-          <UButton block variant="ghost" color="neutral" @click="confirmOpen = false">
+          <UButton block variant="ghost" color="neutral" :disabled="submitting" @click="confirmOpen = false">
             Cancel
           </UButton>
-          <UButton block color="primary" @click="onConfirm">
+          <UButton block color="success" :loading="submitting" @click="onConfirm">
             Confirm
           </UButton>
         </div>
@@ -296,7 +250,7 @@
 </template>
 
 <script setup lang="ts">
-import { calcRepairCategory } from '~/composables/useBikeStore'
+import { calcRepairCategory, useBikeStore } from '~/composables/useBikeStore'
 import { useBikeContext } from '~/composables/useBikeContext'
 
 const route = useRoute()
@@ -308,6 +262,7 @@ const {
   expandedCategory,
   selectedParts,
   searchQuery,
+  notes,
   reset,
   toggleCategory,
   togglePart,
@@ -318,32 +273,28 @@ const {
 const { incrementDiagnosed } = useShift()
 const { storeRecord } = useBikeStore()
 const { currentName } = useRole()
+const { enqueueMechanic } = useBikeQueue()
 const toast = useToast()
 
 const searchFocused = ref(false)
 const confirmOpen = ref(false)
 const leaveConfirmOpen = ref(false)
+const submitting = ref(false)
 const categoryRefs: Record<string, HTMLElement> = {}
 
-// Mock bike context (IoT, battery, Guardian reports)
 const bikeCtx = computed(() => useBikeContext(bikeId.value))
 
 onMounted(() => reset())
 
-// Shrink bike viewer when a category is open or search is active
 const bikeSmall = computed(() =>
   expandedCategory.value !== null || searchFocused.value || !!searchQuery.value,
 )
 
-// Category IDs that have at least one selected part (drives yellow overlay)
 const selectedCategoryIds = computed(() => {
   const ids = new Set<string>()
   selectedParts.value.forEach(p => ids.add(p.categoryId))
   return ids
 })
-
-// Live repair category based on current selection
-const liveCategory = computed(() => calcRepairCategory(selectedParts.value.size))
 
 function handleSelectCategory(categoryId: string) {
   toggleCategory(categoryId)
@@ -366,42 +317,55 @@ function filteredParts(category: typeof CATEGORIES[0]) {
   )
 }
 
+// IoT control actions
+const iotActions = [
+  { label: 'Unlock', icon: 'i-lucide-lock-open' },
+  { label: 'Lock', icon: 'i-lucide-lock' },
+  { label: 'Lights on', icon: 'i-lucide-lightbulb' },
+  { label: 'Light Off', icon: 'i-lucide-lightbulb-off' },
+  { label: 'Honk', icon: 'i-lucide-bell' },
+  { label: 'Open B/C', icon: 'i-lucide-battery-charging' },
+  { label: 'Set speed', icon: 'i-lucide-gauge' },
+]
+
+function onIotAction(label: string) {
+  toast.add({
+    title: `${label} sent`,
+    description: `Command sent to BIKE ${bikeId.value}`,
+    icon: 'i-lucide-zap',
+    color: 'success',
+    duration: 2000,
+  })
+}
+
 function onBack() {
   if (selectedParts.value.size > 0) {
     leaveConfirmOpen.value = true
   }
   else {
-    router.push('/diagnoser')
+    router.push(`/bike-context/${encodeURIComponent(bikeId.value)}`)
   }
 }
 
 function onConfirmLeave() {
   leaveConfirmOpen.value = false
-  toast.add({
-    title: 'Changes discarded',
-    description: 'No parts were saved for this bike.',
-    color: 'warning',
-    icon: 'i-lucide-alert-triangle',
-    duration: 3000,
-  })
-  router.push('/diagnoser')
+  router.push(`/bike-context/${encodeURIComponent(bikeId.value)}`)
 }
 
-function onSubmit() {
-  confirmOpen.value = true
-}
-
-function onConfirm() {
+async function onConfirm() {
+  submitting.value = true
   confirmOpen.value = false
-  storeRecord(bikeId.value, selectedParts.value, currentName.value)
+  storeRecord(bikeId.value, selectedParts.value, currentName.value, notes.value)
+  enqueueMechanic(bikeId.value)
   incrementDiagnosed()
+  await new Promise(r => setTimeout(r, 600))
   toast.add({
-    title: 'Diagnosis complete.',
-    description: `${selectedParts.value.size} part${selectedParts.value.size !== 1 ? 's' : ''} flagged for the mechanic.`,
+    title: 'The bike was successfully diagnosed.',
     color: 'success',
     icon: 'i-lucide-check-circle',
     duration: 4000,
   })
+  reset()
   router.push('/diagnoser')
 }
 </script>

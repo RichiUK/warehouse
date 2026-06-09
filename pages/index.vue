@@ -56,6 +56,7 @@ const { setRole, currentName } = useRole()
 const roles: Array<{ id: AppRole; label: string; icon: string }> = [
   { id: 'diagnoser', label: 'Diagnoser', icon: 'i-lucide-stethoscope' },
   { id: 'mechanic', label: 'Mechanic', icon: 'i-lucide-wrench' },
+  { id: 'pdi', label: 'PDI', icon: 'i-lucide-sparkles' },
   { id: 'tester', label: 'Tester', icon: 'i-lucide-clipboard-check' },
 ]
 
@@ -70,6 +71,7 @@ function selectRole(role: AppRole) {
   setRole(role)
   if (role === 'diagnoser') router.push('/diagnoser')
   else if (role === 'mechanic') router.push('/mechanic')
+  else if (role === 'pdi') router.push('/pdi')
   else router.push('/tester')
 }
 </script>

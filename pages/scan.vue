@@ -106,14 +106,16 @@ const torchActive = ref(false)
 
 function bikeRoute(bikeId: string) {
   const encoded = encodeURIComponent(bikeId)
-  if (currentRole.value === 'mechanic') return `/mechanic/${encoded}`
-  if (currentRole.value === 'tester') return `/tester/${encoded}`
-  return `/diagnose/${encoded}`
+  if (currentRole.value === 'mechanic') return `/mechanic/job-card/${encoded}`
+  if (currentRole.value === 'tester') return `/tester/job-card/${encoded}`
+  if (currentRole.value === 'pdi') return `/pdi/${encoded}`
+  return `/bike-context/${encoded}`
 }
 
 function homeRoute() {
   if (currentRole.value === 'mechanic') return '/mechanic'
   if (currentRole.value === 'tester') return '/tester'
+  if (currentRole.value === 'pdi') return '/pdi'
   return '/diagnoser'
 }
 

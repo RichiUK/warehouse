@@ -10,12 +10,14 @@ export interface DiagnosedPart {
 const expandedCategory = ref<string | null>(null)
 const selectedParts = ref<Map<string, DiagnosedPart>>(new Map())
 const searchQuery = ref('')
+const notes = ref('')
 
 export function useDiagnoser() {
   function reset() {
     expandedCategory.value = null
     selectedParts.value = new Map()
     searchQuery.value = ''
+    notes.value = ''
   }
 
   function toggleCategory(categoryId: string) {
@@ -47,6 +49,7 @@ export function useDiagnoser() {
     expandedCategory: readonly(expandedCategory),
     selectedParts: readonly(selectedParts),
     searchQuery,
+    notes,
     reset,
     toggleCategory,
     togglePart,
