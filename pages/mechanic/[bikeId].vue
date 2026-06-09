@@ -120,9 +120,9 @@
                   </button>
 
                   <div class="flex items-center gap-2 shrink-0">
-                    <!-- Action badge (replace/adjust) — hidden when OOS -->
+                    <!-- Action badge (replace/adjust) — only shown when action is set, hidden when OOS -->
                     <span
-                      v-if="!isOos(task.partId)"
+                      v-if="task.action && !isOos(task.partId)"
                       class="flex items-center gap-1 rounded-md px-2 py-1 text-xs"
                       :class="task.action === 'replace' ? 'bg-error/10 text-error' : 'bg-info/10 text-info'"
                     >
@@ -243,7 +243,6 @@
 <script setup lang="ts">
 import type { MockTask } from '~/composables/usePartsData'
 import { calcRepairCategory, useBikeStore } from '~/composables/useBikeStore'
-import type { AssignedPart } from '~/composables/useDiagnoser'
 
 const { CATEGORIES } = usePartsData()
 const route = useRoute()
@@ -260,6 +259,7 @@ const {
   allTasksDone,
   hasUnsavedProgress,
   reset,
+  initFromDiagnosis,
   toggleTask,
   toggleOos,
   isChecked,
@@ -274,7 +274,15 @@ const leaveConfirmOpen = ref(false)
 const confirmOpen = ref(false)
 const addPartsOpen = ref(false)
 
-onMounted(() => reset())
+onMounted(() => {
+  const record = getRecord(bikeId.value)
+  if (record?.diagnosedParts?.length) {
+    initFromDiagnosis(record.diagnosedParts)
+  }
+  else {
+    reset()
+  }
+})
 
 const bikeRecord = computed(() => getRecord(bikeId.value))
 
@@ -282,10 +290,7 @@ const bikeRecord = computed(() => getRecord(bikeId.value))
 const categoryInfo = computed(() => {
   const record = getRecord(bikeId.value)
   if (record) return record.category
-  const mockParts = new Map<string, AssignedPart>(
-    taskList.value.map(t => [t.partId, { categoryId: t.categoryId, partId: t.partId, partName: t.partName, action: t.action }]),
-  )
-  return calcRepairCategory(mockParts)
+  return calcRepairCategory(taskList.value.length, oosTaskIds.value.size > 0)
 })
 
 // Categories that have tasks

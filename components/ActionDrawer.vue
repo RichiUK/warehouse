@@ -2,14 +2,14 @@
   <div class="fixed bottom-0 left-0 right-0 z-30 bg-(--ui-bg-elevated) rounded-t-2xl px-4 pb-10 pt-4 flex flex-col gap-3">
     <!-- Info row -->
     <div class="flex items-center justify-between">
-      <span class="text-sm text-(--ui-text-muted)">You can select more parts</span>
+      <span class="text-sm text-(--ui-text-muted)">Choose what needs doing</span>
       <UBadge color="primary" variant="soft" size="sm">
         {{ count }} selected
       </UBadge>
     </div>
 
-    <!-- Action buttons -->
-    <div class="grid grid-cols-3 gap-2">
+    <!-- Action buttons — replace & adjust only (OOS is set per task in mechanic view) -->
+    <div class="grid grid-cols-2 gap-2">
       <button
         v-for="action in actions"
         :key="action.value"
@@ -47,6 +47,5 @@ const pressed = ref<PartAction | null>(null)
 const actions: Array<{ value: PartAction; label: string; icon: string }> = [
   { value: 'replace', label: 'Replace', icon: 'i-lucide-refresh-cw' },
   { value: 'adjust', label: 'Adjust', icon: 'i-lucide-wrench' },
-  { value: 'out-of-stock', label: 'Out of Stock', icon: 'i-lucide-square-dashed' },
 ]
 </script>

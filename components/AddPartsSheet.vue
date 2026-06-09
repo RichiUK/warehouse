@@ -200,12 +200,12 @@ function applyAction(action: PartAction) {
   const next = new Map(confirmedMap.value)
   pendingIds.value.forEach((partId) => {
     const meta = pendingMeta.value.get(partId)
-    if (meta) {
+    if (meta && (action === 'replace' || action === 'adjust')) {
       next.set(partId, {
         partId,
         partName: meta.partName,
         categoryId: meta.categoryId,
-        action: action as 'replace' | 'adjust',
+        action,
       })
     }
   })

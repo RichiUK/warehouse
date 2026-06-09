@@ -7,7 +7,7 @@ export interface MockTask {
   partId: string
   partName: string
   categoryId: string
-  action: 'replace' | 'adjust'
+  action?: 'replace' | 'adjust'
 }
 
 export const MOCK_TASKS: MockTask[] = [
