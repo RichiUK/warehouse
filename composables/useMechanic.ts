@@ -52,6 +52,29 @@ export function useMechanic() {
     }
   }
 
+  function setPreTaskState(
+    diagnosedParts: DiagnosedPart[],
+    addedParts: MockTask[],
+    oosIds: Set<string>,
+  ) {
+    const diagTasks: MockTask[] = diagnosedParts.length > 0
+      ? diagnosedParts.map(p => ({
+          partId: p.partId,
+          partName: p.partName,
+          categoryId: p.categoryId,
+          source: 'diagnosis' as const,
+        }))
+      : MOCK_TASKS.map(t => ({ ...t, source: 'diagnosis' as const }))
+
+    taskList.value = [...diagTasks, ...addedParts]
+    checkedTaskIds.value = new Set()
+    cannotCompleteIds.value = new Set()
+    oosTaskIds.value = new Set(oosIds)
+    if (!mechanicStartedAt.value) {
+      mechanicStartedAt.value = Date.now()
+    }
+  }
+
   function toggleTask(taskId: string) {
     const next = new Set(checkedTaskIds.value)
     const nextOos = new Set(oosTaskIds.value)
@@ -147,6 +170,7 @@ export function useMechanic() {
     reset,
     initFromDiagnosis,
     startTimer,
+    setPreTaskState,
     toggleTask,
     toggleOos,
     toggleCannotComplete,

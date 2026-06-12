@@ -174,20 +174,8 @@
 
     </div>
 
-    <!-- IoT Controls bottom bar -->
-    <div class="shrink-0 bg-(--ui-bg) border-t border-(--ui-bg-accented) pb-safe">
-      <div class="grid grid-cols-4 gap-px bg-(--ui-bg-accented)">
-        <button
-          v-for="action in iotActions"
-          :key="action.label"
-          class="bg-(--ui-bg-elevated) flex flex-col items-center justify-center py-3 gap-1.5 active:bg-(--ui-bg-accented) transition-colors"
-          @click="onIotAction(action.label)"
-        >
-          <UIcon :name="action.icon" class="size-5 text-(--ui-text-toned)" />
-          <span class="text-xs text-(--ui-text-muted) leading-none">{{ action.label }}</span>
-        </button>
-      </div>
-    </div>
+    <!-- IoT Controls drawer -->
+    <ControlsDrawer v-model="controlsOpen" />
 
     <!-- Leave without saving modal -->
     <UModal v-model:open="leaveConfirmOpen" :close="false">
@@ -280,6 +268,7 @@ const searchFocused = ref(false)
 const confirmOpen = ref(false)
 const leaveConfirmOpen = ref(false)
 const submitting = ref(false)
+const controlsOpen = ref(false)
 const categoryRefs: Record<string, HTMLElement> = {}
 
 const bikeCtx = computed(() => useBikeContext(bikeId.value))
@@ -317,26 +306,6 @@ function filteredParts(category: typeof CATEGORIES[0]) {
   )
 }
 
-// IoT control actions
-const iotActions = [
-  { label: 'Unlock', icon: 'i-lucide-lock-open' },
-  { label: 'Lock', icon: 'i-lucide-lock' },
-  { label: 'Lights on', icon: 'i-lucide-lightbulb' },
-  { label: 'Light Off', icon: 'i-lucide-lightbulb-off' },
-  { label: 'Honk', icon: 'i-lucide-bell' },
-  { label: 'Open B/C', icon: 'i-lucide-battery-charging' },
-  { label: 'Set speed', icon: 'i-lucide-gauge' },
-]
-
-function onIotAction(label: string) {
-  toast.add({
-    title: `${label} sent`,
-    description: `Command sent to BIKE ${bikeId.value}`,
-    icon: 'i-lucide-zap',
-    color: 'success',
-    duration: 2000,
-  })
-}
 
 function onBack() {
   if (selectedParts.value.size > 0) {
